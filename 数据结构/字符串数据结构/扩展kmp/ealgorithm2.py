@@ -1,0 +1,22 @@
+"""
+更简洁的e函数模版
+通过拼接字符串的形式单纯用Z函数生成e数组
+"""
+def E(a,b):
+    s=b+'#'+a
+    n=len(s)
+    z=[0]*n
+    z[0]=n #z[0]表示s本身
+    c=r=1
+    #从下标1开始计算
+    for i in range(1,n):
+        lens=min(r-i,z[i-c]) if r>i else 0
+        #涵盖四种情况,情况2和3不执行while,情况1和4执行while
+        while i+lens<n and s[i+lens]==s[lens]:
+            lens+=1
+        if i+lens>r:
+            r=i+lens
+            c=i
+        z[i]=lens
+    #返回z数组
+    return z[len(b)+1:]
