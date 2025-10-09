@@ -1,2 +1,2 @@
 # algorithm_competition_template
-algorithm competition template using python
+chaospower's algorithm competition template using python
