@@ -13,9 +13,9 @@ from collections import defaultdict
 Max = lambda x, y: x if x > y else y
 Min = lambda x, y: x if x < y else y
 
+
 # 范围修改范围查询线段树,不包含建树,维护的信息是区间累加和
 class LazySegmentTree:
-
     # 懒标记初始值,根据实际需要修改
     _TODO_INIT = 0
 
@@ -25,21 +25,13 @@ class LazySegmentTree:
         self._tree = [0] * (self.n << 2)
         self._todo = [0] * (self.n << 2)
 
-    # 合并两个值,根据实际需要修改
-    def _merge_val(self, a, b):
-        return a + b
-
-    # 合并两个懒标记,根据实际需要修改
-    def _merge_todo(self, a, b):
-        return a + b
-
     # 把懒标记作用于子树
     def _apply(self, l, r, o, v):
         self._tree[o] += v * (r - l + 1)
         self._todo[o] += v
 
     # 将当前节点懒标记下传给左右儿子
-    def spread(self, l, r, o):
+    def _spread(self, l, r, o):
         v = self._todo[o]
         mid = (l + r) >> 1
         if v == self._TODO_INIT:
@@ -50,7 +42,7 @@ class LazySegmentTree:
 
     # 合并左右儿子信息
     def _maintain(self, o):
-        self._tree[o] = self._merge_val(self._tree[o << 1], self._tree[o << 1 | 1])
+        self._tree[o] = self._tree[o << 1] + self._tree[o << 1 | 1]
 
     # 区间修改函数
     def _update(self, l, r, o, L, R, v):
@@ -58,7 +50,7 @@ class LazySegmentTree:
         if L <= l and r <= R:
             self._apply(l, r, o, v)
             return
-        self.spread(l, r, o)
+        self._spread(l, r, o)
         mid = (l + r) >> 1
         # 如果当前区间中点>=L,说明[l,mid]与待查询区间有交集,更新左子树
         if mid >= L:
@@ -73,7 +65,7 @@ class LazySegmentTree:
         # 当前区间被待查询区间全包
         if L <= l and r <= R:
             return self._tree[o]
-        self.spread(l, r, o)
+        self._spread(l, r, o)
         mid = (l + r) >> 1
         # 说明右子树和[L,R]无交集,只查询左子树
         if mid >= R:
@@ -81,17 +73,15 @@ class LazySegmentTree:
         # 说明左子树和[L,R]无交集,只查询右子树
         if mid < L:
             return self._query(mid + 1, r, o << 1 | 1, L, R)
-        l_res = self._query(l, mid, o << 1, L, R)
-        r_res = self._query(mid + 1, r, o << 1 | 1, L, R)
-        return self._merge_val(l_res, r_res)
+        return self._query(l, mid, o << 1, L, R) + self._query(mid + 1, r, o << 1 | 1, L, R)
 
     # 实际区间更新函数
     def update(self, L, R, v):
-        self._update(1, self.n, 1, L+1, R+1, v)
+        self._update(1, self.n, 1, L + 1, R + 1, v)
 
     # 实际区间查询函数
     def query(self, L, R):
-        return self._query(1, self.n, 1, L+1, R+1)
+        return self._query(1, self.n, 1, L + 1, R + 1)
 
-#使用案例
-#https://leetcode.cn/problems/coin-bonus/description/
+# 使用案例
+# https://leetcode.cn/problems/coin-bonus/description/
