@@ -10,49 +10,44 @@ from collections import defaultdict
 # from sortedcontainers import SortedList
 # from itertools import pairwise
 
-Max = lambda x, y: x if x > y else y
-Min = lambda x, y: x if x < y else y
+fmax = lambda x, y: x if x > y else y
+fmin = lambda x, y: x if x < y else y
 
+
+# Lazy线段树,维护区间最大值和最小值
 class LazySegmentTree:
-
     # 懒标记初始值,根据实际需要修改
     _TODO_INIT = 0
 
     # 初始化
     def __init__(self, n):
         self.n = n
-        self._tree = [0] * (self.n << 2)
+        self._min = [0] * (self.n << 2)
+        self._max = [0] * (self.n << 2)
         self._todo = [0] * (self.n << 2)
 
-    # 合并两个值,根据实际需要修改
-    def _merge_val(self, a, b):
-        return a + b
+    def _apply(self, o, todo):
+        self._min[o] += todo
+        self._max[o] += todo
+        self._todo[o] += todo
 
-    # 合并两个懒标记,根据实际需要修改
-    def _merge_todo(self, a, b):
-        return a + b
-
-    def _apply(self, l, r, o, v):
-        self._tree[o] += v * (r - l + 1)
-        self._todo[o] += v
-
-    def spread(self, l, r, o):
-        v = self._todo[o]
-        mid = (l + r) >> 1
-        if v == self._TODO_INIT:
+    def _spread(self, o):
+        todo = self._todo[o]
+        if todo == self._TODO_INIT:
             return
-        self._apply(l, mid, o << 1, v)
-        self._apply(mid + 1, r, o << 1 | 1, v)
+        self._apply(o << 1, todo)
+        self._apply(o << 1 | 1, todo)
         self._todo[o] = self._TODO_INIT
 
     def _maintain(self, o):
-        self._tree[o] = self._merge_val(self._tree[o << 1], self._tree[o << 1 | 1])
+        self._min[o] = fmin(self._min[o << 1], self._min[o << 1 | 1])
+        self._max[o] = fmax(self._max[o << 1], self._max[o << 1 | 1])
 
     def _update(self, l, r, o, L, R, v):
         if L <= l and r <= R:
-            self._apply(l, r, o, v)
+            self._apply(o, v)
             return
-        self.spread(l, r, o)
+        self._spread(o)
         mid = (l + r) >> 1
         if mid >= L:
             self._update(l, mid, o << 1, L, R, v)
@@ -62,8 +57,8 @@ class LazySegmentTree:
 
     def _query(self, l, r, o, L, R):
         if L <= l and r <= R:
-            return self._tree[o]
-        self.spread(l, r, o)
+            return self._min[o], self._max[o]
+        self._spread(o)
         mid = (l + r) >> 1
         if mid >= R:
             return self._query(l, mid, o << 1, L, R)
@@ -71,10 +66,10 @@ class LazySegmentTree:
             return self._query(mid + 1, r, o << 1 | 1, L, R)
         l_res = self._query(l, mid, o << 1, L, R)
         r_res = self._query(mid + 1, r, o << 1 | 1, L, R)
-        return self._merge_val(l_res, r_res)
+        return fmin(l_res[0], r_res[0]), fmax(l_res[1], r_res[1])
 
     def update(self, L, R, v):
-        self._update(1, self.n, 1, L+1, R+1, v)
+        self._update(1, self.n, 1, L + 1, R + 1, v)
 
     def query(self, L, R):
-        return self._query(1, self.n, 1, L+1, R+1)
+        return self._query(1, self.n, 1, L + 1, R + 1)
