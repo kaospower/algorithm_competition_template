@@ -24,19 +24,11 @@ class LazySegmentTree:
         self._todo = [0] * (self.n << 2)
         self._build(1, self.n, 1, nums)
 
-    # 合并两个值,根据实际需要修改
-    def _merge_val(self, a, b):
-        return a + b
-
-    # 合并两个懒标记,根据实际需要修改
-    def _merge_todo(self, a, b):
-        return a + b
-
     def _apply(self, l, r, o, v):
         self._tree[o] += v * (r - l + 1)
         self._todo[o] += v
 
-    def spread(self, l, r, o):
+    def _spread(self, l, r, o):
         v = self._todo[o]
         mid = (l + r) >> 1
         if v == self._TODO_INIT:
@@ -46,7 +38,7 @@ class LazySegmentTree:
         self._todo[o] = self._TODO_INIT
 
     def _maintain(self, o):
-        self._tree[o] = self._merge_val(self._tree[o << 1], self._tree[o << 1 | 1])
+        self._tree[o] = self._tree[o << 1] + self._tree[o << 1 | 1]
 
     def _build(self, l, r, o, nums):
         if l == r:
@@ -61,7 +53,7 @@ class LazySegmentTree:
         if L <= l and r <= R:
             self._apply(l, r, o, v)
             return
-        self.spread(l, r, o)
+        self._spread(l, r, o)
         mid = (l + r) >> 1
         if mid >= L:
             self._update(l, mid, o << 1, L, R, v)
@@ -72,15 +64,13 @@ class LazySegmentTree:
     def _query(self, l, r, o, L, R):
         if L <= l and r <= R:
             return self._tree[o]
-        self.spread(l, r, o)
+        self._spread(l, r, o)
         mid = (l + r) >> 1
         if mid >= R:
             return self._query(l, mid, o << 1, L, R)
         if mid < L:
             return self._query(mid + 1, r, o << 1 | 1, L, R)
-        l_res = self._query(l, mid, o << 1, L, R)
-        r_res = self._query(mid + 1, r, o << 1 | 1, L, R)
-        return self._merge_val(l_res, r_res)
+        return self._query(l, mid, o << 1, L, R) + self._query(mid + 1, r, o << 1 | 1, L, R)
 
     def update(self, L, R, v):
         self._update(1, self.n, 1, L + 1, R + 1, v)
