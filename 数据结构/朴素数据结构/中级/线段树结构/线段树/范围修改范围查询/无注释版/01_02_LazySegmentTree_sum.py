@@ -33,8 +33,8 @@ class LazySegmentTree:
         return a + b
 
     def _apply(self, l, r, o, v):
-        self._tree[o] = self._merge_val(self._tree[o], v * (r - l + 1))
-        self._todo[o] = self._merge_todo(self._todo[o], v)
+        self._tree[o] += v * (r - l + 1)
+        self._todo[o] += v
 
     def spread(self, l, r, o):
         v = self._todo[o]

@@ -36,8 +36,8 @@ class LazySegmentTree:
 
     # 把懒标记作用于子树
     def _apply(self, l, r, o, v):
-        self._tree[o] = self._merge_val(self._tree[o], v * (r - l + 1))
-        self._todo[o] = self._merge_todo(self._todo[o], v)
+        self._tree[o] += v * (r - l + 1)
+        self._todo[o] += v
 
     # 将当前节点懒标记下传给左右儿子
     def spread(self, l, r, o):

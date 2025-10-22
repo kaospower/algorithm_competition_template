@@ -13,8 +13,8 @@ from collections import defaultdict
 Max = lambda x, y: x if x > y else y
 Min = lambda x, y: x if x < y else y
 
-class LazySegmentTree:
 
+class LazySegmentTree:
     # 懒标记初始值,根据实际需要修改
     _TODO_INIT = 0
 
@@ -33,8 +33,8 @@ class LazySegmentTree:
         return a + b
 
     def _apply(self, l, r, o, v):
-        self._tree[o] = self._merge_val(self._tree[o], v * (r - l + 1))
-        self._todo[o] = self._merge_todo(self._todo[o], v)
+        self._tree[o] += v * (r - l + 1)
+        self._todo[o] += v
 
     def spread(self, l, r, o):
         v = self._todo[o]
@@ -83,7 +83,7 @@ class LazySegmentTree:
         return self._merge_val(l_res, r_res)
 
     def update(self, L, R, v):
-        self._update(1, self.n, 1, L+1, R+1, v)
+        self._update(1, self.n, 1, L + 1, R + 1, v)
 
     def query(self, L, R):
-        return self._query(1, self.n, 1, L+1, R+1)
+        return self._query(1, self.n, 1, L + 1, R + 1)
