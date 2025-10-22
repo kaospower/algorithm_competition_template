@@ -1,0 +1,80 @@
+from typing import List
+from bisect import bisect_left, bisect_right
+from heapq import heappush, heappop, heapreplace
+from itertools import permutations, accumulate
+from math import inf, comb, sqrt, ceil, floor, log, log2, log10
+from functools import cache
+from math import gcd
+from collections import defaultdict
+
+# from sortedcontainers import SortedList
+# from itertools import pairwise
+
+Max = lambda x, y: x if x > y else y
+Min = lambda x, y: x if x < y else y
+
+class LazySegmentTree:
+
+    # 懒标记初始值,根据实际需要修改
+    _TODO_INIT = 0
+
+    # 初始化
+    def __init__(self, n):
+        self.n = n
+        self._tree = [0] * (self.n << 2)
+        self._todo = [0] * (self.n << 2)
+
+    # 合并两个值,根据实际需要修改
+    def _merge_val(self, a, b):
+        return a + b
+
+    # 合并两个懒标记,根据实际需要修改
+    def _merge_todo(self, a, b):
+        return a + b
+
+    def _apply(self, l, r, o, v):
+        self._tree[o] += v * (r - l + 1)
+        self._todo[o] += v
+
+    def spread(self, l, r, o):
+        v = self._todo[o]
+        mid = (l + r) >> 1
+        if v == self._TODO_INIT:
+            return
+        self._apply(l, mid, o << 1, v)
+        self._apply(mid + 1, r, o << 1 | 1, v)
+        self._todo[o] = self._TODO_INIT
+
+    def _maintain(self, o):
+        self._tree[o] = self._merge_val(self._tree[o << 1], self._tree[o << 1 | 1])
+
+    def _update(self, l, r, o, L, R, v):
+        if L <= l and r <= R:
+            self._apply(l, r, o, v)
+            return
+        self.spread(l, r, o)
+        mid = (l + r) >> 1
+        if mid >= L:
+            self._update(l, mid, o << 1, L, R, v)
+        if mid < R:
+            self._update(mid + 1, r, o << 1 | 1, L, R, v)
+        self._maintain(o)
+
+    def _query(self, l, r, o, L, R):
+        if L <= l and r <= R:
+            return self._tree[o]
+        self.spread(l, r, o)
+        mid = (l + r) >> 1
+        if mid >= R:
+            return self._query(l, mid, o << 1, L, R)
+        if mid < L:
+            return self._query(mid + 1, r, o << 1 | 1, L, R)
+        l_res = self._query(l, mid, o << 1, L, R)
+        r_res = self._query(mid + 1, r, o << 1 | 1, L, R)
+        return self._merge_val(l_res, r_res)
+
+    def update(self, L, R, v):
+        self._update(1, self.n, 1, L+1, R+1, v)
+
+    def query(self, L, R):
+        return self._query(1, self.n, 1, L+1, R+1)
