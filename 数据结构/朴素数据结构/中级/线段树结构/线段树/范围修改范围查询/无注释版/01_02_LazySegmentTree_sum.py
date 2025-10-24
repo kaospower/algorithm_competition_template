@@ -10,8 +10,8 @@ from collections import defaultdict
 # from sortedcontainers import SortedList
 # from itertools import pairwise
 
-Max = lambda x, y: x if x > y else y
-Min = lambda x, y: x if x < y else y
+fmax = lambda x, y: x if x > y else y
+fmin = lambda x, y: x if x < y else y
 
 
 class LazySegmentTree:

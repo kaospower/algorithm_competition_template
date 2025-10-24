@@ -10,6 +10,10 @@ from collections import defaultdict
 # from sortedcontainers import SortedList
 # from itertools import pairwise
 
+#基于普通线段树的线段树二分
+#线段树二分主要负责查找区间内是否有>=x的数及其位置
+#如果就是寻找区间内是否有>=x的数,那么维护最大值即可
+#如果是寻找区间内是否有=x的数,那么需要同时维护最大值和最小值
 fmax = lambda x, y: x if x > y else y
 fmin = lambda x, y: x if x < y else y
 
