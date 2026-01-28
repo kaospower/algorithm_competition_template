@@ -1,0 +1,1 @@
+pycuda提供了很多nivida cuda的API接口,在用gpu进行矩阵计算时可以灵活切换等
