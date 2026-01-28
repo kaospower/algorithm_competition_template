@@ -29,3 +29,9 @@
 `git push origin main -v`
 
 或者更换wifi
+
+# 从github导入项目
+
+1.新建一个文件夹作为项目目录
+
+2.get from vcs,填入仓库git链接以及当前项目目录,git链接可以点击仓库code按钮获得
