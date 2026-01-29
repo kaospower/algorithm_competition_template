@@ -10,8 +10,8 @@ from collections import defaultdict, deque, Counter
 # from sortedcontainers import SortedList
 # from itertools import pairwise
 
-Max = lambda x, y: x if x > y else y
-Min = lambda x, y: x if x < y else y
+fmax = lambda x, y: x if x > y else y
+fmin = lambda x, y: x if x < y else y
 
 #特殊情况下Dijkstra可以维护单源最长路
 #权重累积为乘法且权值在0~1之间的最长路问题可以用类似Dijkstra的方法解决,不过要用大根堆
