@@ -48,6 +48,10 @@
 25.qbot(https://qbot-slak.onrender.com/)  
 26.jmp pro(https://www.jmp.com/en/home)  
 27.jmp pro文档(https://www.jmp.com/en/support/jmp-documentation)  
+28.mbta(https://www.mbta.com/stops/subway)  
+29.usps(https://www.smarty.com/)  
+
+
 # 5.数据集
 1.数据挖掘论坛KDnuggets(https://www.kdnuggets.com/)  
 2.coda库(https://pypi.org/project/coda/)  
@@ -101,7 +105,12 @@
 18.python在线编译器(https://pythontutor.com/python-compiler.html#mode=edit)  
 19.react(https://react.dev/)  
 20.material design(https://m2.material.io/)  
-21.material design android(https://m2.material.io/develop/android)  
+21.material design android(https://m2.material.io/develop/android) 
+22.colab1(https://colab.research.google.com/github/ageron/handson-ml3/blob/main/01_the_machine_learning_landscape.ipynb)  
+23.colab2(https://colab.research.google.com/github/ageron/handson-ml3/blob/main/10_neural_nets_with_keras.ipynb)  
+24.colab3(https://colab.research.google.com/github/ageron/handson-ml3/blob/main/index.ipynb)  
+25.colab4(https://colab.research.google.com/drive/1lrBVUMWMunNs4Nw9By_hrbTLr4tIqMVB#scrollTo=_Hk-gR3YBqAo)  
+26.数字签名网站(https://secure.cecredentialtrust.com/)  
 # 10.学习网站
 1.matplotlib教程(https://www.geeksforgeeks.org/python/how-to-calculate-and-plot-a-cumulative-distribution-function-with-matplotlib-in-python/)  
 2.可汗学院(https://webindex.org/en/access-khan-academy-courses-and-personalize-your-learning-journey-4482098/?hl=en&placement=&s1=698745ac88099906de28b7c3&utm_content=khanacadamy.org&utm_source=domain)  
