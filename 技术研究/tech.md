@@ -10,3 +10,8 @@
 10.多层感知机(https://d2l.ai/chapter_multilayer-perceptrons/mlp.html#hidden-layers)   
 11.Huber loss(https://en.wikipedia.org/wiki/Huber_loss)  
 12.混合专家模型(https://blog.csdn.net/leah126/article/details/140095900)  
+13.扩散模型(https://www.zhihu.com/tardis/zm/art/599887666?source_id=1003)  
+14.大模型进化史(https://zhuanlan.zhihu.com/p/23720060587)  
+15.LLM三种架构(https://zhuanlan.zhihu.com/p/642923989)  
+16.1月AI论文(https://my.feishu.cn/wiki/TPKwwEiLJibN4ek9fcQcYaZAnDd?fromScene=spaceOverview&table=tbllcGzlH3Epph6X&view=vewRB5E2Zs)  
+17.transformer视频讲解(https://www.bilibili.com/video/BV1G4iMBeEWH/)

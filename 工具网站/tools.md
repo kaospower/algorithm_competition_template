@@ -50,8 +50,7 @@
 27.jmp pro文档(https://www.jmp.com/en/support/jmp-documentation)  
 28.mbta(https://www.mbta.com/stops/subway)  
 29.usps(https://www.smarty.com/)  
-
-
+30.b站视频总结,生成思维导图(https://notegpt.io/cn/bilibili-summarizer)
 # 5.数据集
 1.数据挖掘论坛KDnuggets(https://www.kdnuggets.com/)  
 2.coda库(https://pypi.org/project/coda/)  
@@ -63,7 +62,8 @@
 # 6.机器学习
 1.uci repository(https://archive.ics.uci.edu/)  
 2.神经网络可视化(https://playground.tensorflow.org/)
-3.LeakyReLu(https://www.tensorflow.org/api_docs/python/tf/keras/layers/LeakyReLU
+3.LeakyReLu(https://www.tensorflow.org/api_docs/python/tf/keras/layers/LeakyReLU)
+
 # 7.LLM
 1.聚客AI学院(https://edu.guangjuke.com/)  
 2.Gemini3 Pro(https://deepmind.google/models/gemini/pro/)  
@@ -72,7 +72,8 @@
 5.LLM技术学习(https://www.dailydoseofds.com/)  
 6.昆仑大模型（https://expert.kunlungpt.cn/portal/login)  
 7.sora(https://sora.chatgpt.com/explore)
-8.AI资料导航站(https://github.com/cbamls/AI_Tutorial/blob/master/README.md)
+8.AI资料导航站(https://github.com/cbamls/AI_Tutorial/blob/master/README.md)  
+9.PaperBanana(https://paperbanana.org)
 # 8.算法刷题
 1.灵神周赛分数预测(https://docs.qq.com/sheet/DWFZCeG9KZ1BienRl?tab=y3rkjy)  
 2.码题集(https://www.matiji.net/exam/)  
@@ -111,6 +112,7 @@
 24.colab3(https://colab.research.google.com/github/ageron/handson-ml3/blob/main/index.ipynb)  
 25.colab4(https://colab.research.google.com/drive/1lrBVUMWMunNs4Nw9By_hrbTLr4tIqMVB#scrollTo=_Hk-gR3YBqAo)  
 26.数字签名网站(https://secure.cecredentialtrust.com/)  
+
 # 10.学习网站
 1.matplotlib教程(https://www.geeksforgeeks.org/python/how-to-calculate-and-plot-a-cumulative-distribution-function-with-matplotlib-in-python/)  
 2.可汗学院(https://webindex.org/en/access-khan-academy-courses-and-personalize-your-learning-journey-4482098/?hl=en&placement=&s1=698745ac88099906de28b7c3&utm_content=khanacadamy.org&utm_source=domain)  
