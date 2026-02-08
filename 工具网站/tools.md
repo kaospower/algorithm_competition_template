@@ -59,6 +59,7 @@
 # 6.机器学习
 1.uci repository(https://archive.ics.uci.edu/)  
 2.神经网络可视化(https://playground.tensorflow.org/)
+3.LeakyReLu(https://www.tensorflow.org/api_docs/python/tf/keras/layers/LeakyReLU
 # 7.LLM
 1.聚客AI学院(https://edu.guangjuke.com/)  
 2.Gemini3 Pro(https://deepmind.google/models/gemini/pro/)  
