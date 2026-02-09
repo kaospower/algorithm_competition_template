@@ -14,6 +14,7 @@ Bayesian methods
 # 7.Sparse Kernel Machines
 # 8.Graphical Models
 # 9.Mixture Models and EM
+
 # 10.Approximate Inference
 # 11.Sampling Methods
 # 12.Continuous Latent Variables
