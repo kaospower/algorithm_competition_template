@@ -19,6 +19,7 @@
 `git push -u origin main`
 
 # 推送远程仓库失败(貌似是pycharm的bug)
+`关闭所有程序,重启电脑`
 
 `git pull origin main --rebase`
 
