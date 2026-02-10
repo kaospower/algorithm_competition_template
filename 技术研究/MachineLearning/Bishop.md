@@ -14,6 +14,13 @@ Bayesian methods
 # 7.Sparse Kernel Machines
 # 8.Graphical Models
 # 9.Mixture Models and EM
+A general technique for finding maximum likelihood estimators
+in latent variable models is the expectation-maximization(EM) algorithm.  
+Gaussian mixture distribution.  
+Gaussian mixture models are widely used in data mining, pattern recognition,
+machine learning, and statistical analysis.  
+In many applications, their parameters are determined by maximum likelihood,
+typically using the EM algorithm.  
 
 # 10.Approximate Inference
 # 11.Sampling Methods

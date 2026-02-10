@@ -12,7 +12,7 @@ regression:y is real-valued
 unsupervised learning:to find "interesting patterns" in the data(knowledge discovery)  
 reinforcement learning:learning how to act or behave when given occasional reward or punishment signals  
 # 1.2 Supervised learning
-MAP(maximum a posteriori),最大后验) estimate  
+MAP(maximum a posteriori,最大后验) estimate  
 CTR(click-through rate,点击率)  
 bag of words  
 exploratory data analysis  
@@ -34,6 +34,9 @@ Real-world applications:
 # 9.Generalized linear models and the exponential family
 # 10.Directed graphical models(Bayes nets)
 # 11.Mixture models and the EM algorithm
+# 11.1 Latent variable models(潜变量模型)
+
+
 # 12.Latent linear models
 # 13.Sparse linear models
 # 14.Kernels
