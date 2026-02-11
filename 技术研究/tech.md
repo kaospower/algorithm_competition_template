@@ -21,7 +21,7 @@ recent week:
 19.LLM三种架构(https://zhuanlan.zhihu.com/p/642923989)  
 20.1月AI论文(https://my.feishu.cn/wiki/TPKwwEiLJibN4ek9fcQcYaZAnDd?fromScene=spaceOverview&table=tbllcGzlH3Epph6X&view=vewRB5E2Zs)  
 21.尚硅谷nlp视频课(https://www.bilibili.com/video/BV1k44LzPEhU)   
-22.吴恩达nlp视频课(https://www.bilibili.com/video/BV13HWGzcEh3)   
+22.吴恩达nlp视频课(https://www.bilibili.com/video/BV17MnqzNENL)   
 23.吴恩达机器学习视频课(https://www.bilibili.com/video/BV1T8HCzME3d)   
 24.吴恩达深度学习视频课(https://www.bilibili.com/video/BV13HWGzcEh3)      
 25.吴恩达概率论视频课(https://www.bilibili.com/video/BV1E3eAzGEQq)   

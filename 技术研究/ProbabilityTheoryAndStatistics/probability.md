@@ -24,6 +24,15 @@ some reference point.
 $CDF(x)=P(X<=x)$   
 对于离散变量,CDF表现为跳跃,  
 对于连续变量,CDF表现为平滑  
+# 26.Normal distribution(Gaussian distribution)
+$X\sim \mathcal{N}(\mu,\sigma^2),\frac{1}{\sigma\sqrt{2\pi}}e^{-\frac{1}{2}(\frac{x-\mu}{\sigma})^2}$  
+standardization(标准化):减去变量的平均值,然后除以标准差  
+# 36.Sum of Gaussians:an Example
+In general:  
+W=aX+bY  
+Independent:$X\sim \mathcal{N}(\mu_X,\sigma_X^2),Y\sim \mathcal{N}(\mu_Y,\sigma_Y^2)$  
+$W\sim \mathcal{N}(a\mu_x+b\mu_y,a^2\sigma_x^2+b^2\sigma_y^2)$
+
 # 61.Law of Large Numbers(大数定律)
 随着样本大小的增加,样本的平均值趋向于接近整个人口的平均值  
 n:number of samples  
@@ -54,5 +63,6 @@ Log-loss:ll
 L2 Regularization Error,非常数项的系数的平方和t  
 Regularization parameter:$\lambda$  
 Regularized error:ll+$\lambda$t
-
+# 72.Maximum a Posteriori(MAP)
+最大后验估计:Choose the one with the highest probability(mode of the updated belief).  
 
