@@ -30,4 +30,10 @@ $z\rightarrow \infty,g\rightarrow1$
 $z\rightarrow -\infty,g\rightarrow 0$  
 $z=0,g=0.5$  
 $f_{\vec w,b}(\vec x)=\frac{1}{1+e^{-(\vec w\cdot \vec x+b)}}$,输出结果在0~1之间  
+# 36.The Problem of Overfitting(过拟合问题) 
+overfit,high variance  
+address overfitting:regularization(正则化)
+underfitting(欠拟合),high bias  
+generalization(泛化):to make good predictions,even on brand new examples that it has never seen before.  
+
 
