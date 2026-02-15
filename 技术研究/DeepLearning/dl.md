@@ -24,7 +24,66 @@ $=-\frac{1}{m}\displaystyle\sum_{i=1}^m[y^{(i)}log\hat y^{(i)}+(1-y^{(i)})log(1-
 The loss function is applied to just a single training example, and the cost function is the cost
 of your parameters.  
 # 9.Gradient Descent  
+$w=w-\alpha\frac{dJ(w,b)}{dw}$  
+$b=b-\alpha\frac{dJ(w,b)}{db}$  
+$\alpha$:learning rate,controls how big a step we take on each iteration of gradient descent.  
+# 14.Logistic Regression Gradient descent  
+$\frac{d\mathcal{L(a,y)}}{da}=-\frac{y}{a}+\frac{1-y}{1-a}=\frac{a-y}{a(1-a)}$  
+$\frac{d\mathcal{L(a,y)}}{dz}=\frac{d\mathcal{L(a,y)}}{da}\frac{da}{dz}=\frac{a-y}{a(1-a)}a(1-a)=a-y$  
+# 15.Gradient descent on m examples  
+In the deep learning era,vectorization that is getting rid of for loops has become really important.  
+# 16.Vectorization  
+$z=w^Tx+b$,w and x are column vectors.  
+```python
+#python实现
+z=np.dot(w,x)+b 
+```
+Whenever possible,avoid using explicit loops.  
+# 17.More vectorization examples  
+对列向量v的每一个维度,进行指数运算操作  
+```python
+import numpy as np
+u=np.exp(v)
+```
 
+```python
+import numpy as np
+#NumPy built-in function
+np.log(v)  # 逐元素计算对数
+np.abs(v)  # 逐元素计算绝对值
+np.maximum(v,0) #逐元素计算和0的最大值
+v**2 #逐元素计算平方
+1/v #逐元素计算倒数
+```
+
+```python
+# 使用向量化计算逻辑回归
+import numpy as np
+dw = np.zeros((n-x,1))
+```
+# 18.Vectorizing Logistic Regression  
+X:nxm矩阵,维度是n,样本数量是m  
+$z=w^Tx+b$  
+$Z=[z^{(1)},z^{(2)},...,z^{(m)}]=w^TX+[b,b,...,b]$
+```python
+import numpy as np
+#NumPy广播机制,自动扩展维度计算,不复制数据，就能让不同形状的数组进行逐元素运算
+Z = np.dot(w.T,X)+b #python自动将b扩展成1xm行向量
+```
+# 19.Vectorizing Logistic Regression's Gradient Computation  
+dZ=A-Y  
+$db=\frac{1}{m}\displaystyle\sum_{i=1}^mdz^{(i)}=\frac{1}{m}np.sum(dZ)$  
+$dw=\frac{1}{m}Xdz^T$  
+
+Implementing Logistic Regression  
+迭代次数仍需用for循环实现,其他部分可以用矩阵运算来代替for循环  
+$Z=W^TX+b=np.dot(W.T,X)+b$  
+$A=\sigma(Z)$  
+$dZ=A-Y$  
+$dw=\frac{1}{m}XdZ^T$  
+$db=\frac{1}{m}np.sum(dZ)$  
+$w=w-\alpha dw$  
+$b=b-\alpha db$  
 # 30.Activation functions  
 sigmoid function:$a=\frac{1}{1+e^{-z}}$  never use this except for the output layer if you are doing binary classification.     
 tanh function(hyperbolic tangent function):$a=\frac{e^z-e^{-z}}{e^z+e^{-z}}$  
