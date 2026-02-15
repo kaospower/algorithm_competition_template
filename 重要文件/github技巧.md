@@ -30,6 +30,7 @@
 `git push origin main -v`
 
 或者更换wifi
+一种配置代理的解决方案(https://developer.aliyun.com/article/1392370)  
 
 # 从github导入项目
 
