@@ -84,6 +84,29 @@ $dw=\frac{1}{m}XdZ^T$
 $db=\frac{1}{m}np.sum(dZ)$  
 $w=w-\alpha dw$  
 $b=b-\alpha db$  
+# 20.Broadcasting in Python  
+```python
+cal=A.sum(axis=0) #python矩阵垂直求和
+cal=A.sum(axis=1) #python矩阵水平求和
+percentage=100*A/(cal.reshape(1,4))
+```
+If you have an mxn matrix and you add or subtract or multiply or divide with a 1xn matrix,  
+then this will copy it m times into an mxn matrix,and then apply the addition,subtraction,  
+multiplication or division element wise.  
+# 21.A note on python/numpy vectors  
+do not use rank 1 arrays.Such as (5,)  
+```python
+a=np.random.randn(5,1) #5x1行向量
+assert(a.shape==(5,1)) #断言语句有助于debug
+a=a.reshape((5,1)) #将秩为1的数组转化成向量
+```
+# 22.Quick tour of Jupyter/ipython notebooks
+```python
+% matplotlib inline #让 matplotlib 画出来的图 直接显示在 Notebook 输出区域里
+```
+restart kernel  
+# 25.Neural Networks Overview  
+
 # 30.Activation functions  
 sigmoid function:$a=\frac{1}{1+e^{-z}}$  never use this except for the output layer if you are doing binary classification.     
 tanh function(hyperbolic tangent function):$a=\frac{e^z-e^{-z}}{e^z+e^{-z}}$  
