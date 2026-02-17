@@ -105,13 +105,76 @@ a=a.reshape((5,1)) #将秩为1的数组转化成向量
 % matplotlib inline #让 matplotlib 画出来的图 直接显示在 Notebook 输出区域里
 ```
 restart kernel  
-# 25.Neural Networks Overview  
+# 26.Neural Network Representation  
+When we count layers in neural networks,we don't count the input layer.  
+# 27.Computing a Neural Network's Output  
+$z^{[1]}=W^{[1]}x+b^{[1]}$  
+$a^{[1]}=\sigma(z^{[1]})$  
+$z^{[2]}=W^{[2]}a^{[1]}+b^{[2]}$  
+$a^{[2]}=\sigma(z^{[2]})$
+# 29.Explanation for vectorized implementation  
+for i=1 to m  
+$z^{[1](i)}=W^{[1]}x^{(i)}+b^{[1]}$  
+$a^{[1](i)}=\sigma(z^{[1](i)})$  
+$z^{[2](i)}=W^{[2]}a^{[1](i)}+b^{[2]}$  
+$a^{[2](i)}=\sigma(z^{[2](i)})$
 
+$Z^{[1]}=W^{[1]}X+b^{[1]}$  
+$A^{[1]}=\sigma(Z^{[1]})$  
+$Z^{[2]}=W^{[2]}A^{[1]}+b^{[2]}$  
+$A^{[2]}=\sigma(Z^{[2]})$  
 # 30.Activation functions  
 sigmoid function:$a=\frac{1}{1+e^{-z}}$  never use this except for the output layer if you are doing binary classification.     
 tanh function(hyperbolic tangent function):$a=\frac{e^z-e^{-z}}{e^z+e^{-z}}$  
 ReLU:$a=max(0,z)$  
 Leaky ReLu:$a=max(0.01z,z)$  
+# 32.Derivatives of activation functions 
+Sigmoid activation function  
+$a=g(z)=\frac{1}{1+e^{-z}}$  
+$\frac{d}{dz}g(z)=\frac{1}{1+e^{-z}}(1-\frac{1}{1+e^{-z}})=g(z)(1-g(z))=a(1-a)$  
+Tanh activation function  
+$g(z)=tanh(z)=\frac{e^z-e^{-z}}{e^z+e^{-z}}$  
+$\frac{d}{dz}g(z)=1-(tanh(z))^2$  
+ReLU and Leaky ReLU  
+ReLU  
+g(z)=max(0,z)  
+$$
+g'(z)=\begin{cases}  
+0 &\text{if z<0}\\
+1 &\text{if z>=0}\\
+\end{cases}  
+$$
+Leaky ReLU  
+g(z)=max(0.01z,z)
+$$  
+g'(z)=\begin{cases}  
+0.01 &\text{if z<0}\\
+1 &\text{if z>=0}\\
+\end{cases}
+$$
+# 33.Gradient descent for neural networks  
+Formulas for computing derivatives  
+Forward propagation:  
+$Z^{[1]}=w^{[1]}X+b^{[1]}$  
+$A^{[1]}=g^{[1]}(Z^{[1]})$  
+$Z^{[2]}=w^{[2]}A^{[1]}+b^{[2]}$  
+$A^{[2]}=g^{[2]}(Z^{[2]})=\sigma(Z^{[2]})$  
+Backpropagation(cost function对相应变量求导):  
+$dZ^{[2]}=A^{[2]}-Y$  
+$dw^{[2]}=\frac{1}{m}dZ^{[2]}A^{[1]T}$  
+$db^{[2]}=\frac{1}{m}np.sum(dZ^{[2]},axis=1,keepdims=True)$  
+$dZ^{[1]}=W^{[2]T}dZ^{[2]}*g^{[1]'}(Z^{[1]})$  
+$dw^{[1]}=\frac{1}{m}dZ^{[1]}X^T$  
+$db^{[1]}=\frac{1}{m}np.sum(dZ^{[1]},axis=1,keepdims=True)$  
+# 34.Backpropagation intuition(Optional)  
+We don't need to take derivatives with respect to the input X,  
+since the input X for supervised learning is fixed,so we're not  
+trying to optimize X,so we won't bother to take derivatives,
+at least for supervised learning with respect to X.  
+# 35.Random Initialization  
+$w^{[1]}=np.random.randn((2,2))*0.01$  
+$b^{[1]}=np.zeros((2,1))$  
+如果初始权重过大,就会处于tanh或者sigmoid函数的平坦部分,梯度下降就会异常缓慢  
 Part II:Improving Deep Neural Networks:Hyperparameter tuning,Regularization and Optimization  
 Part III:Structuring your machine Learning project  
 Part IV:Convolutional Neural Networks(CNN)  
