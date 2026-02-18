@@ -175,6 +175,25 @@ at least for supervised learning with respect to X.
 $w^{[1]}=np.random.randn((2,2))*0.01$  
 $b^{[1]}=np.zeros((2,1))$  
 如果初始权重过大,就会处于tanh或者sigmoid函数的平坦部分,梯度下降就会异常缓慢  
+# 39.Getting your matrix dimensions right  
+$w^{[L]}:(n^{[L]},n^{[L-1]})$  
+$b^{[L]}=(n^{[L]},1)$  
+$dw^{[L]}=(n^{[L]},n^{[L-1]})$  
+$db^{[L]}=(n^{[L]},1)$  
+# 40.Why deep representations  
+There are functions you can compute with a "small" L-layer deep neural network  
+that shallower networks require exponentially more hidden units to compute.  
+# 42.Forward and backward propagation  
+Forward propagation for layer l  
+Input $a^{[l-1]}$  
+Output $a^{[l]},cache(z^{[l]})$  
+$Z^{[L]}=W^{[L]}\cdot A^{[L-1]}+b^{[L]}$  
+$A^{[L]}=g^{[L]}(Z^{[L]})$  
+Backward propagation for layer l  
+$dZ^{[L]}=dA^{[L]}*g^{[L]'}(Z^{[L]})$  
+$dW^{[L]}=\frac{1}{m}dZ^{[L]}\cdot A^{[L-1]T}$  
+$db^{[L]}=\frac{1}{m}np.sum(dZ^{[L]},axis=1,keepdims=True)$  
+$dA^{[L-1]}=W^{[L]T}\cdot dZ^{[L]}$  
 Part II:Improving Deep Neural Networks:Hyperparameter tuning,Regularization and Optimization  
 Part III:Structuring your machine Learning project  
 Part IV:Convolutional Neural Networks(CNN)  
