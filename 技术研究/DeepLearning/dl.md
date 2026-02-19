@@ -193,8 +193,115 @@ Backward propagation for layer l
 $dZ^{[L]}=dA^{[L]}*g^{[L]'}(Z^{[L]})$  
 $dW^{[L]}=\frac{1}{m}dZ^{[L]}\cdot A^{[L-1]T}$  
 $db^{[L]}=\frac{1}{m}np.sum(dZ^{[L]},axis=1,keepdims=True)$  
-$dA^{[L-1]}=W^{[L]T}\cdot dZ^{[L]}$  
+$dA^{[L-1]}=W^{[L]T}\cdot dZ^{[L]}$
+
+# 43.Parameters vs Hyperparameters  
+Hyperparameters:  
+learning rate $\alpha$(学习率)  
+iterations   
+hidden layers(隐藏层的数量)  
+hidden units(每个隐藏层节点个数)  
+choice of activation function  
+momentum term  
+min-batch size  
+various forms of regularization parameters  
+# 44.What does this have to do with the brain  
+关系不大  
 Part II:Improving Deep Neural Networks:Hyperparameter tuning,Regularization and Optimization  
+# 0.Train/dev/test sets  
+layers,hidden units,learning rates,activation functions  
+training set,hold-out cross validation set/development set,test set.  
+The workflow is that you keep on training algorithms on your training set,  
+use your dev set to see which of many different models performs best on your  
+dev set,and then after having done this long enough,when you have a final model  
+that you want to evaluate,you can take the best model you have found and evaluate  
+it on your test set in order to get an unbiased estimate of how well your algorithm is doing.  
+60/20/20,widely considered best practice in machine learning.(less than 10000 examples)   
+In the modern big data era,the trend is that your dev and test sets have becoming a much  
+smaller percentage of the total.(1000000 examples)  
+98/1/1  
+Not having a test set might be okay(only dev set).  
+# 1.Bias/Variance  
+underfitting:high bias  
+overfitting:high variance  
+Bayes error  
+under the assumption that the Bayes error is quite small and that your training and  
+your dev sets are drawn from the same distribution.  
+# 2.Basic "recipe" for machine learning  
+high bias:try a bigger network,more hidden layers or more hidden units,train it longer,  
+run training set longer,try some more advanced optimization algorithms.  
+high variance:more data,regularization,find a more appropriate neural network architecture.
+# 3.Regularization  
+Logistic regression  
+$J(w,b)=\frac{1}{m}\displaystyle\sum_{i=1}^m\mathcal L(\hat y^{(i)},y^{(i)})+\frac{\lambda}{2m}||w||^2_2$  
+L_2 regularization:$||w||^2_2=\displaystyle\sum_{j=1}^{n_x}w_j^2=w^Tw$  
+L_1 regularization:$\frac{\lambda}{2m}\displaystyle\sum_{j=1}^{n_x}|w_j|=\frac{\lambda}{2m}||w||_1$  
+$\lambda$,the regularization parameter,hyperparameter.  
+If you use L1 regularization,then W will end up being sparse.  
+And what that means is that the W vector will have a lot of 0s in it.  
+Neural network  
+$J(w^{[1]},b^{[1]},...,w^{[l]},b^{[l]})=\frac{1}{m}\displaystyle\sum_{i=1}^m\mathcal{L}(\hat y^{(i)},y^{(i)})$  
+Frobenius norm of a matrix:$||w^{[l]}||^2_F=\displaystyle\sum_{i=1}^{n^{[l-1]}}\displaystyle\sum_{j=1}^{n^{[l]}}(w_{ij}^{[l]})^2$    
+L2 regularization is sometimes also called weight decay.  
+$(1-\frac{\alpha\lambda}{m})$  
+# 4.Why regularization reduces overfitting  
+1.$\lambda$big,set W close to zero,set the weights to be close to zero,  
+that it's basically zeroing out a lot of the impact of these hidden units.  
+So you end up with what might feel like a simpler network.  
+2.If the regularization parameter is very large,the parameter w is very small,  
+so z will be relatively small,kind of ignoring the effects of b for now.So z will be  
+relatively small and takes on a small range of values.And so the activation function  
+tanh will be relatively linear.And so your whole neural network will be computing something  
+not too far from a big linear function,which is therefore a pretty simple function,rather than  
+a very complex highly nonlinear function.   
+# 15.Mini-batch gradient descent  
+mini-batch  
+one epoch of training:a single pass through the training set.  
+When you have a large training set,mini-batch gradient descent runs much faster  
+than batch gradient descent.  
+# 16.Understanding mini-batch gradient descent  
+If mini-batch size=m,Batch gradient descent.  
+You're processing a huge training set on every iteration.  
+So the main disadvantage of this if that it takes too much time,  
+too long per iteration.  
+If mini-batch size=1,stochastic gradient descent.  
+stochastic gradient descent can be extremely noisy,
+and on average it'll take you in a good direction,  
+but sometimes it'll head in the wrong direction as well.  
+And stochastic gradient descent won't ever converge(永不收敛).  
+总是在最小值附近振荡徘徊  
+You lose almost all you speed up from vectorization.  
+
+If you have a small training set,just use batch gradient descent.(m<=2000)  
+If you have a bigger training set,mini-batch size:64,128,256,512  
+You code runs faster if your mini-batch size is a power of 2.  
+fit in CPU/GPU memory.  
+The mini-batch size is actually another hyperparameter.  
+# 17.Exponentially weighted averages(指数加权平均)  
+exponentially weighted averages/exponentially weighted moving average.  
+$v_t=\beta v_{t-1}+(1-\beta)\theta_t$  
+$v_t$ as approximately averaging over $\approx \frac{1}{1-\beta}$days' temperature.  
+# 18.Understanding exponentially weighted averages  
+$v_\theta:=\beta v_\theta+(1-\beta)\theta_t$  
+# 19.Bias correction in exponentially weighted average  
+$\frac{v_t}{1-\beta^{t}}$  
+As t becomes large,$\beta^t$ will approach 0,the bias correction makes almost no difference.  
+During initial phase of learning,bias correction can help you to obtain  
+a better estimate of the temperature.  
+# 20.Gradient descent with momentum(动量梯度下降)  
+There's an algorithm called momentum or gradient descent with momentum,  
+that almost always works faster than the standard gradient descent algorithm.  
+
+$v_{dw}=0,v_{db}=0$    
+On iteration t:    
+Compute dw,db on current mini-batch.  
+$v_{dw}=\beta v_{dw}+(1-\beta)dw$  
+$v_{db}=\beta v_{db}+(1-\beta)db$  
+$w:=w-\alpha v_{dw}$  
+$b:=b-\alpha v_{db}$  
+$Hyperparameters:\alpha,\beta$
+$\beta=0.9$  
+
 Part III:Structuring your machine Learning project  
 Part IV:Convolutional Neural Networks(CNN)  
 Part V:Natural Language Processing:Building sequence models  
