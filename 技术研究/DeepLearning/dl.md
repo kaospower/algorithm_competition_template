@@ -254,6 +254,25 @@ relatively small and takes on a small range of values.And so the activation func
 tanh will be relatively linear.And so your whole neural network will be computing something  
 not too far from a big linear function,which is therefore a pretty simple function,rather than  
 a very complex highly nonlinear function.   
+# 5.Dropout regularization  
+Inverted dropout
+```python
+import numpy as np
+d3 = np.random.rand(a3.shape[0], a3.shape[1]) < keep.prob
+a3 = np.multiply(a3,d3)
+a3/=keep.prob
+```
+no matter what you set the keep prob to,it ensures that the expected value of  
+A3 remains the same.   
+# 6.Understanding dropout  
+Dropout randomly knocks out units in your network.So it's as if on every iteration,
+you're working with a smaller neural network.And so using a smaller neural network  
+seems like it should have a regularizing effect.  
+Can't rely on any one feature,so have to spread out weights.Shrink weight.  
+If you're more worried about some layers overfitting than others,  
+you can set a lower keep prop for some layers than others.  
+Dropout is a regularization technique.It helps prevent overfitting.   
+In computer vision,people often use drop out.  
 # 15.Mini-batch gradient descent  
 mini-batch  
 one epoch of training:a single pass through the training set.  
