@@ -273,6 +273,29 @@ If you're more worried about some layers overfitting than others,
 you can set a lower keep prop for some layers than others.  
 Dropout is a regularization technique.It helps prevent overfitting.   
 In computer vision,people often use drop out.  
+# 7.Other regularization methods  
+Early stopping:it looks like your neural network was doing best around that iteration.  
+So we're just going to stop training your neural network halfway and take whatever value  
+achieved this dev set error.  
+The main downside of early stopping is that this couples these two tasks.  
+The real advantage of early stopping is that running the gradient descent process just  
+once,you get to try out values of small w,midsize w,and large w without needing to try  
+a lot of values of the L2 regularization hyperparameter lambda.  
+# 8.Normalizing inputs  
+$x:=x-\mu$   
+$x/=\sigma$  
+That just makes your cost function J easier and faster to optimize.  
+通过正则化$\mu=0,\sigma=1$  
+# 9.Vanishing/exploding gradients(梯度消失/爆炸)   
+When you're training a very deep network,your derivatives can sometimes  
+get either very,very big or very,very small,maybe even exponentially small,  
+and this makes training difficult.  
+# 10.Weight initialization for deep networks  
+$var(w)=\frac{2}{n}$  
+ReLU activation function:$w^{[l]}=np.random.randn(shape)*np.sqrt(\frac{2}{n^{[l-1]}})$  
+tanh activation function:$w^{[l]}=np.random.randn(shape)*np.sqrt(\frac{1}{n^{[l-1]}})$  
+It definitely helps reduce the vanishing and exploding gradients problem.  
+Xavier initialization.  
 # 15.Mini-batch gradient descent  
 mini-batch  
 one epoch of training:a single pass through the training set.  
