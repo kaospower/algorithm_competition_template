@@ -344,9 +344,78 @@ $b:=b-\alpha v_{db}$
 $Hyperparameters:\alpha,\beta$
 $\beta=0.9$  
 
+# 21.RMSprop(root mean square propagation,均方根传播)  
+On iteration t:  
+compute dw,db on current mini-batch  
+$S_{dw}=\beta_2 S_{dw}+(1-\beta_2)dw^2$  
+$S_{db}=\beta_2 S_{db}+(1-\beta_2)db^2$  
+$w:=w-\alpha\frac{dw}{\sqrt{S_{dw}}+\epsilon}$  
+$b:=b-\alpha\frac{db}{\sqrt{S_{db}}+\epsilon}$  
+
+You could use a larger learning rate $\alpha$ and get faster learning without diverging  
+in the vertical direction.  
+# 22.Adam optimization algorithm(Adaptive Moment Estimation,自适应矩估计)  
+On iteration t:  
+compute dw,db using current mini-batch  
+$V_{dw}=\beta_1 V_{dw}+(1-\beta_1)dw$  
+$V_{db}=\beta_1 V_{db}+(1-\beta_1)db$  
+$S_{dw}=\beta_2 S_{dw}+(1-\beta_2)dw^2$  
+$S_{db}=\beta_2 S_{db}+(1-\beta_2)db^2$  
+$V_{dw}^{corrected}=V_{dw}/(1-\beta_1^t)$  
+$V_{db}^{corrected}=V_{db}/(1-\beta_1^t)$  
+$S_{dw}^{corrected}=S_{dw}/(1-\beta_2^t)$  
+$S_{db}^{corrected}=S_{db}/(1-\beta_2^t)$  
+$W:=W-\alpha\frac{V_{dw}^{corrected}}{\sqrt{S_{dw}^{corrected}}+\epsilon}$  
+$b:=b-\alpha\frac{V_{db}^{corrected}}{\sqrt{S_{db}^{corrected}}+\epsilon}$  
+$\alpha$:needs to be tune   
+$\beta_1=0.9$  
+$\beta_2=0.999$  
+$\epsilon=10^{-8}$  
+# 23.Learning rate decay  
+$\alpha=\frac{1}{1+decay-rate*epoch-num}\alpha_0$  
+Other learning rate decay methods  
+exponential decay  
+$\alpha=0.95^{epoch-num}\cdot \alpha_0$  
+$\alpha=\frac{k}{\sqrt{epoch-num}}\cdot \alpha_0$ or $\frac{k}{\sqrt{t}}\alpha_0$  
+discrete staircase  
+manual decay  
+# 24.The problem of local optima(局部最优问题)  
+saddle point(鞍点):梯度为0但不一定是最优解,比如在一个方向上是凹的,在其他方向是凸的  
+plateau(高原区域):a region where the derivative is close to zero for a long time.  
+Unlikely to get stuck in a bad local optima.   
+Plateaus can make learning slow.  
+# 26.Tuning process  
+learning rate $\alpha$  
+momentum term $\beta$  
+mini-batch size   
+hidden units  
+layers  
+learning rate decay  
+
+choose the points at random,try out the hyperparameters on this randomly chosen set of points.  
+coarse-to-fine sampling scheme.(从粗到精的采样方案):zoom in to a smaller region of the hyperparameters,  
+and then sample more densely within this space.  
+The two key takeaways are use random sampling,not a grid search and consider optionally,  
+but consider implementing a coarse-to-fine search process.   
+# 27.Using an appropriate scale to pick hyperparameters  
+Appropriate scale for hyperparameters  
+logarithmic scale.  
+r=-4*np.random.rand()  
+$\alpha=10^r$  
+Hyperparameters for exponentially weighted averages  
+use $1-\beta$ and logarithmic scale,it causes you to sample more densely in the regime  
+of when beta is close to 1 or alternatively when 1 minus $\beta$ is close to 0.  
+# 28.Hyperparameters tuning in practice:Pandas vs.Caviar   
+Panda approach(熊猫策略,一次只训练一个模型)  
+Babysitting one model:watching a performance,and patiently nudging the learning rate up or down.   
+you have a huge dataset,but not a lot of computational resources,not a lot of CPUs and GPUs.  
+
+Caviar approach(鱼子酱策略,并行训练)  
+Training many models in parallel  
+multiple learning curves.  
+
 Part III:Structuring your machine Learning project  
 Part IV:Convolutional Neural Networks(CNN)  
-Part V:Natural Language Processing:Building sequence models  
 Computer Vision Problems:
 Image Classification  
 Object Detection  
@@ -356,3 +425,40 @@ vertical edges,horizontal edges
 grayscale matrix(灰度矩阵)  
 filter(滤波器)/kernel(卷积核)  
 edge detection(边缘检测)  
+Part V:Natural Language Processing:Building sequence models  
+# 0.Why sequence models?  
+sequence data   
+speech recognition(语音识别)   
+music generation(音乐生成)  
+sentiment classification(情感分类)  
+DNA sequence analysis(DNA序列分析)   
+machine translation(机器翻译)  
+video activity recognition(视频活动识别)  
+named entity recognition(命名实体识别)  
+All of these problems can be addressed as supervised learning with label data x,y  
+as the training set.  
+# 1.Notation  
+建立Vocabulary/dictionary(字典)  
+找出出现频率最高的k个词  
+one-hot representations to represent each of these words.  
+<UNK>:represent where it's not in your vocabulary.  
+# 2.Recurrent Neural Network Model  
+Why not a standard network?  
+1.Inputs,outputs can be different lengths in different examples.  
+2.Doesn't share features learned across different positions of text.  
+
+Time zero activation is the most common choice.  
+One limitation of this particular neural network structure is that the prediction  
+at a certain time uses inputs,or uses information from the inputs earlier in the  
+sequence,but not information later in the sequence.  
+
+$a^{<0>}=\vec 0$  
+$a^{<1>}=g(w_{aa}a^{<0>}+w_{ax}x^{<1>}+b_a)$  activation function:tanh/ReLU  
+$\hat y^{<1>}=g(w_{ya}a^{<1>}+b_y)$  activation function:sigmoid/softmax  
+
+forward propagation:  
+$a^{\langle t\rangle}=g(w_{aa} a^{\langle t-1\rangle}+w_{ax}x^{\langle t\rangle}+b_a)$  
+$\hat y^{\langle t\rangle}=g(w_{ya}a^{\langle t\rangle}+b_y)$  
+简化表示  
+$a^{\langle t\rangle}=g(w_a[a^{\langle t-1\rangle},x^{\langle t\rangle}]+b_a)$  
+$y^{{\langle t\rangle}}=g(w_y a^{\langle t\rangle}+b_y)$   
