@@ -413,6 +413,45 @@ you have a huge dataset,but not a lot of computational resources,not a lot of CP
 Caviar approach(鱼子酱策略,并行训练)  
 Training many models in parallel  
 multiple learning curves.  
+# 29.Normalizing activations in a network  
+Batch normalization/Batch Norm(批量归一化):it normalizes the mean and variance of these hidden unit values.   
+Implementing Batch Norm:  
+$\mu=\frac{1}{m}\displaystyle\sum_i z^{(i)}$  
+$\sigma^2=\frac{1}{m}\displaystyle\sum_i(z^{(i)}-\mu)^2$  
+$z_{norm}^{(i)}=\frac{z^{(i)}-\mu}{\sqrt{\sigma^2+\epsilon}}$  
+every component of z has mean 0 and variance 1.  
+$\tilde z^{(i)}=\gamma z^{(i)}_{norm}+\beta$  
+If $\gamma=\sqrt{\sigma^2+\epsilon},\beta=\mu$,then $\tilde z^{(i)}=z^{(i)}$  
+# 30.Fitting Batch Norm into a neural network  
+tf.nn.batch-normalization  
+
+Implementing gradient descent  
+compute forward propagation on $X^{\left\{t\right\}}$   
+In each hidden layer,use BN to replace $z^{[l]}$ with $\tilde z^{[l]}$  
+Use backpropagation to compute $dw^{[l]},d\beta^{[l]},d\gamma^{[l]}$  
+update parameters  
+$w^{[l]}=w^{[l]}-\alpha dw^{[l]}$  
+$\beta^{[l]}=\beta^{[l]}-\alpha d\beta^{[l]}$  
+$\gamma^{[l]}=...$
+# 31.Why does Batch Norm work?  
+1.speed learning.  
+2.It makes weights later or deeper in the neural network,more robust to changes  
+to weights in earlier layers of the neural network.  
+
+covariate shift(协变量偏移)   
+What Batch Norm does is it reduces the amount that the distribution of these hidden unit  
+values shifts around.  
+Batch Norm reduces the problem of the input values changing.   
+
+Batch Norm as regularization  
+Each mini-batch is scaled by the mean/variance computed on just that mini-batch.  
+This adds some noise to the values $z^{[l]}$ within that mini-batch.So similar to dropout,  
+it adds some noise to each hidden layer's activations.  
+This has a slight regularization effect.  
+# 32.Batch Norm at test time  
+What's actually done in order to apply your neural network at test time,  
+is to come up with some separate estimate of $\mu$ and $\sigma^2$  
+estimate this using an exponentially weighted average.  
 
 Part III:Structuring your machine Learning project  
 Part IV:Convolutional Neural Networks(CNN)  
