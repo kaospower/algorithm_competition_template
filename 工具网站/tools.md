@@ -5,6 +5,7 @@
 4.tensorflow文档(https://www.tensorflow.org/api_docs/python/tf/keras/layers/LeakyReLU)  
 5.overleaf模版(https://www.overleaf.com/project)  
 6.latex花体(https://www.cnblogs.com/hundredtwo-kk/p/16418548.html)  
+7.吴恩达深度学习作业网站(https://www.heywhale.com/mw/project/5de4787aca27f8002c4c3661)
 # 2.电子图书馆网站
 1.Anna's Archive(https://annas-archive.li/)  
 2.电子书库Zlibrary(https://zh.z-library.sk/)  

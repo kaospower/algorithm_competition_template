@@ -451,9 +451,38 @@ This has a slight regularization effect.
 # 32.Batch Norm at test time  
 What's actually done in order to apply your neural network at test time,  
 is to come up with some separate estimate of $\mu$ and $\sigma^2$  
-estimate this using an exponentially weighted average.  
+estimate this using an exponentially weighted average.
+# 33.Softmax regression  
+$z^{[l]}=w^{[l]}a^{[l-1]}+b^{[l]}$  
+$t=e^{z^{[l]}}$  
+$a^{[l]}=\frac{e^{z^{[l]}}}{\displaystyle\sum_{j=1}^4 t_i}$  
+$a^{[l]}_i=\frac{t_i}{\displaystyle\sum_{j=1}^4 t_i}$
+# 34.Training a softmax classifier  
+Loss function  
+$J(w^{[1]},b^{[1]},...)=\frac{1}{m}\displaystyle\sum_{i=1}^m\mathcal L(\hat y^{(i)},y^{(i)})$  
+Gradient descent with softmax  
+$dz^{[l]}=\hat y-y$
 
 Part III:Structuring your machine Learning project  
+# 0. Why ML strategy  
+Ways of analyzing a machine learning problem that will help point you in  
+the direction of the most promising things to try.  
+# 1.Orthogonalization(正交化)  
+Chain of assumptions in ML  
+Fit training set well on cost function  
+Fit dev set well on cost function  
+Fit test set well on cost function  
+Performs well in real world  
+early stopping 非正交  
+# 19.Transfer learning(迁移学习)  
+transfer what is learned to a different task.  
+Take this loss output layer of the neural network and just delete that and also  
+the weights feeding into that loss output layer and create a new set of randomly  
+initialized weights just for the loss layer.  
+When transfer learning makes sense  
+Task A and B have the same input x.  
+You have a lot more data for Task A than Task B.  
+Low level features from A could be helpful for learning B.  
 Part IV:Convolutional Neural Networks(CNN)  
 Computer Vision Problems:
 Image Classification  
@@ -464,7 +493,7 @@ vertical edges,horizontal edges
 grayscale matrix(灰度矩阵)  
 filter(滤波器)/kernel(卷积核)  
 edge detection(边缘检测)  
-Part V:Natural Language Processing:Building sequence models  
+Part V:Natural Language Processing:Building sequence models
 # 0.Why sequence models?  
 sequence data   
 speech recognition(语音识别)   
@@ -501,3 +530,11 @@ $\hat y^{\langle t\rangle}=g(w_{ya}a^{\langle t\rangle}+b_y)$
 简化表示  
 $a^{\langle t\rangle}=g(w_a[a^{\langle t-1\rangle},x^{\langle t\rangle}]+b_a)$  
 $y^{{\langle t\rangle}}=g(w_y a^{\langle t\rangle}+b_y)$   
+# 3.Backpropagation through time  
+$\mathcal L^{\langle t\rangle}(\hat y^{\langle t\rangle},y^{\langle t\rangle})=$
+$-y^{\langle t\rangle}log\hat y^{\langle t\rangle}-(1-y^{\langle t\rangle})log(1-\hat y^{\langle t\rangle})$  
+$\mathcal L(\hat y,y)=\displaystyle\sum_{t=1}^{T_y}\mathcal L^{\langle t\rangle}(\hat y^{\langle t\rangle},y^{\langle t\rangle})$  
+# 4.Different types of RNNs  
+many-to-many architecture  
+many-to-one architecture  
+one-to-many architecture  
