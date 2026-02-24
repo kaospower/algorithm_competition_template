@@ -538,3 +538,41 @@ $\mathcal L(\hat y,y)=\displaystyle\sum_{t=1}^{T_y}\mathcal L^{\langle t\rangle}
 many-to-many architecture  
 many-to-one architecture  
 one-to-many architecture  
+# 5.Language model and sequence generation  
+tokenize the sentence:form a vocabulary and map each of these words to one-hot vectors  
+<EOS>:end of sentence  
+<UNK>:unknown word  
+$\mathcal L(\hat y^{\langle t\rangle},y^{\langle t\rangle})=-\displaystyle\sum_i y_i^{\langle t\rangle}log \hat y_i^{\langle t\rangle}$  
+$\mathcal L=\displaystyle\sum_t \mathcal L^{\langle t\rangle}(\hat y^{\langle t\rangle},y^{\langle t\rangle})$  
+# 6.Sampling novel sequences  
+sample:np.random.choice  
+character language models are not as good as word level language models at capturing long range dependencies.  
+# 7.Vanishing gradients with RNNs(RNN梯度消失)  
+the basic RNN is not very good at capturing very long-term dependencies.   
+解决RNN的梯度爆炸:梯度裁剪  
+exploding gradients:one solution to that is to apply gradient clipping.
+gradient clipping:look at your gradient vectors,and if it is bigger than some threshold,  
+rescale some of your gradient vectors so that it's not too big.  
+解决RNN的梯度消失:GRU  
+# 8.Gated Recurrent Unit(GRU,门控循环单元)    
+GRU:a modification to the RNN hidden layer that makes it much better at capturing long-range connections  
+and helps a lot with the vanishing gradient problems.  
+c:memory cell  
+$\tilde c^{\langle t\rangle}=tanh(W_c[\Gamma_r*c^{\langle t-1\rangle},x^{\langle t\rangle}]+b_c)$  
+$\Gamma_u=\sigma(W_u[c^{\langle t-1\rangle},x^{\langle t\rangle}]+b_u)$  
+$\Gamma_r=\sigma(W_r[c^{\langle t-1\rangle},x^{\langle t\rangle}]+b_r)$  
+$c^{\langle t\rangle}=\Gamma_u*\tilde c^{\langle t\rangle}+(1-\Gamma_u)*c^{\langle t-1\rangle}$  
+$a{\langle t\rangle}=c^{\langle t\rangle}$  
+GRU is much better at capturing very long-range dependencies as made RNNs much more effective.  
+# 9.LSTM(long short term memory units,长短记忆单元)  
+even more powerful than the GRU  
+$\tilde c^{\langle t\rangle}=tanh(W_c[a^{\langle t-1\rangle},x^{\langle t\rangle}]+b_c)$  
+update:$\Gamma_u=\sigma(W_u[a^{\langle t-1\rangle},x^{\langle t\rangle}]+b_u)$  
+forget:$\Gamma_f=\sigma(W_f[a^{\langle t-1\rangle},x^{\langle t\rangle}]+b_f)$  
+output:$\Gamma_o=\sigma(W_o[a^{\langle t-1\rangle},x^{\langle t\rangle}]+b_o)$  
+$c^{\langle t\rangle}=\Gamma_u*\tilde c^{\langle t\rangle}+\Gamma_f*c^{\langle t-1\rangle}$  
+$a^{\langle t\rangle}=\Gamma_o*tanh c^{\langle t\rangle}$  
+
+peephole connection(窥视孔连接):$c^{\langle t-1 \rangle}$ is used to affect the gate value as well.  
+
+
