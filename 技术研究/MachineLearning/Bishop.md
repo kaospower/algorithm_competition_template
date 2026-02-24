@@ -6,7 +6,14 @@ Bayesian methods
 概率论  
 决策理论  
 信息论  
-# 2.Probability Distributions
+# 2.Probability Distributions  
+# 2.3 The Gaussian Distribution  
+# Mixtures of Gaussians  
+mixture of Gaussians:  
+$p(x)=\displaystyle\sum_{k=1}^K \pi_k\mathcal N(x|\mu_k,\Sigma_k)$  
+$\pi_k$:mixing coefficients  
+$\displaystyle\sum_{k=1}^K \pi_k=1$  
+
 # 3.Linear Models for Regression
 # 4.Linear Models for Classification
 # 5.Neural Networks
