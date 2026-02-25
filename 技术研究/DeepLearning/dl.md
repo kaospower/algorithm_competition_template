@@ -574,5 +574,35 @@ $c^{\langle t\rangle}=\Gamma_u*\tilde c^{\langle t\rangle}+\Gamma_f*c^{\langle t
 $a^{\langle t\rangle}=\Gamma_o*tanh c^{\langle t\rangle}$  
 
 peephole connection(窥视孔连接):$c^{\langle t-1 \rangle}$ is used to affect the gate value as well.  
-
-
+# 10.Bidirectional RNN(双向RNN)  
+lets you at a point in time to take information from both earlier and later in the sequence.  
+The disadvantage of the bidirectional RNN is that you do need the entire sequence of data before  
+you can make predictions anywhere.  
+# 11.Deep RNNs  
+$a^{[2]\langle 3\rangle}=g(W_a^{[2]}[a^{[2]<2>},a^{[1]<3>}]+b_a^{[2]})$  
+# 12.Word representation  
+Featured representation:word embedding(词嵌入)  
+t-SNE  
+these sort of featured representations in maybe a 300-dimensional space,  
+these are called embeddings.  
+# 13.Using word embeddings  
+Transfer learning and word embeddings  
+1.Learn word embeddings from large text corpus.(1-100B words)  
+(Or download pre-trained embedding online)  
+2.Transfer embedding to new task with smaller training set.(100k words)  
+3.Optional:Continue to finetune the word embeddings with new data.  
+# 14.Properties of word embeddings  
+$e_{man}-e_{woman} \approx e_{king}-e_?$  
+Find word w,arg $\mathop{max}\limits_w$ $sim(e_w,e_{king}-e_{man}+e_{woman})$  
+the most commonly used similarity function is called cosine similarity(余弦相似度).  
+$sim(u,v)=\frac{u^Tv}{||u||_2||v||_h}$   
+this is actually the cosine of the angle between the two vectors u and v.  
+# 15.Embedding matrix  
+formalize the problem of learning a good word embedding.  
+# 16.Learning word embeddings  
+skip-gram model(跳字模型)  
+Last 4 words   
+4 words on left&right  
+Last 1 word  
+Nearby 1 word  
+# 17.Word2Vec  
