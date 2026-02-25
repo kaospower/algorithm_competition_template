@@ -29,3 +29,4 @@ recent week:
 27.吴恩达生成对抗网络(GAN)视频课(https://www.bilibili.com/video/BV1JC4y1T7vZ/)  
 28.位置编码1(https://www.bilibili.com/video/BV1nFarzjE6B/)  
 29.位置编码2(https://www.bilibili.com/video/BV1xR1RY9ECm)  
+30.注意力讲解(https://www.bilibili.com/video/BV1QD421n7wV)
