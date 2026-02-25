@@ -27,3 +27,5 @@ recent week:
 25.吴恩达概率论视频课(https://www.bilibili.com/video/BV1E3eAzGEQq)   
 26.高斯混合模型(GMM)与EM算法详解(https://zhuanlan.zhihu.com/p/655018030)  
 27.吴恩达生成对抗网络(GAN)视频课(https://www.bilibili.com/video/BV1JC4y1T7vZ/)  
+28.位置编码1(https://www.bilibili.com/video/BV1nFarzjE6B/)  
+29.位置编码2(https://www.bilibili.com/video/BV1xR1RY9ECm)  
