@@ -606,3 +606,75 @@ Last 4 words
 Last 1 word  
 Nearby 1 word  
 # 17.Word2Vec  
+$e_c=Eo_c$  
+the matrix E has parameters corresponding to all of these embedding vectors.  
+softmax:$p(t|c)=\frac{e^{\theta_t^Te_c}}{\displaystyle\sum_{j=1}^{10000}e^{\theta_j^Te_c}},$
+$\theta_t$:parameter associated with output T  
+There really was a chance of a particular word T being the label.  
+hierarchical softmax classifier   
+word2vec skip-gram model:a supervised learning problem where,given the context word you're asked to  
+predict what is a randomly chosen word within a plus-minus then word window or plus-minus five or ten
+word window of that input context word.    
+the key problem with this algorithm with the skip-gram models presented so far,is that the softmax  
+step is very expensive to calculate because of needing to sum over your entire vocabulary size in the  
+denominator of the softmax.  
+CBOW(Continuous Bag-of-Words Model):takes surrounding context for a middle word and uses the  
+surrounding words to try to predict the middle word.  
+# 22.Basic models   
+sequence-to-sequence models   
+encoder network be built as a RNN(GRU/LSTM)  
+build a decoder network,takes as input the encoding,output by the encoder network.  
+# 28.Attention model intuition  
+传统RNN模型的问题:对短句子效果很好,对于长句子性能就会下降   
+$\alpha^{\langle 1,2 \rangle}$:when we're trying to compute the first word,how much attention(attention weight,注意力权重)  
+should we be paying to this second word from the input.  
+$\alpha^{\langle t,t' \rangle}$:when you're trying to generate the t English word,  
+how much should you be paying attention to the t' French word.  
+# 29.Attention model  
+Attention model allows a neural network to pay attention to only part of an input sentence while it's generating  
+a translation much like a human translator might.  
+$a^{\langle t,t' \rangle}=\frac{exp(e^{\langle t,t' \rangle})}{\sum_{t'=1}^{T_x}exp(e^{\langle t,t' \rangle})}$  
+# 32.Transformer Network Intuition  
+As we move from RNNs to GRUs to LSTM,the models became more complex.  
+All of these models are still sequential models.  
+And so it's as if each unit was like a bottleneck to the flow of information because to compute the output of  
+this final unit,you first had to compute the outputs of all of the units that come before.  
+
+Transformer architecture,which allows you to run a lot more of these computations for an entire sequence in parallel.  
+So you can ingest an entire sentence all at the same time,rather than just processing it one word at a time from left to right.
+The major innovation of the transformer architecture is combining the use of attention-based representations and a CNN style of processing.  
+self-attention(自注意力):the goal of self-attention is if you have a sentence of five words,we'll end up computing five  
+representations for these five words.   
+Multi-Head Attention:basically a for loop over the self-attention process.So you end up with multiple versions of these representations.   
+
+# 33.Self-Attention  
+To use attention with a style more like CNNs,you need to calculate self-attention:  
+where you create attention-based representations for each of the words in your input sentence.  
+RNN Attention:  
+$a^{\langle t,t' \rangle}=\frac{exp(e^{\langle t,t' \rangle})}{\sum_{t'=1}^{T_x}exp(e^{\langle t,t' \rangle})}$  
+Transformers Attention:  
+$A(q,k,v)=\sum_i\frac{exp(q^{\langle i \rangle}\cdot k^{\langle i \rangle})}{\sum_j exp(q^{\langle i \rangle}\cdot k^{\langle j \rangle})}v^{\langle i \rangle}$,
+分式是在计算softmax  
+对于句子中每个词都计算softmax,就可以用如下式子表示:  
+$Attention(Q,K,V)=softmax(\frac{QK^T}{\sqrt{d_k}})V$,Q,K,V是向量化表示,分母表示点积的缩放,所以就不会梯度爆炸   
+这种注意力的一个名称是缩放点积注意力,
+For every word,you have three values called the query,key,and value.  
+And these vectors are the key inputs to computing the attention value for each word.   
+
+$A^{\langle 3 \rangle}$  
+$q^{\langle 3 \rangle}=W^Q x^{\langle 3 \rangle}$  
+$k^{\langle 3 \rangle}=W^K x^{\langle 3 \rangle}$  
+$v^{\langle 3 \rangle}=W^V x^{\langle 3 \rangle}$  
+$W^Q,W^K,W^V$ are parameters of this learning algorithm.它们的命名借鉴了数据库中查询和键值对的概念  
+$q^{\langle 3 \rangle}\cdot k^{\langle 1 \rangle}$:tell us how good is an answer,word 1,to the question of what's happening.  
+例如:  
+$tot=e^{q^{\langle 3 \rangle}\cdot k^{\langle 1 \rangle}}+e^{q^{\langle 3 \rangle}\cdot k^{\langle 2 \rangle}}+e^{q^{\langle 3 \rangle}\cdot k^{\langle 3 \rangle}}+e^{q^{\langle 3 \rangle}\cdot k^{\langle 4 \rangle}}+e^{q^{\langle 3 \rangle}\cdot k^{\langle 5 \rangle}}$  
+$A(q^{\langle 3 \rangle},k,v)=A^{\langle 3 \rangle}=\frac{e^{q^{\langle 3 \rangle}\cdot k^{\langle 1 \rangle}}}{t}v^{\langle 1 \rangle}+\frac{e^{q^{\langle 3 \rangle}\cdot k^{\langle 2 \rangle}}}{t}v^{\langle 2 \rangle}+\frac{e^{q^{\langle 3 \rangle}\cdot k^{\langle 3 \rangle}}}{t}v^{\langle 3 \rangle}+\frac{e^{q^{\langle 3 \rangle}\cdot k^{\langle 4 \rangle}}}{t}v^{\langle 4 \rangle}+\frac{e^{q^{\langle 3 \rangle}\cdot k^{\langle 5 \rangle}}}{t}v^{\langle 5 \rangle}$   
+
+The query lets you ask a question about that word,  
+the key looks at all of the other words,and by the similarity to the query,  
+helps you figure out which word gives the most relevant answer to that question.  
+The value allows a representation to plug in.  
+这是一种更加细致入微的,比单纯提取相同固定词嵌入所能提供的单词表示要丰富得多,可以针对每个单词进行调整,  
+基于该单词左右两侧的词语,考虑上下文信息.  
+
