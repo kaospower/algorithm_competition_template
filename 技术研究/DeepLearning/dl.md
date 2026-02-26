@@ -483,6 +483,7 @@ When transfer learning makes sense
 Task A and B have the same input x.  
 You have a lot more data for Task A than Task B.  
 Low level features from A could be helpful for learning B.  
+
 Part IV:Convolutional Neural Networks(CNN)  
 Computer Vision Problems:
 Image Classification  
