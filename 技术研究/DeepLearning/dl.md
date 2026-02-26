@@ -677,4 +677,59 @@ helps you figure out which word gives the most relevant answer to that question.
 The value allows a representation to plug in.  
 这是一种更加细致入微的,比单纯提取相同固定词嵌入所能提供的单词表示要丰富得多,可以针对每个单词进行调整,  
 基于该单词左右两侧的词语,考虑上下文信息.  
+# 34.Multi-Head Attention  
+head:Each time you calculate self-attention for a sequence is called a head.  
+$W_1^Q q^{\langle 1 \rangle},W_1^K k^{\langle 1 \rangle},W_1^V v^{\langle 1 \rangle}$  
+$W_1^Q,W_1^K,W_1^V$ are learned to help you ask and answer the question.
+And so you would step through exactly the same calculation we had just now for the I'Afrique  
+and for the other words and end up with the same attention values $a_1$ through $a_5$.  
+$Attention(W_1^QQ,W_1^KK,W_1^VV)$  
+multi-head:$W_i^Q,W_i^K,W_i^V$  
+$h=\#heads$  
+the final value is the concatenation of all of these heads,and then finally multiplied by a matrix W,  
+and then finally multiplied by a matrix W.   
+$MultiHead(Q,K,V)=concat(head_1head_2...head_h)W_o,head_i=Attention(W_i^QQ,W_i^KK,W_i^VV)$  
+In practice,you can actually compute these different heads values in parallel,because no one head's  
+value depends on the value of any other head.So in terms of how this is implemented, you can actually  
+compute all the heads in parallel instead of sequentially.  
+# 35.Tranformer Network  
+1.These embeddings get fed into an encoder block which has a multi-head attention layer.  
+Where you feed in the values Q,K and V computed from the embeddings and the weight matrices W.  
+2.This layer then produces a matrix that can be passed into a Feed Forward Neural Network.  
+Feed Forward Neural Network:helps determine what interesting features there are in the sentence.  
+In the transformer paper,this encoding block is repeated n times,and a typical value for n is 6.  
+3.We will then feed the output of the encoder into a decoder block.  
+4.The first output will be the start of sentence token <SOS>  
+5.At every step,the decoder block will input the first few words,whatever we've already generated  
+of the translation.  
+6.The start of sentence token gets fed into this multi-head attention block.  
+7.Just this one token,the SOS token start of sentence,is used to compute Q,K and V for this multi-head attention block.    
+The first block's output is used to generate the Q matrix for the next multi-head attention block,and the output of the  
+encoder is used to generate K and V.  
+8.To finish the description of the decoder block,the multi-head attention block outputs the values which are fed to  
+a feedforward neural network.This decoder block is also going to be repeated n times where you take the output,feed  
+it back to the input.  
+9.These encoder and decoder blocks and how they're combined to perform a sequence,a sequence translation task are the   
+main ideas behind the tansformer architecture.  
+10.positional encoding:The way you encode the position of elements in the input is that you use a combination of these  
+sine and cosine equations.  
+$PE_{(pos,2i)}=sin(\frac{pos}{10000\frac{2i}{d}})$   
+$PE_{(pos,2i+1)}=cos(\frac{pos}{10000\frac{2i}{d}})$  
+pos is the position of a word  
+d:is a dimension of this vector  
+11.In addition to adding these position encodings to the embeddings,you'd also pass them through the network with residual connections.  
+These residual connections(残差连接) are similar to those you previously see in the ResNet,and their purpose in this case is to pass   
+along positional information through the entire architecture.  
+12.The transformer network also uses a layer very similar to a BatchNorm.Their purpose in this case is to pass along positional information  
+to positional encoding.  
+13.The transform also uses a layer called AddedNorm that is very similar to the BatchNorm layer that you're already familiar with.  
+It helps speed up learning.   
+14.Masked multi-head attention is important only during the training process.  
+What masking does is it blocks out the last part of the sentence to mimic what the network will need to do at test time or during prediction.  
+It repeatedly predicts that the network had perfectly translated and hides the remaining words to see if given a perfect first part of the   
+translation,whether the nerural network can predict the next word in the sequence accurately.  
+
+
+
+
 
