@@ -1,4 +1,4 @@
-Part I:Neural Networks and Deep Learning  
+# Part I:Neural Networks and Deep Learning  
 # 0.Welcome  
 health care,delivering personalized education,precision agriculture,self-driving cars.  
 # 1.What is a Neural Network  
@@ -207,7 +207,7 @@ min-batch size
 various forms of regularization parameters  
 # 44.What does this have to do with the brain  
 关系不大  
-Part II:Improving Deep Neural Networks:Hyperparameter tuning,Regularization and Optimization  
+# Part II:Improving Deep Neural Networks:Hyperparameter tuning,Regularization and Optimization  
 # 0.Train/dev/test sets  
 layers,hidden units,learning rates,activation functions  
 training set,hold-out cross validation set/development set,test set.  
@@ -463,7 +463,7 @@ $J(w^{[1]},b^{[1]},...)=\frac{1}{m}\displaystyle\sum_{i=1}^m\mathcal L(\hat y^{(
 Gradient descent with softmax  
 $dz^{[l]}=\hat y-y$
 
-Part III:Structuring your machine Learning project  
+# Part III:Structuring your machine Learning project  
 # 0. Why ML strategy  
 Ways of analyzing a machine learning problem that will help point you in  
 the direction of the most promising things to try.  
@@ -484,17 +484,65 @@ Task A and B have the same input x.
 You have a lot more data for Task A than Task B.  
 Low level features from A could be helpful for learning B.  
 
-Part IV:Convolutional Neural Networks(CNN)  
-Computer Vision Problems:
+# Part IV:Convolutional Neural Networks(CNN)  
+# 0.Computer vision  
+Computer Vision Problems:  
 Image Classification  
-Object Detection  
+Object Detection(self-driving)    
 Neural Style Transfer(神经风格迁移)  
-convolution  
-vertical edges,horizontal edges  
+# 1.Edge detection example  
+early layers of NN might detect edges  
+later layers might detect parts of objects  
+even later layers maybe detect parts of complete objects  
+
+detect vertical edges  
+detect horizontal edges  
 grayscale matrix(灰度矩阵)  
-filter(滤波器)/kernel(卷积核)  
-edge detection(边缘检测)  
-Part V:Natural Language Processing:Building sequence models
+$3\times 3$matrix:filter(滤波器)/kernel(卷积核)  
+vertical edge detector:[[1,0,-1],[1,0,-1],[1,0,-1]]  
+将$6\times 6$的图像和filter进行卷积运算  
+运算方式:将filter在图像上不断平移,然后计算element-wise product求和  
+```python
+#tensorflow
+tf.nn.conv2d
+#keras
+Conv2D
+```
+# 2.More edge detection  
+Sobel filter:[[1,0,-1],[2,0,-2],[1,0,-1]]  
+Scharr filter:[[3,0,-3],[10,0,-10],[3,0,-3]]  
+
+you don't need to have computer vision researchers hand-pick these nine numbers.  
+You can just learn them and treat the nine numbers of this matrix as parameters.
+# 3.Padding(填充)  
+$n\times n*f\times f\rightarrow(n-f+1)\times(n-f+1)$  
+
+two downsides:  
+1.every time you apply a convolutional operator,your image shrinks.  
+2.Pixels on the corners are used much less in the output.So you're throwing away  
+a lot of the information near the edge of the image. 
+
+Before applying the convolutional operation,you can pad the image(对图像进行填充).  
+默认用0填充  
+P:padding amount  
+valid convolutions and same convolutions(有效卷积和相同卷积)   
+valid convolutions:no padding(无填充)  
+same convolutions:Pad so that output size is the same as the input size,$p=\frac{f-1}{2}$  
+By convention,in computer vision,f is usually odd.  
+# 4.Strided convolutions(步长卷积)  
+每次进行卷积时将filter移动stride步长  
+$n\times n*f\times f$,padding p,stride s$\rightarrow \lfloor\frac{n+2p-f}{s}+1\rfloor \times\lfloor\frac{n+2p-f}{s}+1\rfloor$   
+# 5.Convolutions over volumes(三维卷积)  
+使用三维滤波器:$3\times 3\times 3$ filter  
+注意,原图像通道数和滤波器通道数必须相同  
+RGB images:$6\times 6\times 3,height\times width\times number~of~channels$  
+卷积方式和二维类似,相当于同时进行三个矩阵的卷积运算(RGB三通道),即计算element-wise product求和  
+$6\times 6\times 3*3\times 3\times 3\rightarrow 4\times 4$,卷积得到的矩阵是二维的   
+$n\times n\times n_c*f\times f\times n_c\rightarrow (n-f+1)\times (n-f+1)\times n_c'$,$n_c'表示你使用的filter数量$   
+如果同时用m个filter,那么输出就是将m个矩阵堆叠在一起,对于上面例子,得到$4\times 4\times 2$的矩阵   
+the output will then have a number of channels equal to the number of features you are detecting.   
+
+# Part V:Natural Language Processing:Building sequence models
 # 0.Why sequence models?  
 sequence data   
 speech recognition(语音识别)   
