@@ -90,8 +90,8 @@ cal=A.sum(axis=0) #python矩阵垂直求和
 cal=A.sum(axis=1) #python矩阵水平求和
 percentage=100*A/(cal.reshape(1,4))
 ```
-If you have an mxn matrix and you add or subtract or multiply or divide with a 1xn matrix,  
-then this will copy it m times into an mxn matrix,and then apply the addition,subtraction,  
+If you have a mxn matrix, and you add or subtract or multiply or divide with a 1xn matrix,  
+then this will copy it m times into a mxn matrix,and then apply the addition,subtraction,  
 multiplication or division element wise.  
 # 21.A note on python/numpy vectors  
 do not use rank 1 arrays.Such as (5,)  
@@ -623,7 +623,7 @@ CBOW(Continuous Bag-of-Words Model):takes surrounding context for a middle word 
 surrounding words to try to predict the middle word.  
 # 22.Basic models   
 sequence-to-sequence models   
-encoder network be built as a RNN(GRU/LSTM)  
+encoder network be built as an RNN(GRU/LSTM)  
 build a decoder network,takes as input the encoding,output by the encoder network.  
 # 28.Attention model intuition  
 传统RNN模型的问题:对短句子效果很好,对于长句子性能就会下降   
