@@ -61,10 +61,81 @@ $\displaystyle\sum_{i=1}^m\frac{pred^{(i)}==y_{val}^{(i)}}{m}$
 $J(\theta)=-\frac{1}{m}\displaystyle\sum_{i=1}^m[y^{(i)}log h(x^{(i)},\theta)+(1-y^{(i)})log(1-h(x^{(i)},\theta))]$  
 $-\frac{1}{m}\displaystyle\sum_{i=1}^m:$That indicated that you're going to sum over the cost of each training example.  
 $-\frac{1}{m}:$indicating that when combined with the sum,this will be some kind of average.  
-$-:$The minus sign ensures that your overall costs will always be a positive number.  
+$-:$The minus sign ensures that your overall costs will always be a positive number.
+# 17.Bayes rule  
+$P(X|Y)=P(Y|X)\times \frac{P(X)}{P(Y)}$  
+# 18.naïve Bayes  
+It's a very good,quick and dirty baseline for many texts classification tasks.  
+an example of supervised machine learning.  
+It's called naive because this method makes the assumption that the features you're using  
+for classification are all independent.  
+$\displaystyle\prod_{i=1}^m\frac{P(w_i|pos)}{P(w_i|neg)}$  
+This expression is called the Naive Bayes inference condition rule for binary classification(二元分类的朴素贝叶斯推理条件规则).  
+# 19.Laplacian smoothing(拉普拉斯平滑)  
+a technique you can use to avoid your probabilities being zero.  
+$P(w_i|class)=\frac{freq(w_i,class)}{N_{class}}$  
+$P(w_i|class)=\frac{freq(w_i,class)+1}{N_{class}+V_{class}}$  
+$N_{class}=$frequency of all words in class  
+$V_{class}=$number of unique words in class  
+# 20.log likelihoods 1  
+prior ratio(先验比率):$\frac{P(pos)}{P(neg)}$  
+likelihood(似然):$\displaystyle\prod_{i=1}^m\frac{P(w_i|pos)}{P(w_i|neg)}$  
+$ratio(w)=\frac{P(w|pos)}{P(w|neg)}$  
+$\lambda(w)=log\frac{P(w|pos)}{P(w|neg)}$  
+you can use that to reduce the risk of numerical underflow(减少数值下溢的风险).  
+朴素贝叶斯分数公式:先验比率*似然  
+$t=\frac{P(pos)}{P(neg)}\displaystyle\prod_{i=1}^m\frac{P(w_i|pos)}{P(w_i|neg)}$  
+if t>1:positive  
+if t<1:negative  
+取对数,变成log prior(对数先验)+log likelihood(对数似然)  
+$log(\frac{P(pos)}{P(neg)}\displaystyle\prod_{i=1}^m\frac{P(w_i|pos)}{P(w_i|neg)})=log\frac{P(pos)}{P(neg)}+\displaystyle\sum_{i=1}^m log\frac{P(w_i|pos)}{P(w_i|neg)}$
+# 21.log likelihoods 2  
+$\displaystyle\sum_{i=1}^m log\frac{P(w_i|pos)}{P(w_i|neg)}=\displaystyle\sum_{i=1}^m \lambda(w_i)$  
+正值表示推文是正面的,负值表示推文是负面的,0表示推文是中立的   
+# 22.train the Naive Bayes classifier  
+0.Get or annotate a dataset with positive and negative tweets  
+1.Preprocess the tweets:process_tweet(tweet)$\rightarrow [w_1,w_2,w_3,...]$  
+Lowercase  
+Remove punctuation,urls,names  
+Remove stop words  
+Stemming  
+Tokenize sentences  
+2.Compute freq(w,class)  
+3.Get P(w|class) P(w|neg) using Laplacian smoothing formula  
+4.Get $\lambda(w)$  
+$\lambda(w)=log\frac{P(w|pos)}{P(w|neg)}$  
+5.Compute log prior=log(P(pos)/P(neg))   
+$log prior=log\frac{D_{pos}}{D_{neg}}$  
+$D_{pos}=$Number of positive tweets  
+$D_{neg}=$Number of negative tweets  
+If dataset is balanced,$D_{pos}=D_{neg}$ and log prior=0  
+# 23.test the Naive Bayes classifier  
+$X_{val},Y_{val}\rightarrow$ Performance on unseen data  
+Predict using $\lambda$ and logprior for each new tweet  
+Accuracy$\rightarrow\frac{1}{m}\displaystyle\sum_{i=1}^m(pred_i==Y_{val_i})$  
+# 24.Application of Naive Bayes  
+Sentiment analysis  
+Author identification  
+Spam filtering  
+Information retrieval  
+Word disambiguation  
+# 25.assumptions underlying the naive bayes method  
+Naive Bayes的问题:
+Independence:Not true in NLP  
+Relative frequency of classes affect the model  
+Another issue with naive bayes is that it relies on the distribution of the training data sets.  
+# 26.analyze errors  
+1.Processing as a source errors  
+2.Adversarial attacks(对抗攻击)  
+
+
 Part II:probabilistic models and how to use them to predict word sequences  
 Part III:NLP with sequence models  
 Part IV:NLP with attention models  
+
+
+
+
 
 
 
