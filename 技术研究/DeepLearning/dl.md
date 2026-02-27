@@ -541,7 +541,87 @@ $6\times 6\times 3*3\times 3\times 3\rightarrow 4\times 4$,卷积得到的矩阵
 $n\times n\times n_c*f\times f\times n_c\rightarrow (n-f+1)\times (n-f+1)\times n_c'$,$n_c'表示你使用的filter数量$   
 如果同时用m个filter,那么输出就是将m个矩阵堆叠在一起,对于上面例子,得到$4\times 4\times 2$的矩阵   
 the output will then have a number of channels equal to the number of features you are detecting.   
+# 6.One layer of a convolutional network
+from $a^{[0]}$ to $a^{[1]}$:  
+first the linear operation  
+the convolution has all these multiplied  
+the convolution is really applying the linear operation  
+add the biases and you apply a ReLU operation  
 
+If layer l is a convolution layer:  
+$f^{[l]}$=filter size  
+$p^{[l]}$=padding  
+$s^{[l]}$=stride  
+$n_c^{[l]}$=number of filters  
+Each filter is:$f^{[l]}\times f^{[l]}\times n_c^{[l-1]}$  
+Activations:$a^{[l]}\rightarrow n_H^{[l]}\times n_W^{[l]}\times n_C^{[l]}$,$A^{[l]}\rightarrow m\times n_H^{[l]}\times n_W^{[l]}\times n_C^{[l]}$  
+Weights:$f^{[l]}\times f^{[l]}\times n_C^{[l-1]}\times n_C^{[l]}$  
+bias:$n_C^{[l]}$  
+Input:$n_H^{[l-1]}\times n_W^{[l-1]}\times n_C^{[l-1]}$  
+Output:$n_H^{[l]}\times n_W^{[l]}\times n_c^{[l]}$  
+$n_H^{[l]}=\lfloor\frac{n_H^{[l-1]}+2p^{[l]}-f^{[l]}}{s^{[l]}}+1\rfloor$  
+$n_W^{[l]}=\lfloor\frac{n_W^{[l-1]}+2p^{[l]}-f^{[l]}}{s^{[l]}}+1\rfloor$  
+# 7.A simple convolution network example  
+A lot of the work in designing convolutional neural net is selecting hyper-parameters like  
+deciding what's the filter size,what's the stride,what's the padding,and how many filters to use.  
+
+Types of layer in a convolutional:  
+Convolution(CONV):卷积层   
+Pooling(POOL):池化层  
+Fully connected(FC):全连接层  
+# 8.Pooling layers  
+Convnets(卷积网络) often also use pooling layers to reduce the size of the representation to speed up computation  
+as well as make some of the features it detects a bit more robust.    
+(减小表示尺寸来加速计算,同时使检测到的特征更加鲁棒)  
+
+Pooling layer:Max pooling(最大池化)   
+Take your $4\times 4$ input and break it into different regions.  
+each of the outputs will just be the max from the corresponding shaded region.  
+
+hyperparameters:  
+f:filter size  
+s:stride  
+Max or average pooling  
+
+No parameters to learn.
+
+If you have a 3D input,then the output will have the same dimension.  
+$n_H\times n_W\times n_C\rightarrow (\lfloor\frac{n_H-f}{s}+1\rfloor\times \lfloor\frac{n_W-f}{s}+1\rfloor\times n_C)$  
+Perform the computation on each of the channels independently.  
+
+Pooling layer:Average Pooling(平均池化)  
+instead of taking the maxes within each filter,you take the average.  
+
+max pooling is used much more often than average pooling.  
+# 9.Convolutional neural network example  
+LeNet-5  
+the Conv1 and pool1 together as one layer,count layers that have weights.    
+
+as you go deeper,usually the height and width will decrease,whereas the number of channels will increase.  
+
+全连接层:将上一层的输出摊平成一个向量,然后密集连接到下一层
+A pretty common pattern in neural networks:CONV-POOL-CONV-POOL-FC-FC-FC-Softmax  
+
+参数数量计算:  
+1.卷积层:params=$C_o\times(k_w\times k_h\times C_i+1),k_w,k_h代表卷积核宽,高,C_i代表输入通道数,C_o代表输出通道数,+1代表bias$  
+$k_w\times k_h\times C_i$表示一个卷积核的权重数量,括号内表示一个卷积核的参数数量,$C_o$表示该层内有$C_o$个卷积核  
+2.全连接层:$(I+1)\times O$,每个输出神经元连接着所有输入神经元,同时每个输出神经元还要加一个bias  
+
+the pooling layers don't have any parameters  
+the conv layers tend to have relatively few parameters  
+a lot of the parameters tend to be in the fully connected layers of the neural network   
+the activation size tends to go down gradually as you go deeper in the neural network  
+# 10.Why convolutions?  
+two main advantages of convolutional layers:  
+1.parameter sharing(参数共享):A feature detector(such as a vertical edge detector) that's useful in one part of the image  
+is probably useful in another part of the image.  
+2.sparsity of connections(稀疏连接):In each layer,each output value depends only on a small number of inputs.  
+
+CNN is very good at capturing translation and variance(平移和变化).  
+
+Training set$(x^{(1)},y^{(1)}...(x^{(m)},y^{(m)})$  
+Cost $J=\frac{1}{m}\displaystyle\sum_{i=1}^m\mathcal L(\hat y^{(i)},y^{(i)})$  
+Use gradient descent to optimize parameters to reduce J.  
 # Part V:Natural Language Processing:Building sequence models
 # 0.Why sequence models?  
 sequence data   
