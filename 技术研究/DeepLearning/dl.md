@@ -722,6 +722,15 @@ By taking these activations,allowing it to go much deeper in the neural network,
 the vanishing and exploding gradient problems and allows you to train much deeper neural networks without  
 really appreciable loss in performance.   
 # 15.Why ResNets work  
+It's quite easy to learn the identity function(可以轻松学习恒等映射).  
+ResNet  
+![Residual Network](./pictures/res_net.png) 
+# 16.Network in Network and 1x1 convolutions  
+1x1 convolution/network in network  
+池化层用来缩减高度和宽度  
+using 1x1 convolutions to shrink the number of channels and therefore save on computation in some networks.  
+If you want to keep the number of channels,the effect of a 1x1 convolution is it just adds non-linearity.   
+It allows you to learn a more complex function of your network by adding another layer.  
 
 
 
