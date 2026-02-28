@@ -622,6 +622,109 @@ CNN is very good at capturing translation and variance(平移和变化).
 Training set$(x^{(1)},y^{(1)}...(x^{(m)},y^{(m)})$  
 Cost $J=\frac{1}{m}\displaystyle\sum_{i=1}^m\mathcal L(\hat y^{(i)},y^{(i)})$  
 Use gradient descent to optimize parameters to reduce J.  
+# 12.Why look at case studies?  
+classic networks:  
+LeNet-5  
+AlexNet  
+VGG  
+ResNet(残差网络)  
+# 13.Classic networks  
+LeNet-5:recognize handwritten digits  
+$$
+32\times 32\times 1
+\mathop{\rightarrow}\limits_{\substack{5\times 5\\ s=1}} 28\times 28\times 6
+\mathop{\rightarrow}\limits_{\substack{f=2\\ s=2}}^{avg~pool} 14\times 14\times 6
+\mathop{\rightarrow}\limits_{\substack{5\times 5\\ s=1}} 10\times 10\times 16
+\mathop{\rightarrow}\limits_{\substack{f=2\\ s=2}}^{avg~pool} 5\times 5\times 16
+\mathop{\rightarrow}\limits^{\substack{FC}} 120
+\mathop{\rightarrow}\limits^{\substack{FC}} 84
+\mathop{\rightarrow}\limits_{\substack{softmax\\10}}\hat y
+$$
+AlexNet:  
+using the ReLU activation function  
+local response normalization(LRN,局部响应归一化)  
+
+$$
+227\times 227\times 3
+\mathop{\rightarrow}\limits_{\substack{11\times 11\\ s=4}} 55\times 55\times 96
+\mathop{\rightarrow}\limits_{\substack{3\times 3\\ s=2}}^{MAX~POOL} 27\times 27\times 96
+\mathop{\rightarrow}\limits_{\substack{5\times 5\\ same}} 27\times 27\times 256
+\mathop{\rightarrow}\limits_{\substack{3\times 3\\ s=2}}^{MAX~POOL} 13\times 13\times 256
+\mathop{\rightarrow}\limits_{\substack{3\times 3\\ same}} 13\times 13\times 384
+\mathop{\rightarrow}\limits_{\substack{3\times 3}} 13\times 13\times 384
+$$
+$$
+\mathop{\rightarrow}\limits_{\substack{3\times 3}} 13\times 13\times 256
+\mathop{\rightarrow}\limits_{\substack{3\times 3\\ s=2}}^{MAX~POOL} 6\times 6\times 256
+=9216
+\mathop{\rightarrow}\limits^{\substack{FC}} 4096
+\mathop{\rightarrow}\limits^{\substack{FC}} 4096
+\mathop{\rightarrow}
+\mathop{Softmax}\limits_{1000}
+$$
+VGG-16  
+16表示这个网络有16个带权重的层  
+CONV=$3\times 3$filter,s=1,same  
+MAX-POOL=$2\times 2$,s=2  
+it really simplified these neural network architectures.  
+箭头下面第一行表示卷积核数量  
+第二行表示这样的卷积层有几层     
+$$
+224\times 224\times 3
+\mathop{\rightarrow}\limits_{\substack{[CONV~64]\\ \times 2}} 224\times 224\times 64
+\mathop{\rightarrow}\limits_{POOL} 112\times 112\times 64
+\mathop{\rightarrow}\limits_{\substack{[CONV~128]\\ \times 2}} 112\times 112\times 128 
+\mathop{\rightarrow}\limits_{POOL} 56\times 56\times 128
+\mathop{\rightarrow}\limits_{\substack{[CONV~256]\\ \times 3}} 56\times 56\times 256
+$$
+$$
+\mathop{\rightarrow}\limits_{POOL} 28\times 28\times 256
+\mathop{\rightarrow}\limits_{\substack{[CONV~512]\\ \times 3}} 28\times 28\times 512
+\mathop{\rightarrow}\limits_{POOL} 14\times 14\times 512
+\mathop{\rightarrow}\limits_{\substack{[CONV~512]\\ \times 3}} 14\times 14\times 512
+\mathop{\rightarrow}\limits_{POOL} 7\times 7\times 512
+\mathop{\rightarrow}\limits^{\substack{FC}} 4096
+\mathop{\rightarrow}\limits^{\substack{FC}} 4096
+\mathop{\rightarrow}
+\mathop{Softmax}\limits_{1000}
+$$
+
+VGG-19:an even bigger version of this network.  
+very very deep neural networks are difficult to train,because of vanishing and exploding gradients types of problems.
+# 14.Residual Networks(ResNets,残差网络)   
+skip connections(跳跃连接):take the activation from one layer and suddenly feed it to another layer even much deeper in the neural network.   
+ResNets are built out of something called a residual block(残差块).  
+
+main path(主路径):  
+$z^{[l+1]}=W^{[l+1]}a^{[l]}+b^{[l+1]}$  
+$a^{[l+1]}=g(z^{[l+1]})$  
+$z^{[l+2]}=W^{[l+2]}a^{[l+1]}+b^{[l+2]}$  
+$a^{[l+2]}=g(z^{[l+2]}+a[l])$  
+
+shortcut(捷径)/skip connection:  
+take $a^{[l]}$ and just fast forward it,copy it much further into the neural network to here.  
+and just add $a^{[l]}$ before applying the non-linearity,the ReLU non-linearity.  
+
+Residual block  
+![Residual block](./pictures/res_block.png)  
+
+using residual blocks allows you to train much deeper neural networks.  
+The way you build a ResNet is by taking many of these residual blocks and  
+stacking them together to form a deep network.  
+
+Residual network  
+![Residual Network](./pictures/res_network.png) 
+plain network(普通网络),to turn this into a ResNet,what you do is you add all those  skip connections.  
+For a plain network,your training error gets worse if you pick a network that's too deep.  
+What happens with ResNets is that even as the number of layers gets deeper,you can have the performance  
+of the training error kind of keep on going down.  
+By taking these activations,allowing it to go much deeper in the neural network,this really helps with   
+the vanishing and exploding gradient problems and allows you to train much deeper neural networks without  
+really appreciable loss in performance.   
+# 15.Why ResNets work  
+
+
+
 # Part V:Natural Language Processing:Building sequence models
 # 0.Why sequence models?  
 sequence data   
