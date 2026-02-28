@@ -9,7 +9,7 @@
 9.GMM(https://www.geeksforgeeks.org/machine-learning/gaussian-mixture-model/)  
 10.多层感知机(https://d2l.ai/chapter_multilayer-perceptrons/mlp.html#hidden-layers)   
 11.Huber loss(https://en.wikipedia.org/wiki/Huber_loss)  
-12.混合专家模型(https://blog.csdn.net/leah126/article/details/140095900)  
+12.混合专家模型(https://blog.csdn.net/leah126/article/details/140095900)   
 13.扩散模型(https://www.zhihu.com/tardis/zm/art/599887666?source_id=1003)    
 
 recent week:
@@ -31,3 +31,5 @@ recent week:
 29.位置编码2(https://www.bilibili.com/video/BV1xR1RY9ECm)  
 30.注意力讲解(https://www.bilibili.com/video/BV1QD421n7wV)  
 31.卷积神经网络CNN中的参数量和计算量(https://zhuanlan.zhihu.com/p/366184485)  
+32.transformer残差连接和归一化(https://www.bilibili.com/video/BV1agCeBdEdW/)  
+33.CS336(https://www.bilibili.com/video/BV1xd41zdEek)  
