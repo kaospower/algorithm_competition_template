@@ -33,3 +33,4 @@ recent week:
 31.卷积神经网络CNN中的参数量和计算量(https://zhuanlan.zhihu.com/p/366184485)  
 32.transformer残差连接和归一化(https://www.bilibili.com/video/BV1agCeBdEdW/)  
 33.CS336(https://www.bilibili.com/video/BV1xd41zdEek)  
+34.吴恩达线性代数和微积分视频课(https://www.bilibili.com/video/BV1WfagzvEXM/)  

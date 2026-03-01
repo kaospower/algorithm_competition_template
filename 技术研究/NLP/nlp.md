@@ -127,8 +127,45 @@ Another issue with naive bayes is that it relies on the distribution of the trai
 # 26.analyze errors  
 1.Processing as a source errors  
 2.Adversarial attacks(对抗攻击)  
+# 29.vector space model  
+Vector space models will also allow you to capture dependencies between words(捕获词之间的依赖关系).  
+Vector space models are used in information extraction(信息抽取) to answer.  
+Vector space models allow you to represent words and documents as vectors,this captures the relative meaning.  
+# 30.W/W and W/D design  
+Word by Word Design  
+The co-occurrence(共现) of two different words is the number of times that they appear in your corpus together  
+within a certain word distance k.  
+Word by document Design  
+You will count the times that words from your vocabulary appear in documents that belong to specific categories.  
+# 31.Euclidean distance(欧几里得距离)  
+$d(B,A)=\sqrt{(B_1-A_1)^2+(B_2-A_2)^2}$  
+Euclidean distance for n-dimensional vectors:  
+$d(\vec v,\vec w)=\sqrt{\displaystyle\sum_{i=1}^n(v_i-w_i)^2}\rightarrow Norm of (\vec v-\vec w)(比较的向量之间差异的范数)$
 
+```python
+import numpy as np
 
+v=np.array([1,6,8])
+w=np.array([0,4,6])
+d=np.linalg.norm(v-w)
+```
+# 32.cosine similarity intuition  
+The main advantage of this metric over the Euclidean distance is that it isn't biased by the size difference between the representations.  
+# 33.cosine similarity score  
+vector norm(向量的范数):$||\vec v||=\sqrt{\displaystyle\sum_{i=1}^n v_i^2}$  
+Dot product:$\vec v\cdot\vec w=\displaystyle\sum_{i=1}^n v_i\cdot w_i$  
+$cos(\beta)=\frac{\vec v\cdot \vec w}{||\vec v||||\vec w||}$  
+$Cosine\propto Similarity$  
+Cosine Similarity gives values between 0 and 1  
+# 35.visualize and PCA  
+PCA:principal components analysis(主成分分析)  
+Original Space$\rightarrow$Uncorrelated features$\rightarrow$Dimension reduction  
+Visualization to see words relationships in the vector space  
+# 36.PCA algorithm  
+Eigenvector(特征向量):Uncorrelated features for your data.  
+Eigenvalue(特征值):the amount of information retained by each feature.  
+The Eigenvectors of the co-variance matrix from your data give directions of uncorrelated features and  
+the Eigenvalues are the variants of your data sets in each of those new features.  
 Part II:probabilistic models and how to use them to predict word sequences  
 Part III:NLP with sequence models  
 Part IV:NLP with attention models  
