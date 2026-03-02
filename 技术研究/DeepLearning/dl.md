@@ -791,7 +791,38 @@ Tips for doing well on benchmarks/winning competitions:
 1.Ensembling(集成学习):Train several networks independently and average their outputs.  
 2.Multi-crop at test time(多裁剪和测试时增强):Run classifier on multiple versions of test images and average results.  
 10-crop  
-
+# 26.Object localization(目标定位)  
+figuring out where in the picture is the car you've detected.  
+bounding box of the detected object(检测对象的边界框).  
+$b_x,b_y:边界框中心点坐标(相对于原图像),b_w:边界框宽度(相对于原图像比例),b_h:边界框高度(相对于原图像比例)$  
+$P_c$:代表存在一个对象的概率  
+$$
+y=
+\begin{bmatrix}
+P_c\\
+b_x\\
+b_y\\
+b_h\\
+b_w\\
+C_1\\
+C_2\\
+C_3
+\end{bmatrix}
+$$
+损失函数:  
+$$
+\mathcal L(\hat y,y)=
+\begin{cases}  
+(\hat y_1-y_1)^2+(\hat y_2-y_2)^2+...+(\hat y_8-y_8)^2 & if~y_1=1\\
+(\hat y_1-y_1)^2 & if~y_1=0\\
+\end{cases} 
+$$
+# 27.Landmark detection(关键点检测)  
+标签在不同图像中必须保持一致  
+# 28.Object detection(目标检测)  
+1.首先选择一个特定窗口大小   
+2.然后将一个小矩形区域输入卷积神经网络  
+3.稍微移动一点,再次运行神经网络  
 # Part V:Natural Language Processing:Building sequence models
 # 0.Why sequence models?  
 sequence data   
