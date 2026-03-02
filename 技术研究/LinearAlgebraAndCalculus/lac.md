@@ -92,6 +92,21 @@ $\langle u,v \rangle=|u||v|cos(\theta)$
 矩阵和列向量乘法表示方程组  
 # 33.Linear transformations as matrices  
 基向量被发送的位置,就是矩阵的列  
+# 34.Matrix multiplication  
+线性变换作用在左边的向量上  
+# 35.The identity matrix(单位矩阵)  
+对角线上有1,其它地方都是零  
+# 36.Matrix inverse(矩阵逆)  
+通过求解线性方程组求矩阵逆  
+# 37.Which matrices have inverse?(可逆矩阵条件)  
+Non-singular matrices always have an inverse(非奇异矩阵总是有逆).  
+Singular matrices never have an inverse(奇异矩阵永远没有逆).  
+可逆矩阵的行列式非0,不可逆矩阵行列式为0    
+# 38.Neural networks and matrices(神经网络与矩阵)  
+在原矩阵中增加一个全1列,在模型中增加bias属性,可以使模型实现增加一个bias项  
+与运算也可以作为一个感知器(单层神经网络)  
+
+
 
 
 

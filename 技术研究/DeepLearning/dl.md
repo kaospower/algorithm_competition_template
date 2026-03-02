@@ -782,6 +782,15 @@ Common augmentation method:
 8.PCA(主成分分析) color augmentation  
 
 A pretty common way of implementing data augmentation is to really have one thread or multiple threads.  
+# 25.The state of computer vision(计算机视觉现状)  
+Two sources of knowledge:  
+1.Labeled data  
+2.Hand engineered features/network architecture/other components.  
+
+Tips for doing well on benchmarks/winning competitions:    
+1.Ensembling(集成学习):Train several networks independently and average their outputs.  
+2.Multi-crop at test time(多裁剪和测试时增强):Run classifier on multiple versions of test images and average results.  
+10-crop  
 
 # Part V:Natural Language Processing:Building sequence models
 # 0.Why sequence models?  
