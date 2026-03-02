@@ -75,6 +75,24 @@ back substitution(回代法)
 2.将矩阵转化为简化行阶梯形   
 3.通过回代找出变量的值(转化成单位矩阵)  
 4.如果遇到全0行,停止,因为这个方程组是奇异的  
+# 26.machine learning intuition  
+vectors,matrices,tensors(向量,矩阵,张量)  
+# 27.Vectors and their properties  
+taxicab distance(曼哈顿距离)  
+$L_1-norm=|(a,b)|_1=|a|+|b|$  
+$L_2-norm=|(a,b)|_2=\sqrt{a^2+b^2}$  
+一般形式:  
+$L_1~norm:||x||_1=|x_1|+|x_2|+...+|x_n|$  
+$L_2~norm:||x||_2=\sqrt{x_1^2+x_2^2+...+x_n^2}$  
+# 29.The dot product  
+$|u|_2=\sqrt{\langle u,u \rangle},\langle u,u \rangle 表示u和u的点积$  
+# 30.Geometric dot product(点积几何意义)  
+$\langle u,v \rangle=|u||v|cos(\theta)$  
+# 31.Multiplying a matrix by a vector(矩阵与向量乘法)  
+矩阵和列向量乘法表示方程组  
+# 33.Linear transformations as matrices  
+基向量被发送的位置,就是矩阵的列  
+
 
 
 
