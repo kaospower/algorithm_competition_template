@@ -731,8 +731,57 @@ ResNet
 using 1x1 convolutions to shrink the number of channels and therefore save on computation in some networks.  
 If you want to keep the number of channels,the effect of a 1x1 convolution is it just adds non-linearity.   
 It allows you to learn a more complex function of your network by adding another layer.  
+# 17.Inception network motivation  
+Instead of you needing to pick what of these filter sizes or pooling you want,and committing to that,you can  
+do them all,and just concatenate all the outputs,and then let the network learn whatever parameters it wants.   
 
+bottleneck layer(瓶颈层)  
+the bottleneck layer is the smallest part of this network  
+通过瓶颈层减少计算成本  
+# 18.Inception network  
+Inception model  
+![Inception model](./pictures/Inception_model.png)  
+What these side branches do is it takes some hidden layer,  
+and it tries to use that to make a prediction.  
+It helps ensure that the features computed,even in the hidden units,  
+even at intermediate layers,that they're not too bad for predicting the output class of an image.   
+And this attempt appears to have a regularizing effect on the inception network and helps prevent  
+this network from overfitting.  
+Inception network  
+![Inception network](./pictures/Inception_network.png)   
+# 19.MobileNet(移动网络)  
+Low computational cost at deployment.  
+Useful for mobile and embedded vision applications.  
+depthwise-separable convolutions.  
+the depth-wise separable convolution(深度可分离卷积):  
+Depthwise Convolution:对每个通道分别卷积  
+Pointwise Convolution:对每个点分别卷积再相加   
+如果想得到多个通道,在Pointwise Convolution中需要使用多个filter  
+# 20.MobileNet Architecture  
+MobilNet v2:  
+1.the addition of a residual connection(添加了残差连接):使梯度能更高效地反向传播   
+2.adds an expansion layer,同时逐点卷积被称为Projection(投影)  
+bottleneck block(瓶颈块)  
 
+It enables a richer set of computations,thus allowing your neural network to learn richer,more complex functions,  
+while also keeping the amount of memory,that is the size of the activations you need to pass from layer to layer,relatively small.   
+# 21.EfficientNet(高效网络)  
+r:resolution(分辨率)   
+d:depth(深度)  
+w:width(宽度)   
+find a way to scale up or down these neural networks based on the resources of a device.  
+# 24.Data augmentation(数据增强)  
+Common augmentation method:  
+1.Mirroring(镜像翻转)     
+2.Random Cropping(随机裁剪)    
+3.Rotation(旋转)  
+4.Shearing(图像剪切)  
+5.Local warping(局部扭曲)  
+6.color shifting(色彩偏移)  
+7.color distortion(颜色失真)  
+8.PCA(主成分分析) color augmentation  
+
+A pretty common way of implementing data augmentation is to really have one thread or multiple threads.  
 
 # Part V:Natural Language Processing:Building sequence models
 # 0.Why sequence models?  
