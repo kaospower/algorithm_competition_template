@@ -166,6 +166,16 @@ Eigenvector(特征向量):Uncorrelated features for your data.
 Eigenvalue(特征值):the amount of information retained by each feature.  
 The Eigenvectors of the co-variance matrix from your data give directions of uncorrelated features and  
 the Eigenvalues are the variants of your data sets in each of those new features.  
+
+Mean Normalize Data:$x_i=\frac{x_i-\mu_{x_i}}{\sigma_{x_i}}$  
+Get Covariance Matrix  
+Perform SVD(奇异值分解)  
+SVD:第一个矩阵包含按列堆叠的特征向量,第二个矩阵在对角线上有特征值  
+
+首先,执行词嵌入矩阵与U矩阵(特征向量矩阵)的前n列之间的点积,n等于你最终想要的维度数量    
+$X'=XU[:,0:2]$  
+Percentage of Retained Variance=$\frac{\sum_{i=0}^1S_{ii}}{\sum_{j=0}^dS_{jj}}$  
+
 Part II:probabilistic models and how to use them to predict word sequences  
 Part III:NLP with sequence models  
 Part IV:NLP with attention models  

@@ -148,7 +148,7 @@ $Av=\lambda v$:沿着该向量的矩阵乘法仅变成标量乘法
 可以利用特征向量创建一种基,称为特征基  
 通常会将特征基表示为一个矩阵,每列包含一个特征向量  
 特征向量可以节省工作量,并以强大的方式表征线性变换  
-# Calculating Eigenvalues and Eigenvectors(特征值与特征向量计算)  
+# 49.Calculating Eigenvalues and Eigenvectors(特征值与特征向量计算)  
 If $\lambda$ is an eigenvalue:  
 $$
 \begin{bmatrix}
@@ -197,9 +197,100 @@ $\lambda=2,\lambda=3$
 总会有无数个潜在的特征向量位于同一条线上  
 行列式只对方阵有定义,对于任何方阵,你都可以找到特征值和特征向量  
 如果矩阵不是方阵,它就没有任何特征向量或特征值  
+# 50.On the Number of Eigenvectors(特征向量数量分析)  
+对于二阶方阵:  
+设其特征值为$\lambda_1,\lambda_2$  
+如果$\lambda_1\ne\lambda_2$,则有两个特征向量   
+如果$\lambda_1=\lambda_2$,则有一个或者两个特征向量  
+对于三阶方阵:  
+如果$\lambda_1\ne\lambda_2\ne\lambda_3$,则有三个特征向量  
+如果$\lambda_1=\lambda_2\ne\lambda_3$,则有两个或三个特征向量  
+如果$\lambda_1=\lambda_2=\lambda_3$,则有一个或两个或三个特征向量   
+# 51.Dimensionality Reduction and Projection(降维与投影)  
+projection(投影):move your data points into a vector space with fewer dimensions  
+乘以向量会使点沿该向量投影,并且除以向量的范数可以确保没有引入伸展  
+将若干向量的二维坐标投影到一条直线上,从而实现了降维  
 
+To project a matrix A onto a vector v:  
+投影矩阵:$A_P=A\frac{v}{||v||_2}=AV$,V是多个列向量组成的矩阵  
+投影到两个向量上与投影到这两个向量跨越的平面上是一样的.  
+# 52.Motivating PCA(主成分分析动机)  
+保留分散意味着保留更多信息  
+PCA的目标是找到能够在降低数据维度的同时最大化保留数据分布的投影  
+降维使得数据集更易管理,因为它们更小  
+PCA允许你在减少维度的同时最小化信息损失  
+# 53.Varicance and Covariance(方差和协方差)  
+$Var(x)=\frac{1}{n-1}\displaystyle\sum_{i=1}^n(x_i-\mu_x)^2$  
+注意:除以n-1而不是n是为了修正偏差,尤其是在小样本统计中  
+协方差帮助衡量数据集中两个特征相对于彼此的变化   
+$Cov(x,y)=\frac{1}{n-1}\displaystyle\sum_{i=1}^n(x_i-\mu_x)(y_i-\mu_y)$  
+一三象限的点对协方差贡献为正,二四象限的点对协方差贡献为负  
+将协方差视为衡量两个变量之间关系方向的指标  
+负协方差表示负向趋势,小协方差表示平稳趋势或无关系,正协方差表示正向趋势  
+# 54.Covirance Matrix(协方差矩阵)  
+$Cov(y,x)=Cov(x,y)$  
+$Cov(x,x)=Var(x)$  
+协方差矩阵:  
+$$
+C=
+\begin{bmatrix}
+Var(x) & Cov(x,y)\\
+Cov(y,x) & Var(y)
+\end{bmatrix}
+$$
+$$
+A=
+\begin{bmatrix}
+x_1 & y_1\\
+x_2 & y_2\\
+\vdots &\vdots\\
+x_n & y_n
+\end{bmatrix}
+\mu=
+\begin{bmatrix}
+\mu_x & \mu_y\\
+\mu_x & \mu_y\\
+\vdots &\vdots\\
+\mu_x &\mu_y
+\end{bmatrix}
+$$
+$C=\frac{1}{n-1}(A-\mu)^T(A-\mu)$  
 
-
+Matrix formula:  
+1.Arrange data with a different feature in each column  
+2.Calculate column averages  
+3.Substract each average from their respective column to generate $A-\mu$  
+4.$\frac{1}{n-1}(A-\mu)^T(A-\mu)$ gives the covariance matrix C  
+# 55.PCA Overview(主成分分析概述)  
+每个沿其对角线对称的矩阵的特征向量都是正交的  
+协方差矩阵的两个特征向量称为principal components(主成分)  
+具有最大特征值的特征向量将始终是在投影数据时提供最大方差的那个向量  
+# 56.PCA Why it works(主成分分析原理)  
+矩阵C的特征向量告诉你可以将矩阵视为仅仅是直接拉伸的方向  
+最大的特征值告诉你在哪个方向上拉伸最大,其他任何方向上的拉伸都会较小  
+选择具有最大特征值的特征向量将为你提供最大拉伸或最大方差的方向  
+# 57.PCA Mathematical Formula(主成分分析数学推导)  
+1.Create matrix  
+2.Center the data,计算$X-\mu$  
+3.Calculate Covariance Matrix,$C=\frac{1}{n-1}(A-\mu)^T(A-\mu)$  
+4.Calculate Eigenvectors and Eigenvalues  
+将特征值从小到大的顺序对它们进行排序,保留t个最大特征值的特征向量(t为你想降低到的维度)  
+5.Create Projection Matrix  
+假设t=2,根据保留的两个特征向量进行投影,按照范数进行缩放
+$$
+V=
+\begin{bmatrix}
+\frac{v_1}{||v_1||_2} & \frac{v_2}{||v_2||_2}\\
+\end{bmatrix}
+$$
+6.Project Centered Data,最终投影数据   
+$_{PCA}=(X-\mu)V$
+# 59.Discrete Dynamical Systems(离散动力系统)  
+Markov matrix(马尔可夫矩阵):All values are positive and columns add to 1  
+它允许你推断系统演化的概率  
+State vector(状态向量)  
+transition matrix(转移矩阵)  
+Equilibrium vector(平衡向量),它也是转移矩阵的特征向量  
 
 
 
