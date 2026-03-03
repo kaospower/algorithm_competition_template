@@ -823,6 +823,38 @@ $$
 1.首先选择一个特定窗口大小   
 2.然后将一个小矩形区域输入卷积神经网络  
 3.稍微移动一点,再次运行神经网络  
+# 29.Convolutional implementation of sliding windows(滑动窗口的卷积实现)  
+Turning FC layer into convolutional layers  
+# 30.Bounding box predictions(边界框预测)  
+$b_x,b_y,b_h,b_w$是相对于网格单元指定的  
+YOLO(You Only Look Once)算法  
+# 31.Intersection over union(交并比)  
+交并比函数:计算两个边界框的交集和并集之比.  
+"Correct" if IoU$\geq$0.5  
+IOU越高,边界框越精确  
+More generally,IoU is a measure of the overlap between two bounding boxes.  
+# 32.Non-max suppression(非极大值抑制)  
+确保你的算法对每个物体只检测一次  
+Each output prediction is:  
+$$
+\begin{bmatrix}
+P_c\\
+b_x\\
+b_y\\
+b_h\\
+b_w\\
+\end{bmatrix}
+$$  
+Discard all boxes with $p_c\leq$0.6  
+While there are any remaining boxes:  
+Pick the box with the largest $p_c$ Output that as a prediction.  
+Discard any remaining box with $IoU\geq$ 0.5 with the box output in the previous step.  
+# 33.Anchor boxes(锚框)  
+Previously:  
+Each object in training image is assigned to grid cell that contains that object's midpoint.  
+With two anchor boxes:  
+Each object in training image is assigned to grid cell that contains object's midpoint and  anchor  
+box for the grid cell with highest IoU.  
 # Part V:Natural Language Processing:Building sequence models
 # 0.Why sequence models?  
 sequence data   
