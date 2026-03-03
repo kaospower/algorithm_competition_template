@@ -105,9 +105,98 @@ Singular matrices never have an inverse(奇异矩阵永远没有逆).
 # 38.Neural networks and matrices(神经网络与矩阵)  
 在原矩阵中增加一个全1列,在模型中增加bias属性,可以使模型实现增加一个bias项  
 与运算也可以作为一个感知器(单层神经网络)  
+# 40.Introduction  
+Principal Component Analysis(主成分分析)  
+Reduce dimensions(columns) of dataset  
+Preserve as much information as possible  
+# 41.Singularity and rank of linear transformations(线性变换奇异性与秩)  
+change of basis(基变换)  
+如果将其乘以矩阵后覆盖整个平面的点,则变换是非奇异的,反之亦然.  
+右侧覆盖的点称为image of the transformation(变换的像).  
+线性变换的秩:线性变换的像的维数  
+# 42.Determinant as an area(行列式作为面积)  
+按逆时针顺序取向量,平行四边形的面积为负  
+按顺时针顺序取向量,平行四边形的面积为正  
+# 43.Determinant of a product(矩阵乘积的行列式)  
+det(AB)=det(A)det(B)  
+任何矩阵乘上奇异矩阵变成奇异矩阵  
+# 44.Determinant of inverse(逆矩阵的行列式)  
+$det(A^{-1})=\frac{1}{det(A)}$  
+# 45.Basis(基)  
+空间中的每一点都可以表示为基中元素的线性组合  
+两个方向相同或相反的向量不构成一个基底  
+# 46.Span(线性代数扩张成空间)  
+a basis is a minimal spanning set.  
+基的length就是平面的维数  
+如果一个向量组中的任何向量都不能表示为其他向量的线性组合,那么这组向量就被称为线性独立的  
+一个基是满足两个条件的向量集合:  
+1.这个集合必须张成一个向量空间  
+2.并且集合中的向量必须线性无关   
+# 47.Eigenbasis(特征基)  
+它将平行四边形映射到另一个边平行于原始平行四边形的平行四边形  
+# 48.Eigenvalue and Eigenvectors(特征值和特征向量)  
+$Av_1=\lambda_1 v_1$  
+$Av_2=\lambda_2 v_2$  
+$v_1$和$v_2$是矩阵A的特征向量   
+$\lambda_1$和$\lambda_2$是矩阵A的特征值  
 
+1.计算特征基的逆  
+2.将该逆乘上向量  
 
+$Av=\lambda v$:沿着该向量的矩阵乘法仅变成标量乘法  
+可以把特征向量看作线性变换中拉伸的方向,特征值告诉你它被拉伸了多少  
+可以利用特征向量创建一种基,称为特征基  
+通常会将特征基表示为一个矩阵,每列包含一个特征向量  
+特征向量可以节省工作量,并以强大的方式表征线性变换  
+# Calculating Eigenvalues and Eigenvectors(特征值与特征向量计算)  
+If $\lambda$ is an eigenvalue:  
+$$
+\begin{bmatrix}
+2 & 1\\
+0 & 3
+\end{bmatrix}
+\begin{bmatrix}
+x\\
+y
+\end{bmatrix}
+=\begin{bmatrix}
+\lambda & 0\\
+0 & \lambda
+\end{bmatrix}
+\begin{bmatrix}
+x\\
+y
+\end{bmatrix}
+$$
+$$
+\begin{bmatrix}
+2-\lambda & 1\\
+0 & 3-\lambda
+\end{bmatrix}
+\begin{bmatrix}
+x\\
+y
+\end{bmatrix}
+=\begin{bmatrix}
+0\\
+0
+\end{bmatrix}
+$$
+$$
+det
+\begin{bmatrix}
+2-\lambda & 1\\
+0 & 3-\lambda
+\end{bmatrix}
+=0
+$$
+特征多项式:$(2-\lambda)(3-\lambda)-1\cdot 0=0$  
+$\lambda=2,\lambda=3$  
 
+特征多项式:$det(A-\lambda I)=0$  
+总会有无数个潜在的特征向量位于同一条线上  
+行列式只对方阵有定义,对于任何方阵,你都可以找到特征值和特征向量  
+如果矩阵不是方阵,它就没有任何特征向量或特征值  
 
 
 
