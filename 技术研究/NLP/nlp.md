@@ -250,8 +250,40 @@ locality sensitive hashing allows two compute k nearest neighbors,much faster th
 text can be embedded into vector spaces so that nearest neighbors refer to text with similar meaning.  
 找到每个单独单词的词向量,然后将它们相加,所有这些词向量的总和成为一个与词向量具有相同维度的文档向量.  
 Part II:probabilistic models and how to use them to predict word sequences  
+# 0.Introduction  
+auto-correction(自动纠错)  
+web search suggestions(网站搜索建议)  
+# 2.overview  
+autocorrect  
+# 3.autocorrect  
+Autocorrect is an application that changes misspelled words into the correct ones.  
+How it works?  
+1.Identify a misspelled word.  
+2.Find strings n edit distance away.  
+3.Filter candidates.  
+4.Calculate word probabilities.  
+# 4.Building the model 1  
+```python
+if word not in vocab:
+    misspelled=True
+```
+Edit:an operation performed on a string to change it  
+Given a string find all possible strings that are n edit distance away using  
+Insert(插入)   
+Delete(删除)   
+Switch(相邻交换)  
+Replace(替换)  
+# 5.Building the model 2  
+Calculate word probabilities  
+$P(w)=\frac{C(w)}{V}$
+$P(w):$Probability of word
+$C(w):$Number of times the word appears  
+$V:$Total size of the corpus  
+选择概率最高的单词作为自动纠错的替换词  
+
 Part III:NLP with sequence models  
 Part IV:NLP with attention models  
+
 
 
 
