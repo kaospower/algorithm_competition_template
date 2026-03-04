@@ -176,6 +176,8 @@ SVD:第一个矩阵包含按列堆叠的特征向量,第二个矩阵在对角线
 $X'=XU[:,0:2]$  
 Percentage of Retained Variance=$\frac{\sum_{i=0}^1S_{ii}}{\sum_{j=0}^dS_{jj}}$  
 
+# 40.word vector transformation  
+
 Part II:probabilistic models and how to use them to predict word sequences  
 Part III:NLP with sequence models  
 Part IV:NLP with attention models  

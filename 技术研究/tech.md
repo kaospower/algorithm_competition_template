@@ -40,3 +40,7 @@ recent week:
 已完成:  
 1.位置编码1(https://www.bilibili.com/video/BV1nFarzjE6B/)  
 2.位置编码2(https://www.bilibili.com/video/BV1xR1RY9ECm)  
+
+补充数学内容:  
+1.特征值分解(https://www.bilibili.com/video/BV1SzqDBEEwW/)  
+2.SVD(奇异值分解)(https://www.bilibili.com/video/BV1XcfiBeEwQ)  

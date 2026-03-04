@@ -292,6 +292,68 @@ State vector(状态向量)
 transition matrix(转移矩阵)  
 Equilibrium vector(平衡向量),它也是转移矩阵的特征向量  
 
+# 特征值分解   
+$Av_1=\lambda_1v_1$  
+$Av_2=\lambda_2v_2$
+$$
+A
+\begin{bmatrix}
+v_1 & v_2
+\end{bmatrix}
+=
+\begin{bmatrix}
+v_1 & v_2
+\end{bmatrix}
+\begin{bmatrix}
+\lambda_1 & 0\\
+0 & \lambda_2
+\end{bmatrix}
+$$
+$AV=V\Lambda$  
+特征值分解:$A=V\Lambda V^{-1}$  
+可对角化矩阵A:$V^{-1}AV=\Lambda$  
+V可逆是A可对角化的重要条件  
+实对称矩阵:对阵矩阵,且所有数都是实数  
+正交矩阵:满足$A^TA=AA^T=I$  
+# 奇异值分解  
+$A=U\Sigma V^T$  
+$V^T$:建系
+$\Sigma$:伸缩  
+$U$:摆放  
+$$
+\vec x=V
+\begin{bmatrix}
+c_1\\
+c_2
+\end{bmatrix}
+$$
+$$
+\begin{bmatrix}
+c_1\\
+c_2
+\end{bmatrix}
+=V^T\vec x
+$$
+伸缩倍数:奇异值  
+$(A^TA)\vec x=(V\Sigma^2V^T)\vec x$  
+$$
+\Sigma^2=
+\begin{bmatrix}
+\sigma_1^2 & 0\\
+0 & \sigma_2^2
+\end{bmatrix}
+$$
+$(A^TA)=Q\Lambda Q^{-1}$  
+
+计算奇异值分解的方法:  
+$(A^TA)\vec v=\lambda\vec v$  
+$(A^TA-\lambda I)\vec v=\vec 0$  
+$det(A^TA-\lambda I)=0$  
+将特征值全部开根号就得到奇异值  
+所有特征向量拼在一起就得到V  
+
+
+
 
 
 
