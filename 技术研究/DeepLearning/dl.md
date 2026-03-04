@@ -855,6 +855,60 @@ Each object in training image is assigned to grid cell that contains that object
 With two anchor boxes:  
 Each object in training image is assigned to grid cell that contains object's midpoint and  anchor  
 box for the grid cell with highest IoU.  
+# 34.Putting it together:YOLO algorithm  
+y is $3\times 3\times 2\times 8$,$3\times 3$代表网格单元,2代表2个锚框,8代表每个锚框的8个参数    
+$$
+y=
+\begin{bmatrix}
+p_c\\
+b_x\\
+b_y\\
+b_h\\
+b_w\\
+c_1\\
+c_2\\
+c_3\\
+p_c\\
+b_x\\
+b_y\\
+b_h\\
+b_w\\
+c_1\\
+c_2\\
+c_3\\
+\end{bmatrix}
+$$
+1.For each grid call,get 2 predicted bounding boxes.  
+2.Get rid of low probability predictions.  
+3.For each class(pedestrian,car,motorcycle) use non-max suppression to generate final predictions  
+# 35.Region proposals(区域建议)  
+R-CNN:regions with CNNs(基于区域的卷积神经网络)  
+segmentation algorithm(分割算法)  
+R-CNN:Propose regions.Classify proposed regions one at a time.Output label + bounding box.  
+Fast R-CNN:Propose regions.Use convolution implementation of sliding windows to classify all the proposed regions.   
+Faster R-CNN:Use convolutional network to propose regions.   
+# 36.Semantic segmentation with U-Net(U-Net语义分割)  
+一些自动驾驶团队用它来确定哪些像素区域可以安全行驶,因为它们代表可行驶表面  
+自动分割肿瘤  
+Per-pixel class labels(逐像素标签)  
+需要对每个像素分别标注适当的类别标签  
+# 37.Transpose Convolutions(转置卷积)  
+将filter放在输出上  
+将小输入转化为更大的输出   
+# 38.U-Net Architecture intuition(U-Net架构原理)    
+添加跳跃连接:让神经网络可以获取这种高分辨率的低层特征信息  
+# 39.U-Net Architecture(U-Net架构)  
+![Unet](./pictures/Unet.png)   
+# 40.What is face recognition(人脸识别原理)  
+活体检测可以通过监督学习实现  
+Verification  
+Input image,name/ID  
+Output whether the input image is that of the claimed person  
+
+Recognition  
+Has a database of K persons  
+Get an input image  
+Output ID if the image is any of the K persons(or "not recognized")  
 # Part V:Natural Language Processing:Building sequence models
 # 0.Why sequence models?  
 sequence data   
