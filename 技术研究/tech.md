@@ -1,10 +1,15 @@
 吴恩达课程:  
 1.吴恩达nlp视频课(https://www.bilibili.com/video/BV17MnqzNENL)   
 2.吴恩达机器学习视频课(https://www.bilibili.com/video/BV1T8HCzME3d)   
-3.吴恩达深度学习视频课(https://www.bilibili.com/video/BV13HWGzcEh3)      
-4.吴恩达概率论视频课(https://www.bilibili.com/video/BV1E3eAzGEQq)   
-5.吴恩达线性代数和微积分视频课(https://www.bilibili.com/video/BV1WfagzvEXM/)  
-6.吴恩达生成对抗网络(GAN)视频课(https://www.bilibili.com/video/BV1JC4y1T7vZ/)  
+3.吴恩达机器学习经典版(https://www.bilibili.com/video/BV164411b7dx)
+ .吴恩达机器学习补充(https://www.bilibili.com/video/BV1b4anzMEUv)  
+ .吴恩达机器学习补充2(https://www.bilibili.com/video/BV18kmHY6Erz)
+ .吴恩达机器学习补充3(https://www.bilibili.com/video/BV1owrpYKEtP/)
+4.吴恩达深度学习视频课(https://www.bilibili.com/video/BV13HWGzcEh3)      
+5.吴恩达概率论视频课(https://www.bilibili.com/video/BV1E3eAzGEQq)   
+6.吴恩达线性代数和微积分视频课(https://www.bilibili.com/video/BV1WfagzvEXM/)  
+7.吴恩达生成对抗网络(GAN)视频课(https://www.bilibili.com/video/BV1JC4y1T7vZ/)  
+8.强化学习(https://www.bilibili.com/video/BV1Q6pjzzEkK/)  
 
 1.A*算法(https://www.programmercarl.com/kamacoder/0126.%E9%AA%91%E5%A3%AB%E7%9A%84%E6%94%BB%E5%87%BBastar.html#%E6%80%9D%E8%B7%AF)  
 2.cnn卷积(https://blog.csdn.net/weixin_45266856/article/details/132753993)  
@@ -44,3 +49,12 @@ recent week:
 补充数学内容:  
 1.特征值分解(https://www.bilibili.com/video/BV1SzqDBEEwW/)  
 2.SVD(奇异值分解)(https://www.bilibili.com/video/BV1XcfiBeEwQ)  
+
+待学习/复习内容:  
+EM算法  
+核函数  
+支持向量机SVM  
+K-means聚类  
+随机森林  
+决策树  
+XGBoost  

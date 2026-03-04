@@ -909,6 +909,31 @@ Recognition
 Has a database of K persons  
 Get an input image  
 Output ID if the image is any of the K persons(or "not recognized")  
+# 41.One-shot learning(单样本学习)  
+Learning from one example to recognize the person again.  
+
+Learning a "similarity" function  
+d(img1,img2)=degree of difference between images  
+If d(img1,img2)$\leq\tau$,"same"  
+If d(img1,img2)$>\tau$,"different"   
+这就是解决人脸验证问题的方法  
+# 42.Siamese network(孪生网络)  
+$d(x^{(1)},x^{(2)})=||f(x^{(1)})-f(x^{(2)})||_2^2$  
+在两个不同输入上运行两个相同卷积神经网络,然后比较它们的想法,有时被称为孪生神经网络架构  
+Learn parameters so that:  
+If $x^{(i)},x^{(j)}$ are the same person,$||f(x^{(i)})-f(x^{(j)}||^2$ is small  
+If $x^{(i)},x^{(j)}$ are different persons,$||f(x^{(i)})-f(x^{(j)}||^2$ is large  
+# 43.Triplet loss(三元组损失)  
+你总是同时查看三张图像  
+An anchor image,a positive image,a negative image,简写为APN   
+$d(A,P)=||f(A)-f(P)||^2+\alpha\leq ||f(A)-f(N)||^2=d(A,N)$  
+$||f(A)-f(P)||^2-|f(A)-f(N)||^2+\alpha\leq 0$,$使用\alpha$不用0是为了防止神经网络生成全0矩阵   
+$\alpha$被称为margin  
+$\mathcal L(A,P,N)=max(||f(A)-f(P)||^2-|f(A)-f(N)||^2+\alpha,0)$
+$J=\displaystyle\sum_{i=1}^m \mathcal L(A^{(i)},P^{(i)},N^{(i)})$  
+Choose triplets that're "hard" to train on.  
+$d(A,P)\approx d(A,N)$  
+
 # Part V:Natural Language Processing:Building sequence models
 # 0.Why sequence models?  
 sequence data   
