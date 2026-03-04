@@ -1,3 +1,11 @@
+吴恩达课程:  
+1.吴恩达nlp视频课(https://www.bilibili.com/video/BV17MnqzNENL)   
+2.吴恩达机器学习视频课(https://www.bilibili.com/video/BV1T8HCzME3d)   
+3.吴恩达深度学习视频课(https://www.bilibili.com/video/BV13HWGzcEh3)      
+4.吴恩达概率论视频课(https://www.bilibili.com/video/BV1E3eAzGEQq)   
+5.吴恩达线性代数和微积分视频课(https://www.bilibili.com/video/BV1WfagzvEXM/)  
+6.吴恩达生成对抗网络(GAN)视频课(https://www.bilibili.com/video/BV1JC4y1T7vZ/)  
+
 1.A*算法(https://www.programmercarl.com/kamacoder/0126.%E9%AA%91%E5%A3%AB%E7%9A%84%E6%94%BB%E5%87%BBastar.html#%E6%80%9D%E8%B7%AF)  
 2.cnn卷积(https://blog.csdn.net/weixin_45266856/article/details/132753993)  
 3.PyTorch cv(https://blog.csdn.net/sikh_0529/article/details/127522562)  
@@ -12,6 +20,8 @@
 12.混合专家模型(https://blog.csdn.net/leah126/article/details/140095900)   
 13.扩散模型(https://www.zhihu.com/tardis/zm/art/599887666?source_id=1003)    
 
+
+
 recent week:
 14.大模型与知识图谱论文综合(https://zhuanlan.zhihu.com/p/3330517403)  
 15.transformer详解(https://zhuanlan.zhihu.com/p/338817680)  
@@ -21,16 +31,12 @@ recent week:
 19.LLM三种架构(https://zhuanlan.zhihu.com/p/642923989)  
 20.1月AI论文(https://my.feishu.cn/wiki/TPKwwEiLJibN4ek9fcQcYaZAnDd?fromScene=spaceOverview&table=tbllcGzlH3Epph6X&view=vewRB5E2Zs)  
 21.尚硅谷nlp视频课(https://www.bilibili.com/video/BV1k44LzPEhU)   
-22.吴恩达nlp视频课(https://www.bilibili.com/video/BV17MnqzNENL)   
-23.吴恩达机器学习视频课(https://www.bilibili.com/video/BV1T8HCzME3d)   
-24.吴恩达深度学习视频课(https://www.bilibili.com/video/BV13HWGzcEh3)      
-25.吴恩达概率论视频课(https://www.bilibili.com/video/BV1E3eAzGEQq)   
+22.注意力讲解(https://www.bilibili.com/video/BV1QD421n7wV)  
+23.卷积神经网络CNN中的参数量和计算量(https://zhuanlan.zhihu.com/p/366184485)  
+24.transformer残差连接和归一化(https://www.bilibili.com/video/BV1agCeBdEdW/)  
+25.CS336(https://www.bilibili.com/video/BV1xd41zdEek)  
 26.高斯混合模型(GMM)与EM算法详解(https://zhuanlan.zhihu.com/p/655018030)  
-27.吴恩达生成对抗网络(GAN)视频课(https://www.bilibili.com/video/BV1JC4y1T7vZ/)  
-28.位置编码1(https://www.bilibili.com/video/BV1nFarzjE6B/)  
-29.位置编码2(https://www.bilibili.com/video/BV1xR1RY9ECm)  
-30.注意力讲解(https://www.bilibili.com/video/BV1QD421n7wV)  
-31.卷积神经网络CNN中的参数量和计算量(https://zhuanlan.zhihu.com/p/366184485)  
-32.transformer残差连接和归一化(https://www.bilibili.com/video/BV1agCeBdEdW/)  
-33.CS336(https://www.bilibili.com/video/BV1xd41zdEek)  
-34.吴恩达线性代数和微积分视频课(https://www.bilibili.com/video/BV1WfagzvEXM/)  
+
+已完成:  
+1.位置编码1(https://www.bilibili.com/video/BV1nFarzjE6B/)  
+2.位置编码2(https://www.bilibili.com/video/BV1xR1RY9ECm)  
