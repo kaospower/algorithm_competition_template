@@ -177,7 +177,78 @@ $X'=XU[:,0:2]$
 Percentage of Retained Variance=$\frac{\sum_{i=0}^1S_{ii}}{\sum_{j=0}^dS_{jj}}$  
 
 # 40.word vector transformation  
-
+$XR\approx Y$  
+Loss=$||XR-Y||_F$  
+梯度下降:  
+$g=\frac{d}{dR}Loss$ gradient  
+$R=R-\alpha g$ update  
+$$
+\begin{pmatrix}
+2 & 2\\
+2 & 2\\
+\end{pmatrix}
+$$  
+$||A_F||=\sqrt{2^2+2^2+2^2+2^2}=4$  
+Frobenius norm:$||A||_F=\sqrt{\displaystyle\sum_{i=1}^m\displaystyle\sum_{j=1}^n|a_{ij}|^2}$  
+实际使用Frobenius norm的平方更容易  
+$Loss=||XR-Y||_F^2$  
+$g=\frac{d}{dR}Loss=\frac{2}{m}(X^T(XR-Y))$  
+# 41.KNN  
+K-nearest neighbors,for closest matches  
+Hash tables  
+# 42.Hash tables and Hash functions   
+Create a basic hash table  
+```python
+def basic_hash_table(value_l,n_buckets):
+    def hash_function(value,n_buckets):
+        return int(value)%n_buckets  
+    hash_table={i:[] for i in range(n_buckets)}
+    for value in value_l:
+        hash_value=hash_function(value, n_buckets)
+        hash_table[hash_value].append(value)
+    return hash_table
+```
+# 43.Locality sensitive hashing(局部敏感哈希)  
+Which side of the plane?  
+```python
+def side_of_plance(P,v):
+    dotproduct=np.dot(P,v.T)  
+    sign_of_dot_product=np.sign(dotproduct)  
+    sign_of_dot_product_scalar=np.asscalar(sign_of_dot_product)  
+    return sign_of_dot_product_scalar
+```
+# 44.Mutiple planes(多平面)  
+$sign_i\geq 0\rightarrow h_i=1$  
+$sign-i<0\rightarrow h_i=0$  
+$hash=\displaystyle\sum_i^H 2^i\times h_i$  
+Multiple planes,single hash value  
+```python
+def hash_multiple_plane(P_l,v):
+    hash_value=0
+    for i,P in enumerate(P_l):
+        sign=side_of_plane(P,v)
+        hash_i=1 if sign>=0 else 0
+        hash_value+=2**i*hash_i
+    return hash_value
+```
+# 45.approximate nearest neighbors(近似最近邻)  
+Make one set of random planes  
+```python
+num_dimensions=2  #300 in assignment
+num_planes=3 #10 in assignment
+#创建矩阵
+random_planes_matrix=np.random.normal(size=(num_planes,num_dimensions))  
+v=np.array([[2,2]])  
+def side_of_plane_matrix(P,v):
+    dotproduct=np.dot(P,v.T)
+    sign_of_dot_product=np.sign(dotproduct)
+    return sign_of_dot_product
+num_planes_matrix=side_of_plane_matrix(random_planes_matrix,v)
+```
+locality sensitive hashing allows two compute k nearest neighbors,much faster than naive search.  
+# 46.Document Search(文档搜索)  
+text can be embedded into vector spaces so that nearest neighbors refer to text with similar meaning.  
+找到每个单独单词的词向量,然后将它们相加,所有这些词向量的总和成为一个与词向量具有相同维度的文档向量.  
 Part II:probabilistic models and how to use them to predict word sequences  
 Part III:NLP with sequence models  
 Part IV:NLP with attention models  
