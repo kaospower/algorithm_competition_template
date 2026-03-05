@@ -280,6 +280,29 @@ $P(w):$Probability of word
 $C(w):$Number of times the word appears  
 $V:$Total size of the corpus  
 选择概率最高的单词作为自动纠错的替换词  
+# 6.Minimum Edit Distance(最小编辑距离)  
+用于拼写纠正,文档相似度,机器翻译,DNA测序  
+# 7.Minimum Edit Distance Algorithm  
+$D[i,j]=source[:I]\rightarrow target[:j]$  
+# 8.Minimum Edit Distance Algorithm II  
+$$
+D[i,j]=
+min
+\begin{cases}
+D[i-1,j]+del_cost\\
+D[i,j-1]+ins_cost\\
+D[i-1,j-1]+
+\begin{cases}
+rep_cost,if~src[i]\ne tar[j]\\
+0,if~src[i]=tar[j]
+\end{cases}
+\end{cases}
+$$
+# 9.Minimum Edit Distance Algorithm III  
+Levenshtein distance  
+Backtrace  
+Dynamic programming  
+# 12.speech tagging(词性标注)  
 
 Part III:NLP with sequence models  
 Part IV:NLP with attention models  
