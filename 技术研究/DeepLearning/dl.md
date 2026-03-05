@@ -932,9 +932,39 @@ $\alpha$被称为margin
 $\mathcal L(A,P,N)=max(||f(A)-f(P)||^2-|f(A)-f(N)||^2+\alpha,0)$
 $J=\displaystyle\sum_{i=1}^m \mathcal L(A^{(i)},P^{(i)},N^{(i)})$  
 Choose triplets that're "hard" to train on.  
-$d(A,P)\approx d(A,N)$  
+$d(A,P)\approx d(A,N)$
+# 44.Face verification and binary classification(人脸验证与二元分类)  
+输入是一对图像  
+$\hat y=\sigma(\displaystyle\sum_{k=1}^{128}w_i|f(x^{(i)})_k-f(x^{(j)})_k|+b)$  
+$\chi^2=\frac{(f(x^{(i)})_k-f(x^{(j)})_k)^2}{f(x^{(i)})_k+f(x^{(j)})_k}$  
+# 45.What is neural style transfer?(神经风格迁移原理)  
+use content and style to generate image.  
+# 46.What are deep ConvNets learning?(深度卷积网络学习特征)  
+receptive view(感受野)  
+# 47.Cost function(代价函数)  
+$J(G)=\alpha J_{content}(C,G)+\beta J_{style}(S,G)$  
+1.Initiate G randomly,$G:100\times 100\times 3$  
+2.Use gradient descent to minimize J(G),$G:=G-\frac{\partial}{\partial G}J(G)$  
+# 48.Content cost function(内容损失函数)  
+Say you use hidden layer l to compute content cost.  
+Use pre-trained ConvNet.(E.g.,VGG network)  
+Let $a^{[l](C)}$ and $a^{[l](G)}$ be the activation of layer l on the images  
+If $a^{[l](C)}$ and $a^{[l](G)}$ are similar,both images have similar content  
+$J_{content}(C,G)=\frac{1}{2}||a^{[l](c)}-a^{[l](G)}||^2$  
+# 49.Style cost function(风格损失函数)  
+Style matrix  
+Let $a_{i,j,k}^{[l]}$=activation at (i,j,k).$G^{[l]}$ is $n_c^{[l]}\times n_c^{[l]}$  
+$G_{kk'}^{[l](S)}=\displaystyle\sum_{i=1}^{n_H^{[l]}}\displaystyle\sum_{j=1}^{n_W^{[l]}}a_{ijk}^{[l](S)}a_{ijk'}^{[l](S)}$  
+$G_{kk'}^{[l](G)}=\displaystyle\sum_{i=1}^{n_H^{[l]}}\displaystyle\sum_{j=1}^{n_W^{[l]}}a_{ijk}^{[l](G)}a_{ijk}^{[l](G)}$  
+Gram matrix  
 
-# Part V:Natural Language Processing:Building sequence models
+$J_{style}^{[l]}(S,G)=\frac{1}{(2n_H^{[l]}n_W^{[l]}n_C^{[l]})^2}||G^{[l](S)}-G^{[l](G)}||_F^2=
+\frac{1}{(2n_H^{[l]}n_W^{[l]}n_C^{[l]})^2}\displaystyle\sum_k\displaystyle\sum_{k'}(G_{kk'}^{[l](S)}-G_{kk'}^{[l](G)})$  
+使用来自多个不同层的风格代价函数  
+$J_{style}(S,G)=\displaystyle\sum_l\lambda^{[l]}J_{style}^{[l]}(S,G)$  
+# 50.Convolutional Networks in 1D or 3D(一维与三维推广)  
+CAT scans,medical scans,is one example of 3D volumes.   
+# Part V:Natural Language Processing:Building sequence models  
 # 0.Why sequence models?  
 sequence data   
 speech recognition(语音识别)   
