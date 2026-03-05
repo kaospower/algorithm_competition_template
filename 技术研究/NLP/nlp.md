@@ -302,11 +302,81 @@ $$
 Levenshtein distance  
 Backtrace  
 Dynamic programming  
-# 12.speech tagging(词性标注)  
+# 12.parts of speech tagging(词性标注)  
+part of speech(词性)  
+Part of speech(POS) tagging  
 
+Applications of POS tagging  
+make assumptions about semantics  
+identifying named entities  
+coreference resolution(共指消解)  
+speech recognition(语音识别)  
+# 13.Markov chains(马尔可夫链)  
+Markov chains are a type of stochastic model that describes a sequence of possible events.  
+使用有向图来表示马尔可夫链  
+$Q={q_1,q_2,q_3}$  
+# 14.Markov chains and parts of speech tags  
+transition probabilities(转移概率)  
+Markov property  
+transition matrix(转移矩阵)  
+在转移矩阵中,每一行中的所有转移概率应加起来为1  
+initial state
+
+states:$Q=\left\{q_1,...,q_N\right\}$  
+Transition matrix:  
+$$
+\begin{pmatrix}
+a_{1,1} & \cdots & a_{1,N}\\
+\vdots & \ddots & \vdots\\
+a_{N+1,1} & \cdots & a_{N+1,N}
+\end{pmatrix}
+$$
+# 15.hidden Markov models(隐马尔可夫模型)  
+The name Hidden Markov model implies that states are hidden or not directly observable.
+emission probabilities(发射概率)  
+Emission matrix
+$$
+B=
+\begin{pmatrix}
+b_{11} & \cdots & b_{1V}\\
+\vdots & \ddots & \vdots\\
+b_{N1} & \cdots & b_{NV}
+\end{pmatrix}
+$$
 Part III:NLP with sequence models  
 Part IV:NLP with attention models  
-
+# 16.computing probabilities(计算概率)  
+Transition probabilities  
+1.Count occurrences of tag pairs  
+$C(t_{i-1},t_i)$  
+2.Calculate probabilities using the counts  
+$P(t_i|t_{i-1})=\frac{C(t_{i-1},t_i)}{\displaystyle\sum_{j=1}^NC(t_{i-1},t_j)}$  
+# 17.populate transition matrix(填充转移矩阵)  
+smoothing(平滑)  
+$P(t_i|t_{i-1})=\frac{C(t_{i-1},t_i)+\epsilon}{\displaystyle\sum_{j=1}^NC(t_{i-1},t_j)+N*\epsilon}$  
+# 18.populate emission matrix(填充发射矩阵)  
+$P(w_i|t_i)=\frac{C(t_i,w_i)+\epsilon}{\displaystyle\sum_{j=1}^VC(t_i,w_j)+N*\epsilon}=\frac{C(t_i,w_i)+\epsilon}{C(t_i)+N*\epsilon}$  
+N表示标签总数,V表示词表大小  
+# 19.Viterbi algorithm(维特比算法)  
+1.Initialization step  
+2.Forward pass  
+3.Backward pass  
+# 20.Viterbi Initialization  
+C:$c_{i,1}=\pi*b_{i,cindex(w_1)}=a_{1,i}*b_{i,cindex(w_1)}$  
+D:$d_{i,1}=0$  
+# 21.Viterbi Forward pass  
+用类似动态规划的方式实现  
+$c_{i,j}=\mathop{max~}\limits_{k}c_{k,j-1}*a_{k,i}*b_{i,cindex(w_j)}$  
+$d_{i,j}=\mathop{argmax~}\limits_{k}c_{k,j-1}*a_{k,i}*b_{i,cindex(w_j)}$  
+# 22.Viterbi Backward pass  
+如何使用概率矩阵  
+如何使用它来创建路径以便为每个单词分配词性标签    
+在此步骤中检索给定单词序列的最可能的词性标签  
+矩阵D表示最可能生成我们序列的隐藏状态序列  
+$s=\mathop{argmax~}\limits_ic_{i,K}$  
+该索引处的概率是生成给定单词序列的最可能的隐藏状态序列的概率  
+使用对数概率:  
+$log(c_{i,j})=\mathop{max~}\limits_k log(c_{k,j-1})+log(a_k,i)+log(b_i,cindex(w_j))$  
 
 
 
