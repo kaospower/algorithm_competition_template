@@ -28,7 +28,7 @@ the corresponding class.
 Encode a tweet or specifically represented as a vector of dimension 3.  
 In doing so,you'll have a much faster speed for your logistic regression classifier.  
 freqs:dictionary mapping from(word,class) to frequency  
-$X_m=[1,\displaystyle\sum_w freqs(w,1),\displaystyle\sum_w freqs(w,0)]$  
+$X_m=[1,\sum\limits_w freqs(w,1),\sum\limits_w freqs(w,0)]$  
 $X_m:$Features of tweet m.  
 The first feature would be a bias unit equal to 1.  
 The second is the sum of the positive frequencies for every unique word on the tweet.  
@@ -56,10 +56,10 @@ $\theta=\theta-\alpha\nabla$
 $J(\theta)$  
 # 11.logistic regression testing  
 pred=$h(X_{val},\theta)>=0.5$  
-$\displaystyle\sum_{i=1}^m\frac{pred^{(i)}==y_{val}^{(i)}}{m}$  
+$\sum\limits_{i=1}^m\frac{pred^{(i)}==y_{val}^{(i)}}{m}$  
 # 12.logistic regression cost function  
-$J(\theta)=-\frac{1}{m}\displaystyle\sum_{i=1}^m[y^{(i)}log h(x^{(i)},\theta)+(1-y^{(i)})log(1-h(x^{(i)},\theta))]$  
-$-\frac{1}{m}\displaystyle\sum_{i=1}^m:$That indicated that you're going to sum over the cost of each training example.  
+$J(\theta)=-\frac{1}{m}\sum\limits_{i=1}^m[y^{(i)}log h(x^{(i)},\theta)+(1-y^{(i)})log(1-h(x^{(i)},\theta))]$  
+$-\frac{1}{m}\sum\limits_{i=1}^m:$That indicated that you're going to sum over the cost of each training example.  
 $-\frac{1}{m}:$indicating that when combined with the sum,this will be some kind of average.  
 $-:$The minus sign ensures that your overall costs will always be a positive number.
 # 17.Bayes rule  
@@ -69,7 +69,7 @@ It's a very good,quick and dirty baseline for many texts classification tasks.
 an example of supervised machine learning.  
 It's called naive because this method makes the assumption that the features you're using  
 for classification are all independent.  
-$\displaystyle\prod_{i=1}^m\frac{P(w_i|pos)}{P(w_i|neg)}$  
+$\prod\limits_{i=1}^m\frac{P(w_i|pos)}{P(w_i|neg)}$  
 This expression is called the Naive Bayes inference condition rule for binary classification(二元分类的朴素贝叶斯推理条件规则).  
 # 19.Laplacian smoothing(拉普拉斯平滑)  
 a technique you can use to avoid your probabilities being zero.  
@@ -79,18 +79,18 @@ $N_{class}=$frequency of all words in class
 $V_{class}=$number of unique words in class  
 # 20.log likelihoods 1  
 prior ratio(先验比率):$\frac{P(pos)}{P(neg)}$  
-likelihood(似然):$\displaystyle\prod_{i=1}^m\frac{P(w_i|pos)}{P(w_i|neg)}$  
+likelihood(似然):$\prod\limits_{i=1}^m\frac{P(w_i|pos)}{P(w_i|neg)}$  
 $ratio(w)=\frac{P(w|pos)}{P(w|neg)}$  
 $\lambda(w)=log\frac{P(w|pos)}{P(w|neg)}$  
 you can use that to reduce the risk of numerical underflow(减少数值下溢的风险).  
 朴素贝叶斯分数公式:先验比率*似然  
-$t=\frac{P(pos)}{P(neg)}\displaystyle\prod_{i=1}^m\frac{P(w_i|pos)}{P(w_i|neg)}$  
+$t=\frac{P(pos)}{P(neg)}\prod\limits_{i=1}^m\frac{P(w_i|pos)}{P(w_i|neg)}$  
 if t>1:positive  
 if t<1:negative  
 取对数,变成log prior(对数先验)+log likelihood(对数似然)  
-$log(\frac{P(pos)}{P(neg)}\displaystyle\prod_{i=1}^m\frac{P(w_i|pos)}{P(w_i|neg)})=log\frac{P(pos)}{P(neg)}+\displaystyle\sum_{i=1}^m log\frac{P(w_i|pos)}{P(w_i|neg)}$
+$log(\frac{P(pos)}{P(neg)}\prod\limits_{i=1}^m\frac{P(w_i|pos)}{P(w_i|neg)})=log\frac{P(pos)}{P(neg)}+\sum\limits_{i=1}^m log\frac{P(w_i|pos)}{P(w_i|neg)}$
 # 21.log likelihoods 2  
-$\displaystyle\sum_{i=1}^m log\frac{P(w_i|pos)}{P(w_i|neg)}=\displaystyle\sum_{i=1}^m \lambda(w_i)$  
+$\sum\limits_{i=1}^m log\frac{P(w_i|pos)}{P(w_i|neg)}=\sum\limits_{i=1}^m \lambda(w_i)$  
 正值表示推文是正面的,负值表示推文是负面的,0表示推文是中立的   
 # 22.train the Naive Bayes classifier  
 0.Get or annotate a dataset with positive and negative tweets  
@@ -112,7 +112,7 @@ If dataset is balanced,$D_{pos}=D_{neg}$ and log prior=0
 # 23.test the Naive Bayes classifier  
 $X_{val},Y_{val}\rightarrow$ Performance on unseen data  
 Predict using $\lambda$ and logprior for each new tweet  
-Accuracy$\rightarrow\frac{1}{m}\displaystyle\sum_{i=1}^m(pred_i==Y_{val_i})$  
+Accuracy$\rightarrow\frac{1}{m}\sum\limits_{i=1}^m(pred_i==Y_{val_i})$  
 # 24.Application of Naive Bayes  
 Sentiment analysis  
 Author identification  
@@ -140,7 +140,7 @@ You will count the times that words from your vocabulary appear in documents tha
 # 31.Euclidean distance(欧几里得距离)  
 $d(B,A)=\sqrt{(B_1-A_1)^2+(B_2-A_2)^2}$  
 Euclidean distance for n-dimensional vectors:  
-$d(\vec v,\vec w)=\sqrt{\displaystyle\sum_{i=1}^n(v_i-w_i)^2}\rightarrow Norm of (\vec v-\vec w)(比较的向量之间差异的范数)$
+$d(\vec v,\vec w)=\sqrt{\sum\limits_{i=1}^n(v_i-w_i)^2}\rightarrow Norm of (\vec v-\vec w)(比较的向量之间差异的范数)$
 
 ```python
 import numpy as np
@@ -152,8 +152,8 @@ d=np.linalg.norm(v-w)
 # 32.cosine similarity intuition  
 The main advantage of this metric over the Euclidean distance is that it isn't biased by the size difference between the representations.  
 # 33.cosine similarity score  
-vector norm(向量的范数):$||\vec v||=\sqrt{\displaystyle\sum_{i=1}^n v_i^2}$  
-Dot product:$\vec v\cdot\vec w=\displaystyle\sum_{i=1}^n v_i\cdot w_i$  
+vector norm(向量的范数):$||\vec v||=\sqrt{\sum\limits_{i=1}^n v_i^2}$  
+Dot product:$\vec v\cdot\vec w=\sum\limits_{i=1}^n v_i\cdot w_i$  
 $cos(\beta)=\frac{\vec v\cdot \vec w}{||\vec v||||\vec w||}$  
 $Cosine\propto Similarity$  
 Cosine Similarity gives values between 0 and 1  
@@ -174,7 +174,7 @@ SVD:第一个矩阵包含按列堆叠的特征向量,第二个矩阵在对角线
 
 首先,执行词嵌入矩阵与U矩阵(特征向量矩阵)的前n列之间的点积,n等于你最终想要的维度数量    
 $X'=XU[:,0:2]$  
-Percentage of Retained Variance=$\frac{\sum_{i=0}^1S_{ii}}{\sum_{j=0}^dS_{jj}}$  
+Percentage of Retained Variance=$\frac{\sum\limits_{i=0}^1S_{ii}}{\sum\limits_{j=0}^dS_{jj}}$  
 
 # 40.word vector transformation  
 $XR\approx Y$  
@@ -189,7 +189,7 @@ $$
 \end{pmatrix}
 $$  
 $||A_F||=\sqrt{2^2+2^2+2^2+2^2}=4$  
-Frobenius norm:$||A||_F=\sqrt{\displaystyle\sum_{i=1}^m\displaystyle\sum_{j=1}^n|a_{ij}|^2}$  
+Frobenius norm:$||A||_F=\sqrt{\sum_\limits{i=1}^m\sum\limits_{j=1}^n|a_{ij}|^2}$  
 实际使用Frobenius norm的平方更容易  
 $Loss=||XR-Y||_F^2$  
 $g=\frac{d}{dR}Loss=\frac{2}{m}(X^T(XR-Y))$  
@@ -220,7 +220,7 @@ def side_of_plance(P,v):
 # 44.Mutiple planes(多平面)  
 $sign_i\geq 0\rightarrow h_i=1$  
 $sign-i<0\rightarrow h_i=0$  
-$hash=\displaystyle\sum_i^H 2^i\times h_i$  
+$hash=\sum_i\limits^H 2^i\times h_i$  
 Multiple planes,single hash value  
 ```python
 def hash_multiple_plane(P_l,v):
@@ -275,10 +275,10 @@ Switch(相邻交换)
 Replace(替换)  
 # 5.Building the model 2  
 Calculate word probabilities  
-$P(w)=\frac{C(w)}{V}$
-$P(w):$Probability of word
-$C(w):$Number of times the word appears  
-$V:$Total size of the corpus  
+$P(w)=\frac{C(w)}{V}$  
+$P(w):$Probability of word  
+$C(w):$Number of times the word appears    
+$V:$Total size of the corpus   
 选择概率最高的单词作为自动纠错的替换词  
 # 6.Minimum Edit Distance(最小编辑距离)  
 用于拼写纠正,文档相似度,机器翻译,DNA测序  
@@ -350,12 +350,12 @@ Transition probabilities
 1.Count occurrences of tag pairs  
 $C(t_{i-1},t_i)$  
 2.Calculate probabilities using the counts  
-$P(t_i|t_{i-1})=\frac{C(t_{i-1},t_i)}{\displaystyle\sum_{j=1}^NC(t_{i-1},t_j)}$  
+$P(t_i|t_{i-1})=\frac{C(t_{i-1},t_i)}{\sum\limits_{j=1}^NC(t_{i-1},t_j)}$  
 # 17.populate transition matrix(填充转移矩阵)  
 smoothing(平滑)  
-$P(t_i|t_{i-1})=\frac{C(t_{i-1},t_i)+\epsilon}{\displaystyle\sum_{j=1}^NC(t_{i-1},t_j)+N*\epsilon}$  
+$P(t_i|t_{i-1})=\frac{C(t_{i-1},t_i)+\epsilon}{\sum\limits_{j=1}^NC(t_{i-1},t_j)+N*\epsilon}$  
 # 18.populate emission matrix(填充发射矩阵)  
-$P(w_i|t_i)=\frac{C(t_i,w_i)+\epsilon}{\displaystyle\sum_{j=1}^VC(t_i,w_j)+N*\epsilon}=\frac{C(t_i,w_i)+\epsilon}{C(t_i)+N*\epsilon}$  
+$P(w_i|t_i)=\frac{C(t_i,w_i)+\epsilon}{\sum_\limits{j=1}^VC(t_i,w_j)+N*\epsilon}=\frac{C(t_i,w_i)+\epsilon}{C(t_i)+N*\epsilon}$  
 N表示标签总数,V表示词表大小  
 # 19.Viterbi algorithm(维特比算法)  
 1.Initialization step  
@@ -377,6 +377,33 @@ $s=\mathop{argmax~}\limits_ic_{i,K}$
 该索引处的概率是生成给定单词序列的最可能的隐藏状态序列的概率  
 使用对数概率:  
 $log(c_{i,j})=\mathop{max~}\limits_k log(c_{k,j-1})+log(a_k,i)+log(b_i,cindex(w_j))$  
+# 24.Week Introduction  
+complete(自动补全)  
+# 25.N-grams overview(N元语法概述)  
+Create language model(LM) from text corpus to  
+Estimate probability of word sequences  
+Estimate probability of a word following a sequence of words  
+Apply this concept to autocomplete a sentence with most likely suggestions  
+
+Other Applications  
+Speech recognition  
+Spelling correction  
+Augmentative communication(辅助沟通系统)  
+# 26.N-gram language models and probabilities  
+An N-gram is a sequence of N words.  
+
+Sequence notation:  
+$w_1^m=w_1w_2\cdots w_m$  
+$w_1^3=w_1w_2w_3$  
+$w_{m-2}^m=w_{m-2}w_{m-1}w_m$  
+
+Unigram probability(一元语法概率)  
+$P(w)=\frac{C(w)}{m}$  
+
+Bigram probability(二元语法概率)  
+$P(y\mid x)=\frac{C(x,y)}{\sum\limits_w C(x,w)}=\frac{C(x,y)}{C(x)}$  
+
+
 
 
 
