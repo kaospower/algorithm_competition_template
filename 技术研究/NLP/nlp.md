@@ -403,7 +403,48 @@ $P(w)=\frac{C(w)}{m}$
 Bigram probability(二元语法概率)  
 $P(y\mid x)=\frac{C(x,y)}{\sum\limits_w C(x,w)}=\frac{C(x,y)}{C(x)}$  
 
+Trigram probability(三元语法概率)  
+$P(w_3|w_1^2)=\frac{C(w_1^2w_3)}{C(w_1^2)}$  
+$C(w_1^2w_3)=C(w_1w_2w_3)=C(w_1^3)$  
 
+N-gram probability(N元语法概率)  
+$P(w_N|w_1^{N-1})=\frac{C(w_1^{N-1}w_N)}{C(w_1^{N-1})}$  
+$C(w_1^{N-1}w_N)=C(w_1^N)$
+# 27.Probability of a sequence(序列概率)  
+Conditional probability and chain rule reminder  
+$P(B|A)=\frac{P(A,B)}{P(A)}\Rightarrow P(A,B)=P(A)P(B|A)$  
+$P(A,B,C,D)=P(A)P(B|A)P(C|A,B)P(D|A,B,C)$  
+Problem:Corpus almost never contains the exact sentence we're interested in or even its longer subsequences.  
+
+Approximation of sequence probability  
+$P(tea|the~teacher~drinks)\approx P(tea|drinks)$  
+$P(the~teacher~drinks~tea)=P(the)P(teacher|the)P(drinks|teacher)P(tea|drinks)$  
+Markov assumption:only last N words matter  
+$Bigram:P(w_n|w_1^{n-1})\approx P(w_n|w_{n-1})$  
+$N-gram:P(w_n|w_1^{n-1})\approx P(w_n|w_{n-N+1}^{n-1})$  
+
+Entire sentence modeled with bigram:$P(w_1^n)\approx\prod\limits_{i=1}^nP(w_i|w_{i-1})$  
+$P(w_1^n)\approx P(w_1)P(w_2|w_1)\cdots P(w_n|w_{n-1})$  
+# 28.beginning and the end of a sentence(句子开始与结束)  
+Start of sentence token $\langle s\rangle$  
+$P(\langle s\rangle ~the~teacher~drinks~tea)\approx P(the|\langle s\rangle)P(teacher|the)P(drinks|teacher)P(tea|drinks)$  
+Start of sentence token $\langle s\rangle$ for N-grams  
+$P(w_1^n)\approx P(w_1|\langle s\rangle\langle s\rangle)P(w_2|\langle s\rangle w_1)\cdots P(w_n|w_{n-2}w_{n-1})$  
+
+N-gram model:add N-1 start tokens $\langle s\rangle$  
+
+End of sentence token $\langle /s\rangle$  
+Corpus:  
+$\langle s\rangle yes~no$  
+$\langle s\rangle yes~yes$  
+$\langle s\rangle no~no$  
+$P(\langle s\rangle ~yes~yes)=$
+$P(yes|\langle s\rangle)\times P(yes|yes)=$
+$\frac{C(\langle s\rangle yes)}{\sum\limits_wC(\langle s\rangle w)}\times$
+$\frac{C(yes~yes)}{\sum\limits_wC(yes~w)}=$
+$\frac{2}{3}\times\frac{1}{2}=\frac{1}{3}$  
+$N-gram\Rightarrow just~one\langle/s\rangle$  
+the teacher drinks tea$\Rightarrow\langle s\rangle\langle s\rangle$the teacher drinks tea $\langle /s\rangle$  
 
 
 
