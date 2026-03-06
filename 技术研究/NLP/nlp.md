@@ -445,6 +445,32 @@ $\frac{C(yes~yes)}{\sum\limits_wC(yes~w)}=$
 $\frac{2}{3}\times\frac{1}{2}=\frac{1}{3}$  
 $N-gram\Rightarrow just~one\langle/s\rangle$  
 the teacher drinks tea$\Rightarrow\langle s\rangle\langle s\rangle$the teacher drinks tea $\langle /s\rangle$  
+# 29.N-gram language model  
+$P(w_n|w_{n-N+1}^{n-1})=\frac{C(w_{n-N+1}^{n-1},w_n)}{C(w_{n-N+1}^{n-1})}$  
+Count matrix  
+
+Probability matrix  
+Divide each cell by its row sum  
+$sum(row)=\sum\limits_{m \in V}C(w_{n-N+1}^{n-1},w)=C(w_{n-N+1}^{n-1})$  
+
+probability matrix $\Rightarrow$ language model  
+Sentence probability  
+Next word prediction  
+
+Sentence probability:  
+$\langle s\rangle I~learn\langle /s\rangle$  
+$P(sentence)=P(I|\langle /s\rangle)P(learn|I)P(\langle /s\rangle|learn)=1\times 0.5\times 1=0.5$  
+
+Log probability  
+$P(w_1^n)\approx\prod\limits_{i=1}^nP(w_i|w_{i-1})$  
+All probabilities in calculation $\leq$ 1 and multiplying them brings risk of underflow.  
+
+Generative Language model  
+Algorithm:  
+1.Choose sentence start  
+2.Choose next bigram starting with previous word  
+3.Continue until $\langle/s\rangle$ is picked  
+
 
 
 
