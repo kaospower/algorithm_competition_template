@@ -470,6 +470,60 @@ Algorithm:
 1.Choose sentence start  
 2.Choose next bigram starting with previous word  
 3.Continue until $\langle/s\rangle$ is picked  
+# 30.language model evaluation  
+perplexity(困惑度):评估语言模型的重要指标  
+Test data-split method:Continuous text,Random short sequences  
+
+Perplexity:  
+$PP(W)=P(s_1,s_2,\cdots,s_m)^{-\frac{1}{m}}$  
+困惑度视为文本复杂性的度量  
+Smaller perplexity=better model  
+好的语言模型的困惑度分数在20到60之间  
+
+Perplexity for bigram models  
+$PP(W)=\sqrt[m]{\prod\limits_{i=1}^m\prod\limits_{j=1}^{|s_i|}\frac{1}{P(w_j^{(i)}|w_{j-1}^{(i)})}},w_j^{(i)}\rightarrow$ j-th word in i-th sentence  
+concatenate all sentences in W  
+$PP(W)=\sqrt[m]{\prod\limits_{i=1}^m\frac{1}{P(w_i|w_{i-1})}},w_i\rightarrow$ i-th word in test set  
+
+Log perplexity  
+$logPP(W)=-\frac{1}{m}\sum\limits_{i=1}^mlog_2(P(w_i|w_{i-1}))$  
+# 31.Out of vocabulary words(词汇外单词)  
+开放词汇简单意味着可能会遇到词汇表外的单词  
+Unknown word=Out of vocabulary word(OOV)  
+special tag <UNK> in corpus and in input  
+
+Using <UNK> in corpus  
+Create vocabulary V  
+Replace any word in corpus and not in V by <UNK>  
+Count the probabilities with <UNK> as with any other word  
+
+How to create vocabulary V  
+Criteria:  
+Min word frequency f  
+Max |V|,include words by frequency  
+
+Use <UNK> sparingly  
+
+Perplexity-only compare LMs with the same V  
+# 32.smoothing  
+Missing N-grams in training corpus  
+Add-one smoothing(Laplacian smoothing)  
+$P(w_n|w_{n-1})=\frac{C(w_{n-1,w_n})+1}{\sum_{w\in V}(C(w_{n-1},w)+1)}=\frac{C(w_{n-1},w_n)+1}{C(w_{n-1})+V}$  
+Add-k smoothing  
+$P(w_n|w_{n-1})=\frac{C(w_{n-1,w_n})+k}{\sum_{w\in V}(C(w_{n-1},w)+k)}=\frac{C(w_{n-1},w_n)+k}{C(w_{n-1})+k*V}$  
+
+backoff(回退)  
+If N-gram missing$\Rightarrow$ use (N-1)-gram  
+Probability discounting  
+"Stupid" backoff,在N-1元语法前乘上一个常数  
+
+Linear interpolation(线性插值)  
+$\hat P(w_n|w_{n-2}w_{n-1})=\lambda_1\times P(w_n|w_{n-2}w_{n-1})+\lambda_2\times P(w_n|w_{n-1})+\lambda_3\times P(w_n)$  
+$\sum\limits_i \lambda_i=1$  
+$\lambda$是从语料库的验证部分学习的,可以通过最大化验证集中句子的概率来获得它们  
+使用从语料库训练部分训练的固定语言模型来计算N元语法概率并优化$\lambda$值  
+
+
 
 
 
