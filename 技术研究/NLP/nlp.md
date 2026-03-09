@@ -1,4 +1,5 @@
-Part I:Basis 
+# Part I:Basis 
+
 # 2.Introduction  
 Logistic regression algorithms are particularly useful because they are easy to train and provide you with  
 a good baseline result.  
@@ -249,7 +250,9 @@ locality sensitive hashing allows two compute k nearest neighbors,much faster th
 # 46.Document Search(文档搜索)  
 text can be embedded into vector spaces so that nearest neighbors refer to text with similar meaning.  
 找到每个单独单词的词向量,然后将它们相加,所有这些词向量的总和成为一个与词向量具有相同维度的文档向量.  
-Part II:probabilistic models and how to use them to predict word sequences  
+
+# Part II:probabilistic models and how to use them to predict word sequences  
+
 # 0.Introduction  
 auto-correction(自动纠错)  
 web search suggestions(网站搜索建议)  
@@ -343,8 +346,6 @@ b_{11} & \cdots & b_{1V}\\
 b_{N1} & \cdots & b_{NV}
 \end{pmatrix}
 $$
-Part III:NLP with sequence models  
-Part IV:NLP with attention models  
 # 16.computing probabilities(计算概率)  
 Transition probabilities  
 1.Count occurrences of tag pairs  
@@ -522,6 +523,96 @@ $\hat P(w_n|w_{n-2}w_{n-1})=\lambda_1\times P(w_n|w_{n-2}w_{n-1})+\lambda_2\time
 $\sum\limits_i \lambda_i=1$  
 $\lambda$是从语料库的验证部分学习的,可以通过最大化验证集中句子的概率来获得它们  
 使用从语料库训练部分训练的固定语言模型来计算N元语法概率并优化$\lambda$值  
+
+# 36.Overview
+word vectors/word embeddings  
+创建词嵌入的多种方法:  
+CBOW(continuous bag-of-words,连续词袋模型)  
+GloVe  
+Word2Vec  
+# 37.basic representations of words
+One-hot vectors(独热向量):向量长度等于词汇表大小,对应词汇下标的位置为1,其他位置全为0  
+优点:简单,不包含隐含顺序信息  
+缺点:Huge vectors,No embedded meaning  
+# 38.word embedding  
+word embedding的特点:low dimension,embed meaning  
+# 39.Word embedding process  
+Corpus+Embedding method  
+
+Corpus:words in context  
+Embedding method:machine learning method,self-supervised(自监督学习,等于unsupervised+supervised)  
+Hyperparameters:word embedding size  
+Transformation:words to integers/vectors  
+
+Part III:NLP with sequence models  
+Part IV:NLP with attention models  
+# 40.Basic word embedding methods  
+word2vec:use a shallow neural network to learn word embeddings  
+CBOW(continuous bag-of-words,连续词袋模型):学习预测给定周围单词的缺失单词  
+Continuous skip-gram(连续跳字模型)/Skip-gram with negative sampling(SGNG,带负采样的跳字模型)  
+学习预测给定输入单词的周围单词  
+
+Global Vectors(GloVe):涉及分解语料库词共现矩阵的对数  
+
+fastText:基于跳字模型,并通过将单词表示为字符的n-gram来考虑单词的结构,使模型能够支持外部词汇单词(out-of-vocabulary words,OOV words)  
+
+Advanced word embedding models:  
+
+Tunable pre-trained models available  
+Deep learning,contextual embeddings  
+BERT(Bidirectional Encoder Representations),BERT只使用transformer中的encoder  
+ELMo(embeddings from language models)  
+GPT-2(generative pretraining 2)  
+
+# 41.Continuous bag-of-words model  
+context words,center word  
+hyperparameter:context half-size  
+window:center word plus the context words  
+context words as inputs,center word as outputs  
+
+# 42.cleaning and tokenization(清洗与分词)  
+Letter case,Punctuation,Numbers,Special characters,Special words  
+tokenize:把一段文本拆分成一个个token(单词,字符,字词,标点等等)  
+```python
+import nltk
+from nltk.tokenize import word_tokenize
+import emoji
+
+nltk.download('punkt')
+corpus='Who ❤️ "word embeddings" in 2020? I do!!!'
+#分词前的清洗
+data=re.sub(r'[,!?;-]+','.',corpus)
+data=nltk.word_tokenize(data) #tokenize string to words
+data=[ch.lower() for ch in data 
+      if ch.isalpha()
+      or ch=='.'
+      or emoji.get_emoji_regexp().search(ch)
+      ]
+```
+# 43.sliding window of words in python  
+```python
+#words:token数组,C:上下文半径
+def get_windows(words,C):
+    i=C
+    while i<len(words)-C:
+        center_word=words[i]
+        context_words=words[(i-C):i]+words[(i+1):(i+C+1)]
+        #yield是生成器函数,可以多次返回
+        yield context_words,center_word
+        i+=1
+
+for x,y in get_windows(
+    ['i','am','happy','because','i','am','learning'],
+    2
+        ):
+    print(f'{x}\t{y}')
+```
+# 44.Transforming Words into Vectors  
+对于center word,使用one-hot vector将其转化为向量  
+对于context words,使用on-hot vectors的平均值将其转化为向量  
+
+
+
 
 
 
