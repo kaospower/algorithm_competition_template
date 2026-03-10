@@ -1,5 +1,5 @@
 Part I Machine Learning Basis  
-# 10 Cost Function(成本函数)  
+# 10.Cost Function(代价函数)  
 Model:$f_{w,b}(x)=wx+b$  
 w,b:parameters,coefficients,weights  
 Squared error cost function:$J(w,b)=\frac{1}{2m}\displaystyle\sum_{i=1}^m(\hat y(i)-y(i))^2$  
@@ -132,6 +132,70 @@ $Recall=\frac{True~positive}{actual~positive}=\frac{TP}{TP+FN}$
 In general,a learning algorithm with either 0 precision or 0 recall is not a  
 useful algorithm.  
 # 48.Trading off precision and recall  
-平衡精确率和召回律  
+平衡精确率和召回率    
 harmonic mean of P and R(调和平均数):强调较小值  
 $F1~score=\frac{1}{\frac{1}{2}(\frac{1}{Precision}+\frac{1}{Recall})}=2\frac{Precision\cdot Recall}{Precision+Recall}$
+
+经典机器学习算法  
+# 1.decision tree(决策树)  
+分类和回归树(CART)  
+ID3算法  
+C4.5和C5.0算法  
+CHAID算法  
+单层决策树  
+M5算法  
+条件决策树  
+# 2.random forests(随机森林)  
+# 3.logistic regression(逻辑回归)    
+# 4.SVM(支持向量机)  
+# 5.KNN(最临近规则分类)  
+# 6.贝叶斯算法  
+Naive Bayes(朴素贝叶斯)  
+高斯朴素贝叶斯  
+多项式朴素贝叶斯  
+AODE  
+BBN(贝叶斯信念网络)  
+BN(贝叶斯网络)  
+# 7.Cluster(聚类)  
+k-Means  
+k-中位数  
+EM算法  
+分层聚类算法  
+# 8.降维算法  
+PCA(主成分分析)  
+PCR(主成分回归)  
+PLSR(偏最小二乘回归)  
+萨蒙映射  
+MDS(多维尺度分析法)  
+PP(投影寻踪法)  
+LDA(线性判别分析法)  
+MDA(混合判别分析法)  
+QDA(二次判别分析法)  
+FDA(灵活判别分析法)  
+# 9.模型融合算法  
+Boosting  
+Bagging  
+AdaBoost  
+GBDT(梯度提升树)  
+XGBoost  
+堆叠泛化(混合)  
+GBM算法  
+GBRT算法
+
+其他机器学习算法  
+# 1.协同过滤  
+# 2.关联规则学习  
+Apriori  
+Eclat  
+# 3.人工神经网络  
+perceptron(感知机)  
+backpropagation(反向传播)  
+Hopfield网络  
+RBFN(径向基函数网络)  
+# 4.深度学习算法  
+DBM(深度玻尔兹曼机)  
+DBN(深度信念网络)  
+CNN(卷积神经网络)  
+Stacked Auto-Encoder(栈式自编码算法)  
+
+

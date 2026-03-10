@@ -1,7 +1,7 @@
 吴恩达课程:  
 1.吴恩达nlp视频课(https://www.bilibili.com/video/BV17MnqzNENL)   
-2.吴恩达机器学习视频课(https://www.bilibili.com/video/BV1T8HCzME3d)   
-3.吴恩达机器学习经典版(https://www.bilibili.com/video/BV164411b7dx)
+2.吴恩达机器学习经典版(完全版本)(https://www.bilibili.com/video/BV164411b7dx)  
+3.吴恩达机器学习视频课(缺失了较多内容)(https://www.bilibili.com/video/BV1T8HCzME3d)  
  .吴恩达机器学习补充(https://www.bilibili.com/video/BV1b4anzMEUv)  
  .吴恩达机器学习补充2(https://www.bilibili.com/video/BV18kmHY6Erz)
  .吴恩达机器学习补充3(https://www.bilibili.com/video/BV1owrpYKEtP/)
@@ -41,7 +41,7 @@ recent week:
 24.transformer残差连接和归一化(https://www.bilibili.com/video/BV1agCeBdEdW/)  
 25.CS336(https://www.bilibili.com/video/BV1xd41zdEek)  
 26.高斯混合模型(GMM)与EM算法详解(https://zhuanlan.zhihu.com/p/655018030)  
-
+27.35个机器学习算法(https://bigquant.com/wiki/doc/x0NCfKzmja)  
 已完成:  
 1.位置编码1(https://www.bilibili.com/video/BV1nFarzjE6B/)  
 2.位置编码2(https://www.bilibili.com/video/BV1xR1RY9ECm)  

@@ -544,8 +544,6 @@ Embedding method:machine learning method,self-supervised(自监督学习,等于u
 Hyperparameters:word embedding size  
 Transformation:words to integers/vectors  
 
-Part III:NLP with sequence models  
-Part IV:NLP with attention models  
 # 40.Basic word embedding methods  
 word2vec:use a shallow neural network to learn word embeddings  
 CBOW(continuous bag-of-words,连续词袋模型):学习预测给定周围单词的缺失单词  
@@ -612,6 +610,7 @@ for x,y in get_windows(
 对于context words,使用on-hot vectors的平均值将其转化为向量  
 
 # 45.Architecture of the CBOW model  
+使用一个浅层神经全连接神经网络,包含三层:输入,隐藏,输出,其训练结果的副产品(权重)就是我们想要的词嵌入向量  
 a shallow dense neural network with an input layer,a single hidden layer,and an output layer.  
 Hidden layer activation function:ReLU  
 Output layer activation function:softmax  
@@ -638,11 +637,13 @@ $z_1(1\times N),W_1(N\times V),x(1\times V),b_1(1\times N)$
 
 Dimensions(batch input)  
 Input layer:$X(V\times m)$  
+m:batch size(批量大小),超参数    
 $Z_1=W_1X+B_1$  
 $W_1(N\times V),B_1(N\times m)$  
 $Z_1=W_1X+B_1(N\times m)$
 $H=ReLU(Z_1)(N\times m)$  
 Hidden layer:$H(N\times m)$  
+N:word embedding size,hyperparameter  
 $Z_2=W_2H+B_2(V\times m)$  
 $W_2(V\times N),B_2(V\times m)$  
 $\hat Y=softmax(Z_2)(V\times m)$  
@@ -687,8 +688,30 @@ $W_2:=W_2-\alpha\frac{\partial J_{batch}}{\partial W_2}$
 $b_1:=b_1-\alpha\frac{\partial J_{batch}}{\partial b_1}$  
 $b_2:=b_2-\alpha\frac{\partial J_{batch}}{\partial b_2}$  
 
+# 52.Extracting Word Embedding Vectors  
+在反向传播结束之后,从两个权重矩阵的平均值中提取出词嵌入向量  
+两个权重矩阵分别为输入到隐藏层,隐藏到输出层  
+$W_3=0.5(W_1+W_2^T),N\times V$,第j列对应输入的第j个token  
 
+# 53.Evaluating Word Embeddings:intrinsic evaluation(内在评估)  
+内在评估方法评估词嵌入如何内在地捕捉词语之间的语义或句法关系  
+语义指的是词语的含义,而句法指的是语法  
+clustering,analogies,visualization(聚类,类比,可视化)  
+# 54.Evaluating Word Embeddings:extrinsic evaluation(外在评估)  
+Test word embeddings on external task  
 
+NLP and machine learning libraries  
+在相关深度学习框架中,embedding可以通过调用API实现,其内部原理是使用反向传播,然后从权重矩阵中提取出词向量   
+```python
+#Keras
+#第一个参数V代表词汇表大小,第二个参数m代表想要得到的向量维度,是自定义的超参数
+embed_layer=Embedding(10000,400)
+#PyTorch
+embed_layer=nn.Embedding(10000,400)
+```
+
+Part III:NLP with sequence models  
+Part IV:NLP with attention models  
 
 
 
