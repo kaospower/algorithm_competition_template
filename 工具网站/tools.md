@@ -1,3 +1,7 @@
+# 0.LLM  
+1.Claude(https://claude.ai/chat/)  
+2.GPT(https://chatgpt.com/)  
+
 # 1.查阅
 1.latex公式手册(https://www.cnblogs.com/1024th/p/11623258.html)  
 2.剑桥词典(https://dictionary.cambridge.org/)  
