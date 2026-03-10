@@ -1,6 +1,6 @@
 # 将项目添加到git
 
-进入pycharm终端,cd到项目所在目录
+进入PyCharm终端,cd到项目所在目录
 
 初始化git仓库
 
@@ -18,7 +18,7 @@
 
 `git push -u origin main`
 
-# 推送远程仓库失败(貌似是pycharm的bug)
+# 推送远程仓库失败(貌似是PyCharm的bug)
 `关闭所有程序,重启电脑`
 
 `git pull origin main --rebase`
