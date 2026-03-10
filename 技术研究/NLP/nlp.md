@@ -611,10 +611,81 @@ for x,y in get_windows(
 对于center word,使用one-hot vector将其转化为向量  
 对于context words,使用on-hot vectors的平均值将其转化为向量  
 
+# 45.Architecture of the CBOW model  
+a shallow dense neural network with an input layer,a single hidden layer,and an output layer.  
+Hidden layer activation function:ReLU  
+Output layer activation function:softmax  
 
+# 46.Architecture of the CBOW Model:Dimensions  
+Input layer:$x(V\times 1)$  
+$z_1=W_1x+b_1,W_1(N\times V),b_1(N\times 1)$  
+$h=ReLU(z_1)$
+Hidden layer:$h(N\times 1)$  
+$z_2=W_2h+b_2$  
+$W_2(V\times N),b_2(V\times 1)$  
+$\hat y=softmax(z_2)$  
+Output layer:$\hat y(V\times 1)$  
 
+Column vectors  
+$z_1=W_1x+b_1$  
+$z_1(N\times 1),W_1(N\times V),x(V\times 1),b_1(N\times 1)$  
+Row vectors  
+$z_1=xW_1^T+b_1$  
+$z_1(1\times N),W_1(N\times V),x(1\times V),b_1(1\times N)$  
 
+# 47.Architecture of the CBOW Model:Dimensions 2  
+将多个例子同时输入神经网络被称为批处理  
 
+Dimensions(batch input)  
+Input layer:$X(V\times m)$  
+$Z_1=W_1X+B_1$  
+$W_1(N\times V),B_1(N\times m)$  
+$Z_1=W_1X+B_1(N\times m)$
+$H=ReLU(Z_1)(N\times m)$  
+Hidden layer:$H(N\times m)$  
+$Z_2=W_2H+B_2(V\times m)$  
+$W_2(V\times N),B_2(V\times m)$  
+$\hat Y=softmax(Z_2)(V\times m)$  
+Output layer:$\hat Y(V\times m)$  
+
+# 49.CBOW model cost function  training  
+cross entropy loss function is often used with classification models which often go hand in hand with  
+the softmax output player in your own networks.  
+$J=-\sum\limits_{k=1}^Vy_klog\hat y_k$  
+$J=-log\hat y_{actual word}$  
+
+# 50.Training a CBOW Model:forward propagation  
+Training process  
+Forward propagation  
+Cost  
+Backpropagation and gradient descent  
+
+Cost
+cost:mean of losses  
+$J_{batch}=-\frac{1}{m}\sum\limits_{i=1}^m\sum\limits_{j=1}^Vy_j^{(i)}log\hat y_j^{(i)}$  
+$J_{batch}=\frac{1}{m}\sum\limits_{i=1}^mJ^{(i)}$  
+
+# 51.Training a CBOW Model:backpropagation and gradient descent  
+Backpropagation:calculate partial derivatives of cost with respect to weights and biases  
+gradient descent:update weights and biases  
+
+Backpropagation  
+$\frac{\partial J_{batch}}{\partial W_1}=\frac{1}{m}(W_2^T(\hat Y-Y)\cdot step(Z_1))X^T$  
+$\frac{\partial J_{batch}}{\partial W_2}=\frac{1}{m}(\hat Y-Y)H^T$  
+$\frac{\partial J_{batch}}{\partial b_1}=\frac{1}{m}(W_2^T(\hat Y-Y)\cdot step(Z_1))1_m^T$  
+$\frac{\partial J_{batch}}{\partial b_2}=\frac{1}{m}(\hat Y-Y)1_m^T$  
+$1_m^T$:一个包含m个元素的列向量,所有元素都是1  
+```python
+import numpy as np
+np.sum(a,axis=1,keepdims=True)
+```
+
+Gradient descent  
+Hyperparameter:learning rate $\alpha$  
+$W_1:=W_1-\alpha\frac{\partial J_{batch}}{\partial W_1}$  
+$W_2:=W_2-\alpha\frac{\partial J_{batch}}{\partial W_2}$  
+$b_1:=b_1-\alpha\frac{\partial J_{batch}}{\partial b_1}$  
+$b_2:=b_2-\alpha\frac{\partial J_{batch}}{\partial b_2}$  
 
 
 
