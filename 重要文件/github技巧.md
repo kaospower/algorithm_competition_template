@@ -1,3 +1,8 @@
+# 初始化项目  
+新建项目  
+然后点击Git/share on github  
+创建仓库  
+注意设置中不要勾选git clone repository using ssh  
 # 将项目添加到git
 
 进入PyCharm终端,cd到项目所在目录
