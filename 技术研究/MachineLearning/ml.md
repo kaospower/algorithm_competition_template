@@ -148,6 +148,29 @@ M5算法
 # 2.random forests(随机森林)  
 # 3.logistic regression(逻辑回归)    
 # 4.SVM(支持向量机)  
+# 1.Optimization objective  
+$h_\theta(x)=\frac{1}{1+e^{-\theta^Tx}}$  
+If y=1,we want $h_\theta(x)\approx 1,\theta^Tx\gg0$  
+If y=0,we want $h_\theta(x)\approx 0,\theta^Tx\ll0$  
+Cost of example:  
+$-(ylog h_{\theta}(x)+(1-y)log(1-h_{\theta}(x)))$  
+$=-ylog\frac{1}{1+e^{-\theta^Tx}}-(1-y)log(1-\frac{1}{1+e^{-\theta^Tx}})$  
+If y=1$(want~\theta^Tx\gg0):-log\frac{1}{1+e^{-z}}$   
+If y=0$(want~\theta^Tx\ll0):-log(1-\frac{1}{1+e^{-z}})$  
+
+Logistic regression:  
+$\mathop{min}\limits_{\theta}\frac{1}{m}[\sum\limits_{i=1}^my^{(i)}(-logh_{\theta}(x^{(i)}))+(1-y^{(i)})((-log(1-h_{\theta}(x^{(i)})))]+\frac{\lambda}{2m}\sum\limits_{j=1}^n\theta_j^2$  
+Support vector machine:  
+![SVN](./pictures/SVN1.png)  
+$\mathop{min}\limits_{\theta}C[\sum\limits_{i=1}^my^{(i)}cost1(\theta^Tx^{(i)})+(1-y^{(i)})cost_0(\theta^Tx^{(i)})]+\frac{1}{2}\sum\limits_{j=1}^n\theta_j^2$  
+Hypothesis:  
+$$
+h_{\theta}(x)=
+\begin{cases}
+1 & if~\theta^Tx\gg0\\
+0 & otherwise
+\end{cases}
+$$
 # 5.KNN(最临近规则分类)  
 # 6.贝叶斯算法  
 Naive Bayes(朴素贝叶斯)  
