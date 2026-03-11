@@ -753,6 +753,7 @@ decoder:输出
 
 RNN可以用于机器翻译和字幕生成  
 # 9.math behind RNN  
+![RNN architecture](./pictures/RNN2.png)  
 hidden state:$h^{\langle t\rangle}=g(W_h[h^{\langle t-1\rangle},x^{\langle t\rangle}]+b_h)=g(W_{hh}h^{\langle t-1\rangle}+W_{hx}x^{\langle t\rangle}+b_h)$    
 output:$\hat y^{\langle t\rangle}=g(W_{yh}h^{\langle t\rangle}+b_y)$  
 
@@ -765,7 +766,7 @@ Cross Entropy Loss(交叉熵损失):$J=-\sum\limits_{j=1}^Ky_jlog\hat y_j$,K:num
 Average with respect to time:$J=-\frac{1}{T}\sum\limits_{t=1}^T\sum\limits_{j=1}^Ky_j^{\langle t\rangle}log\hat y_j^{\langle t\rangle}$  
 
 # 11.Implement RNN   
-![RNN architecture](./pictures/RNN.png)
+![RNN architecture](./pictures/RNN1.png)
 ```python
 #tf.scan()function  
 #fn等同于fw,即RNN单元,elems是包含所有输入的列表,initializer是初始隐藏状态  
@@ -814,9 +815,30 @@ GRUs "decide" how to update the hidden state.
 GRUs help preserve important information.  
 
 GRUs are simplified versions of LSTMs.  
-# 13.
+# 13.BRNN and DRNN  
+Deep recurrent neural networks are useful because they allow you to capture  
+dependencies that you could not have otherwise captured using shallow RNNs.  
+
+Bi-directional RNNs(双向RNN)   
+![BRNN](./pictures/BRNN.png)  
+$\hat y^{\langle t\rangle}=g(W_y[\overrightarrow{h^{\langle t\rangle}},\overleftarrow{h^{\langle t\rangle}}] + b_y)$  
+Information flows from the past and from the future independently.   
+
+Deep RNNs  
+deep RNNs are just RNNs stack together.  
+The intermediate connections pass information through the values of activations.  
+![DRNN](./pictures/DRNN.png)   
+$h^{[l]\langle t\rangle}=f^{[l]}(W_h^{[l]}[h^{[l]\langle t-1\rangle},a^{[l-1]\langle t\rangle}]+b_h^{[l]})$  
+$a^{[l]\langle t\rangle}=f^{[l]}(W_a^{[l]}h^{[l]\langle t\rangle}+b_a^{[l]})$  
+
+1.Get hidden states for current layer  
+2.Pass the activations to the next layer  
+
+In bidirectional RNNs,the outputs take information from the past and the future.  
+Deep RNNs have more than one layer,which helps in complex tasks.  
+
+
 # Part IV:NLP with attention models  
-  
 
 
 
