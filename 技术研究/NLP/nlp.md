@@ -710,9 +710,113 @@ embed_layer=Embedding(10000,400)
 embed_layer=nn.Embedding(10000,400)
 ```
 
-Part III:NLP with sequence models  
-Part IV:NLP with attention models  
+# Part III:NLP with sequence models  
 
+# 2.neural network of sentiment analysis(用于情感分析的神经网络)  
+padding(填充)  
+# 3.Dense layer and ReLU  
+Dot product,Non-Linear Function  
+# 4.Embedding and mean layers(嵌入和均值层)  
+embedding layer:map words to embeddings  
+learn a matrix:$Vocabulary\times Embedding$  
+size of embedding:hyperparameter  
+
+mean layer:compute the mean of the word embeddings  
+
+# 6.traditional language model  
+传统语言模型如N-gram的局限性:  
+1.需要考虑长词序列中的条件概率,如果没有相应大的语料库,这可能很难估计  
+2.模型需要大量的空间和内存来存储所有可能组合的概率
+
+# 7.RNN  
+NLP发展:传统语言模型(N-gram)$\Rightarrow$RNN$\Rightarrow$Transformer  
+RNN的问题:对于长序列会产生梯度消失  
+transformer解决了这点  
+
+A plain RNN propagates information from the beginning of the sentence through to the end.  
+序列中每个词的信息都乘以相同的权重下标$W_x$  
+从开头到结尾传播的信息乘以$W_h$  
+这个块对序列中的每个词都重复一次,唯一可学习的参数是$W_x,W_h,W$  
+它们计算的值会一遍又一遍地反馈给自己,直到做出预测,因此叫"循环"神经网络  
+
+RNN的优势:  
+propagate information within sequences and your computation's share most of the parameters  
+
+# 8.RNN application  
+One to One:一个输入,一个输出,如球队得分预测     
+One to Many:一个输入,多个输出,如图片描述  
+Many to One:多个输入,一个输出,如情感分析  
+Many to Many:多个输入,多个输出,如机器翻译
+
+encoder:将序列编码为单一表示,不输出  
+decoder:输出  
+
+RNN可以用于机器翻译和字幕生成  
+# 9.math behind RNN  
+hidden state:$h^{\langle t\rangle}=g(W_h[h^{\langle t-1\rangle},x^{\langle t\rangle}]+b_h)=g(W_{hh}h^{\langle t-1\rangle}+W_{hx}x^{\langle t\rangle}+b_h)$    
+output:$\hat y^{\langle t\rangle}=g(W_{yh}h^{\langle t\rangle}+b_y)$  
+
+Hidden states propagate information through time  
+Basic recurrent units have two inputs at each time:$h^{\langle t-1\rangle},x^{\langle t\rangle}$  
+
+# 10.cost function for RNN  
+Cross Entropy Loss(交叉熵损失):$J=-\sum\limits_{j=1}^Ky_jlog\hat y_j$,K:number of classes or possibilities  
+
+Average with respect to time:$J=-\frac{1}{T}\sum\limits_{t=1}^T\sum\limits_{j=1}^Ky_j^{\langle t\rangle}log\hat y_j^{\langle t\rangle}$  
+
+# 11.Implement RNN   
+![RNN architecture](./pictures/RNN.png)
+```python
+#tf.scan()function  
+#fn等同于fw,即RNN单元,elems是包含所有输入的列表,initializer是初始隐藏状态  
+def scan(fn,elems,initializer=None,...):
+    cur_value=initializer #当前隐藏状态ht
+    ys=[] #输出列表
+    for x in elems:
+        y,cur_value=fn(x,cur_value) #更新当前时间的输出和对应的隐藏状态
+        ys.append(y)
+    return y,cur_value #返回预测列表和最后一个隐藏状态
+
+```
+Frameworks like Tensorflow need this type of abstraction  
+Parallel computations and GPU usage  
+# 12.Gated recurrent unit(GRU,门控循环单元)  
+标准RNN在处理长序列单词时,信息往往会消失  
+GRU可以处理长序列  
+
+GRU学会了在隐藏状态中保留关于主语的信息  
+
+![GRU](./pictures/GRU.png)
+Compute relevance and update gates to remember important prior information  
+relevance gate(相关门):$\Gamma_r=\sigma(W_r[h^{\langle t_0\rangle},x^{\langle t_1\rangle}]+b_r)$  
+update gate(更新门):$\Gamma_u=\sigma(W_u[h^{\langle t_0\rangle},x^{\langle t_1\rangle}]+b_u)$  
+
+Their outputs help determine which information from the previous hidden states is relevant and  
+which value should be updated with current information.  
+
+candidate hidden state:$h'^{\langle t_1\rangle}=tanh(W_h[\Gamma_r*h^{\langle t_0\rangle},x^{\langle t_1\rangle}]+b_h)$  
+This value stores all the candidates for information thus could override the one contained in the  
+previous hidden states.  
+
+$h^{\langle t_1\rangle}=(1-\Gamma_u)*h^{\langle t_0\rangle}+\Gamma_u*h'^{\langle t_1\rangle}$  
+The updates gate determines how much of the information from the previous hidden state will be overwritten.  
+
+$\hat y^{\langle t1\rangle}=g(W_yh^{\langle t_1\rangle}+b_y)$  
+
+Vanilla RNN and GRU:
+Vanilla RNN is updating the hidden state at every time step,  
+for long sequences,the information tends to vanish.
+GRUs compute significantly more operations,which can cause longer  
+processing times and memory usage.  
+所有这些计算允许网络学习要保留哪些类型的信息以及何时覆盖它.  
+
+GRUs "decide" how to update the hidden state.  
+GRUs help preserve important information.  
+
+GRUs are simplified versions of LSTMs.  
+# 13.
+# Part IV:NLP with attention models  
+  
 
 
 
