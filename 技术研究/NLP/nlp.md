@@ -837,6 +837,103 @@ $a^{[l]\langle t\rangle}=f^{[l]}(W_a^{[l]}h^{[l]\langle t\rangle}+b_a^{[l]})$
 In bidirectional RNNs,the outputs take information from the past and the future.  
 Deep RNNs have more than one layer,which helps in complex tasks.  
 
+# 16.RNN and gradient vanishing(RNN和梯度消失)  
+RNNs:Advantages  
+Captures dependencies within a short range  
+Takes up less RAM than other n-gram models  
+
+RNNs:Disadvantages  
+Struggles to capture long term dependencies  
+Prone to vanishing or exploding gradients  
+
+Backpropagation through time  
+$\frac{\partial L}{\partial W_h}\propto\sum\limits_{1\leq k\leq t}(\prod\limits_{t\geq i\geq k}\frac{\partial h_i}{\partial h_{i-1}})\frac{\partial h_k}{\partial W_h}$  
+$(\prod\limits_{t\geq i\geq k}\frac{\partial h_i}{\partial h_{i-1}})\frac{\partial h_k}{\partial W_h}\rightarrow$Contribution of hidden state k  
+$\prod\limits_{t\geq i\geq k}\frac{\partial h_i}{\partial h_{i-1}}\rightarrow$Length of the product proportional to how far k is from t  
+
+Partial derivatives<1  
+Contribution goes to 0  
+Vanishing Gradient:It causes RNN to ignore the values computed at early steps of a sequence.  
+
+Partial derivatives>1  
+Contribution goes to infinity  
+Exploding Gradient:It causes convergence problems during training.  
+
+Solving for vanishing or exploding gradients  
+
+Identity RNN(单位RNN):
+只能解决梯度消失   
+Initialize weights to the identity matrix(单位矩阵),using ReLU activation function.  
+This has the effect of encouraging network to stay close to the values of identity matrix,  
+which act like ones during matrix multiplication.  
+
+Gradient clipping(梯度裁剪):  
+解决梯度爆炸  
+simply choose a relevant value x that you would clip the gradient to.  
+Any value greater than x will be clipped to x.  
+
+Skip connections(跳跃连接):  
+activations from early layers have more influence over the costs.  
+
+# 17.LSTM(Long short-term memory unit,长短记忆单元) overview  
+LSTMs offer a solution to vanishing gradients  
+Learn when to remember and when to forget.  
+Basic anatomy:  
+A cell state  
+A hidden state  
+Multiple gates  
+
+Gates allow gradients to avoid vanishing and exploding  
+
+Cell and Hidden States:Starting point with some irrelevant information
+
+Gates in LSTM:  
+1.Forget Gate:information that is no longer important  
+2.Input Gate:information to be stored  
+3.Output Gate:information to use at current step  
+
+Applications of LSTMs:  
+Next-character prediction  
+Chatbots  
+Music composition  
+Image captioning  
+Speech recognition   
+
+# 18.LSTM architecture  
+![LSTM](./pictures/LSTM.png)  
+Candidate cell state:$\tilde c{\langle t_1\rangle}=tanh(W_c[h^{\langle t_0\rangle},x^{\langle t_1\rangle}]+b_c)$  
+Forget gate:$F_f=\sigma(W_f[h^{\langle t_0\rangle},x^{\langle t_1\rangle}]+b_f)$  
+Input gate:$F_i=\sigma(W_i[h^{\langle t_0\rangle},x^{\langle t_1\rangle}]+b_i)$  
+Output gate:$F_o=\sigma(W_o[h^{\langle t_0\rangle},x^{\langle t_1\rangle}]+b_o)$  
+New cell state:$c^{\langle t_1\rangle}=F_f*c^{\langle t_0\rangle}+F_i*\tilde c^{\langle t_1\rangle}$  
+New Hidden state:$h^{\langle t_1\rangle}=F_o*tanh(c^{\langle t_1\rangle})$   
+Output:$\hat y^{\langle t_1\rangle}=g(W_yh^{\langle t_1\rangle}+b_y)$  
+
+Candidate cell state:  
+Information from the previous hidden state and current input.  
+New Cell state:  
+Add information from the candidate cell state using the forget and input gates.  
+New Hidden State:  
+Select information from the new cell state using the output gate.  
+
+LSTMs use a series of gates to decide which information to keep:  
+Forget gate decides what to keep  
+Input gate decides what to add   
+Output gate decides what the next hidden state will be  
+# 19.
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 # Part IV:NLP with attention models  
 
