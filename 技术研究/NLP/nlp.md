@@ -920,21 +920,55 @@ LSTMs use a series of gates to decide which information to keep:
 Forget gate decides what to keep  
 Input gate decides what to add   
 Output gate decides what the next hidden state will be  
-# 19.
+# 19.named entity recognition(NER,命名实体识别) overview  
+Locates and extracts predefined entities from text  
+Applications of NER systems  
+Search engine efficiency  
+Recommendation engines  
+Customer service  
+Automatic trading  
+# 20.Processing data for NERs  
+Assign each class a number  
+Assign each word a number  
 
+Token padding  
+For LSTMs,all sequences need to be the same size.  
+Set sequence length to a certain number.  
+Use the $\langle PAD\rangle$ token to fill empty spaces.  
 
+Training the NER:  
+1.Create a tensor for each input and its corresponding number  
+2.Put them in a batch  
+3.Feed it into an LSTM unit  
+4.Run the output through a dense layer  
+5.Predict using a log softmax over K classes  
 
+LogSoftmax gives better numerical performance and gradient optimization.  
+```python
+#Layers in TensorFlow
+model=tf.keras.Sequential([
+    tf.keras.layers.Embedding(),
+    tf.keras.layers.LSTM(),
+    tf.keras.layers.Dense(),
+])
+```
+# 21.Evaluating the model  
+1.Pass test set through the model  
+2.Get arg max across the prediction array   
+3.Mask padded tokens  
+4.Compare outputs against test labels  
 
-
-
-
-
-
-
-
-
-
-
+```python
+def masked_accuracy(y_true,y_pred):
+    #Identify any token IDS you need to skip over during evaluation
+    #One token you might want to skip is your pad token
+    mask=...
+    y_pred_class=tf.math.argmax(y_pred,axis=-1)
+    matches_true_pred=tf.equal(y_true,y_pred_class)
+    matches_true_pred*=mask
+    masked_acc=tf.reduce_sum(acc)/tf.reduce_sum(mask)
+    return masked_acc
+```
 # Part IV:NLP with attention models  
 
 
