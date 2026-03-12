@@ -969,6 +969,66 @@ def masked_accuracy(y_true,y_pred):
     masked_acc=tf.reduce_sum(acc)/tf.reduce_sum(mask)
     return masked_acc
 ```
+
+# 24.Siamese network(孪生网络)  
+It is a neural network made up of two identical neural networks which are merged at the end.  
+
+Siamese Networks in NLP  
+Handwritten checks  
+Question duplicates  
+Queries  
+
+# 25.Architecture(架构)  
+Siamese networks have two identical subnetworks which are merged together to produce a final  
+output or a similarity score.  
+
+The subnetworks share identical parameters,the learned parameters of each subnetwork are exactly the same.  
+You actually only need to train one set of weights,not two.  
+
+$\tau$:how often you want to interpret cosine similarity to indicate that two questions are similar or not.   
+A higher threshold means that only very similar sentences will be considered similar.  
+
+$\hat y\leq\tau:different$  
+$\hat y>\tau:same$  
+
+![Siamese](./pictures/Siamese.png)  
+1.Inputs  
+2.Embedding  
+3.LSTM  
+4.Vectors  
+5.Cosine Similarity  
+
+# 26.cost function  
+anchor  
+Other questions that have the same meaning as the anchor are called positive questions.  
+Questions do not have the same meaning as the anchor are called negative questions.  
+
+$cos(v_1,v_2)/s(v_1,v_2)=\frac{v_1\cdot v_2}{||v_1||||v_2||}$  
+$s(A,P)\approx 1$  
+$s(A,N)\approx -1$  
+$diff=s(A,N)-s(A,P)$   
+loss和diff成正比  
+注意s表示的是余弦相似度,值在-1~1之间波动,越相似,越接近1,越不相似,越接近-1   
+
+# 27.triplets(三元组)  
+triplets:groups of Anchor,Positive and Negative  
+triplet loss is the name for a loss function that uses these components  
+
+Triplet Loss  
+$$
+\mathcal L=
+\begin{cases}  
+0 & if~diff+\alpha\leq 0\\
+diff+\alpha & if~diff+\alpha>0  
+\end{cases}  
+$$  
+$\mathcal L(A,P,N)=max(diff+\alpha,0)$  
+
+如果你选择对模型构成挑战的三元组,你可以更高效地进行训练  
+hard triplets:$s(A,N)\approx s(A,P)$  
+
+
+
 # Part IV:NLP with attention models  
 
 
