@@ -28,6 +28,7 @@
 8.领英(https://www.linkedin.com/)  
 9.谷歌云盘(https://drive.google.com/drive/home)  
 10.GitHub(https://github.com/)  
+11.聚克AI学院(https://edu.guangjuke.com/)  
 # 4.日常工具
 1.免费字体(https://www.fontspace.com/)  
 2.图片源头追踪(https://saucenao.com/)  
