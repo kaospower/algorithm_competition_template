@@ -162,7 +162,7 @@ Logistic regression:
 $\mathop{min}\limits_{\theta}\frac{1}{m}[\sum\limits_{i=1}^my^{(i)}(-logh_{\theta}(x^{(i)}))+(1-y^{(i)})((-log(1-h_{\theta}(x^{(i)})))]+\frac{\lambda}{2m}\sum\limits_{j=1}^n\theta_j^2$  
 Support vector machine:  
 ![SVN](./pictures/SVN1.png)  
-$\mathop{min}\limits_{\theta}C[\sum\limits_{i=1}^my^{(i)}cost1(\theta^Tx^{(i)})+(1-y^{(i)})cost_0(\theta^Tx^{(i)})]+\frac{1}{2}\sum\limits_{j=1}^n\theta_j^2$  
+$\mathop{min}\limits_{\theta}C\sum\limits_{i=1}^m[y^{(i)}cost1(\theta^Tx^{(i)})+(1-y^{(i)})cost_0(\theta^Tx^{(i)})]+\frac{1}{2}\sum\limits_{j=1}^n\theta_j^2$  
 Hypothesis:  
 $$
 h_{\theta}(x)=
@@ -171,6 +171,17 @@ h_{\theta}(x)=
 0 & otherwise
 \end{cases}
 $$
+# 2.Large Margin Intuition  
+![SVM](./pictures/SVM2.png) 
+If y=1,we want $\theta^Tx\geq 1(not~just\geq 0)$  
+If y=0,we want $\theta^Tx\leq -1(not~just<0)$  
+
+SVM Decision Boundary:Linearly separable case  
+![SVM](./pictures/SVM21.png)
+trying to separate the positive and negative examples with as big a margin as possible.  
+
+
+
 # 5.KNN(最临近规则分类)  
 # 6.贝叶斯算法  
 Naive Bayes(朴素贝叶斯)  
