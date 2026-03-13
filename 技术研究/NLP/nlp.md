@@ -1054,6 +1054,7 @@ Measure similarity between 2 classes.
 Learn a similarity score  
 $s(sig_1,sig_2)>\tau$,same  
 $s(sig_1,sig_2)\leq\tau$,different  
+$s(sig_1,sig_2)\leq\tau$,different  
 
 # 31.training and test  
 Testing  
