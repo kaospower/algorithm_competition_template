@@ -11,6 +11,7 @@
 6.latex花体(https://www.cnblogs.com/hundredtwo-kk/p/16418548.html)  
 7.吴恩达深度学习作业网站(https://www.heywhale.com/mw/project/5de4787aca27f8002c4c3661)  
 8.latex希腊字母表(https://blog.csdn.net/zhouchen1998/article/details/119324338)  
+9.每日ai要闻(https://www.aibase.com/zh)  
 # 2.电子图书馆网站
 1.Anna's Archive(https://annas-archive.li/)  
 2.电子书库zlibrary(https://zh.z-library.sk/)  
@@ -29,7 +30,8 @@
 9.谷歌云盘(https://drive.google.com/drive/home)  
 10.GitHub(https://github.com/)  
 11.聚客AI学院(https://edu.guangjuke.com/)  
-12.国家移民局(https://s.nia.gov.cn/mps/login.html?type=getCallBackToken&flag=false)   
+12.国家移民局(https://s.nia.gov.cn/mps/login.html?type=getCallBackToken&flag=false)  
+13.国家超算中心(https://www.scnet.cn/ui/mall/en)  
 # 4.日常工具
 1.免费字体(https://www.fontspace.com/)  
 2.图片源头追踪(https://saucenao.com/)  
