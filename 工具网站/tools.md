@@ -29,7 +29,7 @@
 9.谷歌云盘(https://drive.google.com/drive/home)  
 10.GitHub(https://github.com/)  
 11.聚客AI学院(https://edu.guangjuke.com/)  
-12.国家移民局(https://nia.gjzwfw.gov.cn/)  
+12.国家移民局(https://s.nia.gov.cn/mps/login.html?type=getCallBackToken&flag=false)   
 # 4.日常工具
 1.免费字体(https://www.fontspace.com/)  
 2.图片源头追踪(https://saucenao.com/)  
