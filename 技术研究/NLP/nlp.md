@@ -1026,9 +1026,41 @@ $\mathcal L(A,P,N)=max(diff+\alpha,0)$
 
 如果你选择对模型构成挑战的三元组,你可以更高效地进行训练  
 hard triplets:$s(A,N)\approx s(A,P)$  
+# 28.computing the cost I  
+$\mathcal L(A,P,N)=max(diff+\alpha,0)$  
+$diff=s(A,N)-s(A,P)$  
+$J=\sum\limits_{i=1}^m\mathcal L(A^{(i)},P^{(i)},N^{(i)})$  
 
+You only need to have two similar texts which you put on the diagonals,and you use  
+the off-diagonals as the non-similar examples.  
+# 29.computing the cost II  
+Hard Negative Mining  
+mean negative:  
+mean of off-diagonal values in each row.  
+closest negative:  
+off-diagonal value closest to(but less than) the value on diagonal in each row.   
 
+$\mathcal L_{Original}=max(s(A,N)-s(A,P)+\alpha,0)$  
+mean negative helps the model converge faster during training by reducing noise.  
+$\mathcal L_1=max(mean\text{_}neg-s(A,P)+\alpha,0)$  
+closest negative helps create a slightly larger penalty by diminishing the effects of the  
+otherwise more negative similarity of A and N that it replaces.  
+$\mathcal L_2=max(closest\text{_}neg-s(A,P)+\alpha,0)$  
+$\mathcal L_{full}=\mathcal L_1+\mathcal L_2$  
+$J=\sum\limits_{i=1}^m\mathcal L_{Full}(A^{(i)},P^{(i)},N^{(i)})$  
+# 30.One Shot Learning(一次性学习)  
+Measure similarity between 2 classes.  
 
+Learn a similarity score  
+$s(sig_1,sig_2)>\tau$,same  
+$s(sig_1,sig_2)\leq\tau$,different  
+
+# 31.training and test  
+Testing  
+1.Convert each input into an array of numbers  
+2.Feed arrays into your model  
+3.Compare $v_1,v_2$ using cosine similarity  
+4.Test against a threshold $\tau$
 # Part IV:NLP with attention models  
 
 
