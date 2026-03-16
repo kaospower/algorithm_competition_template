@@ -1092,6 +1092,155 @@ The first step is to calculate the alignments(对齐分数) $e_{ij}=a(s_{i-1},h_
 well the inputs j match the expected outputs i.
 ![attention](./pictures/attention1.png)
 
+# 4.Queries,keys,values and attention  
+You can think of keys and values as a look up table(查找表).   
+The query is matched to a key and the value associated with that key is returned.  
+查询,键,值都由向量表示  
+The similarity between words is called alignment(对齐).  
+The query and key vectors are used to calculate alignment scores that are measured  
+of how well the query and keys match.  
+These alignment scores are then turned into weights used for a weighted sum(加权和) of the value vectors. 
+This weighted sum of the value vectors is returned as the attention vector.  
+
+Scaled dot-product attention(缩放点积注意力)  
+$softmax(\frac{QK^T}{\sqrt{d_k}})V$  
+每个步骤的查询被打包到一个矩阵Q中,因此可以同时为每个查询计算注意力  
+键和值被打包到矩阵K和V中,这些矩阵是注意力函数的输入  
+首先,查询和键矩阵相乘,得到一个对齐矩阵  
+然后,这些对齐矩阵按键向量维度的平方根$d_k$进行缩放  
+缩放提高了较大模型尺寸的模型性能,可以视为正则化常数  
+接下来,使用softmax函数将缩放后的分数转化为权重,使得每个查询的权重总和为1  
+最后,权重和值矩阵相乘,得到每个查询的注意力向量,可以将键和值视为相同  
+因此,当将softmax输出与V相乘时,你正在对初始输入进行线性组合,然后将其输入到解码器中  
+缩放点积注意力仅包含两个矩阵乘法,没有神经网络  
+通常,对齐在学习输入嵌入或注意力层之前的其他线性层中进行  
+
+对齐权重  
+对齐权重形成一个矩阵,查询,目标词在行上,键,源词在列上  
+这个矩阵中的每个条目都是对应查询,键对的权重  
+Word pairs that have similar meanings,K and T,for example,  
+will have larger weights than the similar words like day and time.  
+通过训练,模型学习哪些词具有相似的意义,并将这些信息编码到查询和键向量中  
+
+注意力机制同时查看整个输入和目标句子,并基于词对计算对齐.因此无论词序如何,都会适当分配权重  
+
+# 5.Machine translation setup  
+Use pre-trained vector embeddings  
+Initially represent words with one-hot vectors  
+Keep track of index mappings with word2ind(word to index) and ind2word dictionaries  
+Add end of sequence tokens:$\langle EOS\rangle$   
+Pad the token vectors with zeros  
+# 6.teacher forcing(教师强制)  
+NMT(neural machine translation,神经机器翻译)  
+Errors from early steps propagate  
+Use the ground truth words as decoder inputs instead of the decoder outputs.  
+即使模型做出了错误的预测,它也会假装做出了正确的预测  
+Improves training performance
+课程学习:可以逐渐开始使用解码器的输出,随着训练的进行,不再输入目标词  
+# 7.NMT model with attention  
+![NMT1](./pictures/NMT1.png)
+![NMT2](./pictures/NMT2.png)
+# 8.BLEU(Bilingual Evaluation Understudy) Score  
+BLEU is an algorithm designed to evaluate some of the most challenging problems in NLP,including machine translation.  
+Compares candidate translations to reference(human) translations.  
+The closer to 1,the better.  
+
+BLEU score  
+You count how many words from the candidate appear in any of the reference and divide that count by  
+the total number of words in the candidate translation.  
+
+BLEU doesn't consider semantic meaning  
+BLEU doesn't consider sentence structure  
+# 9.ROUGE(Recall-Oriented Understudy of Gisting Evaluation,面向召回的评估替补)-N score  
+ROUGE面向召回(recall)  
+ROUGE关注的是人类创建的参考文献中有多少出现在候选翻译中  
+BLEU面向精确(precision)    
+必须确定候选翻译中有多少单词出现在参考文献中,对每个参考翻译计算它在候选翻译中出现的比重,然后对所有结果求最大值  
+
+ROUGE-N:计算候选翻译和参考翻译之间的n-gram重叠次数
+$F_1=2\times\frac{Precision\times Recall}{Precision+Recall}$  
+$F_1=2\times\frac{BLEU\times ROUGE-N}{BLEU+ROUGE-N}$
+
+这些评估指标不考虑句子结构和语义  
+# 10.Random sampling and Greedy decoding(随机采样和贪心解码)  
+Greedy decoding  
+Selects the most probable word at each step.  
+But the best word at each step may not be the best for longer sequences.  
+Can be fine for shorter sequences,but limited by inability to look further down the sequence.  
+Random sampling:为每个单词提供概率,并根据这些概率进行采样以生成下一个输出  
+Often a little too random for accurate translation  
+Solution:Assign more weight to more probable words,and less weight to less probable words  
+
+Temperature:Can control for more or less randomness in predictions.  
+It's measured on a scale of 0-1,indicating low to high randomness.  
+Lower temperature setting:More confident,conservative network.  
+Higher temperature setting:More excited,random network.  
+# 11.Beam search(束搜索)  
+Beam search decoding  
+Probability of multiple possible sequences at each step  
+Beam width B determines number of sequences you keep  
+Until all B most probables sequences end with $\langle EOS\rangle$  
+greedy decoding is just a particular case of beam search where you set the beam  
+with B to be equal to 1.  
+
+Beam search使用条件概率求解  
+![BeamSearch](./pictures/BeamSearch.png)  
+
+Problems with beam search  
+Penalizes long sequences,so you should normalize by the sentence length  
+Computationally expensive and consumes a lot of memory  
+# 12.MBR(Minimum Bayes Risk,最小贝叶斯风险)  
+Generate several candidate translations  
+Assign similarity to every pair using a similarity score(such as ROUGE)  
+Select the sample with the highest average similarity  
+
+$\mathop{argmax}\limits_E\frac{1}{n}\mathop{\Sigma}\limits_{E'}ROUGE(E,E')$  
+
+Better performance than random sampling and greedy decoding.  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
