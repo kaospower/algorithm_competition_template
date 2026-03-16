@@ -1064,6 +1064,45 @@ Testing
 4.Test against a threshold $\tau$
 # Part IV:NLP with attention models  
 
+# 1.Week Introduction  
+Using a recurrent neural network with LSTMs can work for short to medium length sentences.  
+But can result in vanish ingredients for very long sequences.  
+To solve this,you will be adding an attention mechanism to allow the decoder to access all relevant parts  
+of the input sentence regardless of its length.  
+# 2.Seq2Seq(序列到序列)  
+Neural Machine Translation  
+
+Introduced by Google in 2014  
+Maps variable-length sequences to fixed-length memory  
+Inputs and outputs can have different lengths  
+LSTMs and GRUs to avoid vanishing and exploding gradient problems  
+![Seq2Seq1](./pictures/Seq2Seq1.png)
+![Seq2Seq2](./pictures/Seq2Seq2.png)
+
+The information bottleneck  
+A fixed amount of information goes from the encoder to the decoder.  
+
+Seq2Seq shortcomings:  
+Variable-length sentences+fixed-length memory=As sequence size increases,model performance decreases.  
+
+# 3.Seq2Seq model with attention  
+The goal of the attention layer is to return a context vector that contains the relevant information  
+from the encoder states.  
+The first step is to calculate the alignments(对齐分数) $e_{ij}=a(s_{i-1},h_j)$,which is a score of how  
+well the inputs j match the expected outputs i.
+![attention](./pictures/attention1.png)
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
