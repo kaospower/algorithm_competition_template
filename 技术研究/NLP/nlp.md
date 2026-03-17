@@ -141,7 +141,7 @@ You will count the times that words from your vocabulary appear in documents tha
 # 31.Euclidean distance(欧几里得距离)  
 $d(B,A)=\sqrt{(B_1-A_1)^2+(B_2-A_2)^2}$  
 Euclidean distance for n-dimensional vectors:  
-$d(\vec v,\vec w)=\sqrt{\sum\limits_{i=1}^n(v_i-w_i)^2}\rightarrow Norm of (\vec v-\vec w)(比较的向量之间差异的范数)$
+$d(\vec v,\vec w)=\sqrt{\sum\limits_{i=1}^n(v_i-w_i)^2}\rightarrow Norm~of (\vec v-\vec w)(比较的向量之间差异的范数)$
 
 ```python
 import numpy as np
@@ -1197,6 +1197,59 @@ Select the sample with the highest average similarity
 $\mathop{argmax}\limits_E\frac{1}{n}\mathop{\Sigma}\limits_{E'}ROUGE(E,E')$  
 
 Better performance than random sampling and greedy decoding.  
+
+# 16.Transformer and RNN  
+RNN问题: 
+Loss of information  
+vanishing gradient  
+
+# 17.overview of transformer  
+Scaled Dot-Product Attention(缩放点积注意力)  
+The transformer model uses scaled dot-product attention  
+$softmax(\frac{QK^T}{\sqrt{d_k}})V$  
+It allows the transformer to grow larger and more complex while being faster and  
+using less memory than other comparable model architectures.  
+![Scaled Dot-Product Attention](./pictures/ScaledDotproductAttention.png)  
+
+Multi-Head Attention(多头注意力)  
+This layer runs in parallel and it has a number of scaled dot-product attention  
+mechanisms and multiple linear transformations of the input queries,keys and values.  
+In this layer,the linear transformations are learnable parameters.  
+![Multi-Head Attention](./pictures/MultiHeadAttention.png)  
+
+The Encoder(编码器)  
+The transformer encoder starts with a multi-head attention module that performed self-attention  
+on the input sequence.  
+Each word in the input attends to every other word in the input.  
+This is followed by a residual connection and normalization(残差连接和归一化,即Add&Norm结构),  
+a feed forward layer(前馈层),and another residual connection and normalization.  
+This entire block is one encoder layer and is repeated N number of times.  
+Thanks to self-attention layer,the encoder will give you a contextual representation of each one  
+of your inputs.  
+![Encoder](./pictures/Encoder.png)  
+
+The Decoder(解码器)  
+The decoder is constructed similarly to the encoder with multi-headed attention modules,residual connections  
+and normalization.  
+The first attention module is masked such that each position attends only to previous positions.  
+It blocks leftward flowing information.  
+The second attention module takes the encoder output and allows the decoder to attend to all items.  
+This whole decoder layer is also repeated some number of times,one after another.  
+![Decoder](./pictures/Decoder.png)  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
