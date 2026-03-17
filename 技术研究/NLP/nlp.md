@@ -1237,6 +1237,39 @@ The second attention module takes the encoder output and allows the decoder to a
 This whole decoder layer is also repeated some number of times,one after another.  
 ![Decoder](./pictures/Decoder.png)  
 
+Positional Encoding  
+Transformers also incorporates a positional encoding stage which encodes each input's position in the sequence.  
+The transformers uses a positional encoding to retain the position of the input sequence.  
+The positional encoding has values that are added to the embeddings so that for every input word you have  
+information about its order and position.  
+
+The Transformer  
+On the left,the input sentence is first embedded and the positional encodings are applied.  
+This goes to the encoder which consists of multiple layers of multi-head attention modules.  
+On the right is decoder,which takes the output sentence,shifts it over one step to the right,  
+and the outputs from the encoder.  
+The decoder output is turned into output probabilities using a linear layer with a softmax activation.  
+
+This architecture is easy to parallelize compared to RNN models,and as such,can be trained  
+much more efficiently on multiple GPUs.  
+It can also scale up to learn multiple tasks on larger and larger datasets.  
+![Transformer](./pictures/Transformer.png)  
+
+In RNNs parallel computing is difficult to implement  
+For long sequences in RNNs there is loss of information  
+In RNNs there is the problem of vanishing gradient  
+Transformers help with all of the above  
+
+# 18.Transformer Applications  
+
+
+
+
+
+
+
+
+
 
 
 
