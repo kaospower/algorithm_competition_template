@@ -1304,6 +1304,186 @@ After the computation of the weights matrix,you can multiply it with the value m
 rows and the context vector corresponding to each query.  
 And the number of columns on this matrix is equal to the size of the value vectors,which is often the same as  
 the embedding size.  
+![attention](./pictures/attention.png)    
+# 20.Masked Self-Attention(掩码自注意力)  
+Encoder-Decoder Attention  
+The words in one sentence attend to all other words in another one.  
+The queries come from one sentence while the keys and values come from another.  
+
+Self-Attention  
+Queries,keys and values come from the same sentence.  
+Every word attends to every other word in the sequence.  
+This type of attention lets you get contextual representations of your words.  
+In other terms,self-attention gives you a representation of the meaning of each word within the sentence.  
+
+Masked Self-Attention  
+Queries,keys and values come from the same sentence.Queries don't attend to future positions.   
+This attention mechanism is present in the decoder from the transformer model and ensures that predictions  
+at each position depend only on the known outputs.  
+
+Masked self-attention math  
+$softmax(\frac{QK^T}{\sqrt{d_k}}+matrix)V$  
+For mask self-attention,you add a mask matrix within the softmax.  
+The mask has a zero on all of its positions,except for the elements above the diagonal,  
+which are set to minus infinity or a huge negative number.  
+After taking the softmax,this addition ensures that the elements in the weights matrix  
+are zero for all the keys and the subsequent positions to the query.  
+You only need to add a matrix within the softmax to ensure that the queries don't attend  
+to future positions.  
+![Masked self-attention](./pictures/MaskedSelfAttention.png)   
+# 21.Multi-Head Attention(多头注意力)  
+You need word embeddings for the query,key and value matrices in scaled dot-product attention.  
+In multi-head attention,you appley in parallel the attention mechanism to multiple sets of  
+these matrices that you can get by transforming the original embeddings.  
+In multi-head attention,the number of times that you apply the attention mechanism is the number  
+of heads in the model.     
+
+The inputs to multi-head attention is the value key and query matrices.  
+First,you transform each of these matrices into multiple vector spaces.  
+The number of transformations for each matrix is equal to the number of heads in the model.  
+Then you will apply the scaled dot-product attention mechanism to every set of value,key and query transformations,  
+where again the number of sets is equal to the number of heads in the model.  
+After that,you concatenate the results from each head in the model into a single matrix.  
+Finally,you transform the resulting matrix to get the output context vectors.  
+Every linear transformation in multi-head attention contains a set of learnable parameters.  
+
+![Multi-Head Attention](./pictures/Mattention.png)  
+
+The inputs to the multi-head attention layer are the queries,keys and values matrices.    
+The number of columns in those matrices is equal to $d_{model}$,which is the embedding size,  
+and the number of rows is given by the number of words the sequences used to construct each matrix.  
+The first step is to transform the queries,keys and values using a set of matrices $W^Q,W^K,W^V$  
+per head of the model.  
+This step will give you the different sets of representations that you use for the parallel attention mechanisms.  
+The number of rows and the transformation matrices is equal to $d_{model}$.  
+The number of columns $d_k$ for the queries and keys transformation matrices,and the number of columns $d_v$ for $W^V$ are hyperparameters that you can choose.  
+In the original transformer model,the author advises setting $d_k$ and $d_v$ equals to the dimension of  
+the embeddings divided by the number of heads in the model.  
+This choice of sizes would ensure that the computational cost of multi-head attention  
+doesn't exceed by much the one for a single-head attention.  
+After getting the transformed values for the query,key and value matrices per head,you can apply  
+in parallel the attention mechanism.  
+As a result,you get a matrix per head with the column dimensions equal to $d_v$,  
+and the number of rows in those matrices is the same as the number of rows in the query matrix.  
+Then you can concatenate horizontally the matrices outputted by each attention head in the model.  
+So you will get a matrix that has $d_v\times$ the number of heads columns.  
+Then you apply a linear transformation $W^O$ to the concatenated matrix.  
+This linear transformation has columns equal to $d_{model}$,and if you choose $d_v$ to be equal to  
+the embedding size divided by the number of heads,the number of rows in this matrix would also be $d_{model}$.  
+Just as with single-head attention,you will get a matrix with the context vectors of size $d_{model}$  
+for each of your original queries.  
+
+You just need to apply the attention mechanism to multiple sets of representations for the queries,keys and values.  
+Then you concatenate the results from each attention computation to get a matrix that you linearly transform  
+to get the context vectors for each original query.  
+![Multi-Head Attention](./pictures/mh.png)  
+# 22.transformer decoder  
+transformer decoder(GPT-2)  
+As input,it gets a tokenized sentence.A vector of integers as usual.  
+The sentence gets embedded with word embeddings.  
+Then you add to these embeddings the information about positions.  
+This information is nothing else than learned vectors representing 1,2,3 and so on up to  
+some maximum length that we'll put into the model.  
+The embedding of the first word will get added with the vector representing one.  
+This constitutes the inputs for the first multi-headed attention layer.  
+After the attention layer,you have a feed-forward layer,which operates on each position independently.  
+After each attention and feed-forward layer,you put a residual or skip connection.  
+Just add the input of that layer to its output and then perform layer normalization.  
+The attention and feed-forward layers are repeated N times.  
+Then you have a final dense layer for output and a softmax layer.  
+
+![Transformer decoder](./pictures/decoder1.png)  
+
+The shift right,just introduces the start token,which your model will use to predict the next word,  
+you have the embedding which trains a word to vector embedding.  
+If the input to the model was tensor of shape a batch by length,then after the embedding layer,  
+it will be a tensor of shape batch by length by $d_{model}$,which is the size of these embeddings,  
+and they usually go to 512,1024.  
+After these early layers,you'll get N decoder blocks.  
+Then a fully connected layer that outputs tensors of shape batch by length by vocab size.  
+And a log softmax for cross-entropy loss.  
+
+It starts with a set of vectors as an input sequence which are added to the corresponding  
+positional coding vectors,producing the so-called positional input embedding.  
+After embedding,the input sequence,the input sequence passes through a multi-headed attention model.  
+While this model processes each word,each position in the input sequence,the attention itself searches  
+other positions in the sequence to help identify relationships.  
+Each of the words in the sequence is weighted.  
+Then in each layer of attention,there is a residual connection around it followed by a layer normalization  
+step to speed up the training and significantly reduce the overall processing time.    
+Then each word is passed through a feed-forward layer that is embeddings are fed into a neural network.  
+Then you have a drop-out at the end as a form of regularization.  
+Next,a layer normalization step is repeated N times.  
+Finally,the decoder layer output is obtained.  
+![Transformer decoder](./pictures/trans2.png)   
+
+After mechanism and the normalization step,some non-linear transformations are introduced by  
+including fully connected feed-forward layers with simple but non-linear ReLU activation functions for each inputs.  
+And you have shard parameters for efficiency.  
+The feed-forward neural network output vectors will essentially replace the hidden states of the  
+original RNN decoder.  
+![Transformer decoder](./pictures/trans3.png)  
+
+# 23.Transformer summarizer(Transformer摘要生成器)  
+weighted loss(加权损失):Instead of averaging the loss for every word in the whole sequence,  
+you weight the loss for the words within the article with zeros,and the ones within the summary with  
+ones so the model only focuses on the summary.  
+![Transformer summarizer](./pictures/summarization.png)  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
