@@ -1261,6 +1261,71 @@ In RNNs there is the problem of vanishing gradient
 Transformers help with all of the above  
 
 # 18.Transformer Applications  
+Text summarization(文本摘要)  
+Auto-Complete(自动补全)  
+Named entity recognition(NER,命名实体识别)  
+Question answering(Q&A,自动问答)  
+Machine translation(机器翻译)  
+Chat-bots(聊天机器人)  
+Sentiment Analysis(情感分析)  
+Market Intelligence(市场情报)  
+
+Open AI:GPT-2(Generative Pre-training for Transformer),2018  
+Google AI Language:BERT(Bidirectional Encoder Representations from Transformers),2018  
+Google:T5(Text-to-text transfer transformer),2019  
+
+T5:  
+Translation,Classification,Q&A,Regression,Summarization  
+# 19.Scaled dot-product attention  
+The attention layer outputs contacts vectors for each query.  
+And the context vectors are weighted sums of the values where the similarity  
+between the queries and keys determines the weights assigned to each value.  
+The softmax ensures that the weights add up to 1 and the division by the square  
+root of the dimension of the key vectors is used to improve performance. 
+
+The scaled dot-product attention mechanism is very efficient since it relies  
+only on matrix multiplication and softmax.  
+You could implement this attention mechanism to run on GPUs or TPUs to speed up training.  
+
+![Scaled dot-product attention](./pictures/Scaled.png)   
+
+To get the query,key and value matrices,you must first transform the words in your  
+sequences to word embeddings.  
+
+The number of vectors used to form the key and value matrix must be the same.  
+![QKV](./pictures/QKV.png)   
+
+Attention Math  
+First,you compute the matrix products between the query and the transpose of the key matrix.  
+You scale it by the inverse of the square of the dimension of the key vectors $d_k$ and calculate the softmax.   
+This computation will give you a matrix with the weights for each key of query.  
+The weight matrix will have a total number of elements equal to the number of queries times the number of keys.  
+After the computation of the weights matrix,you can multiply it with the value matrix to get a matrix that has  
+rows and the context vector corresponding to each query.  
+And the number of columns on this matrix is equal to the size of the value vectors,which is often the same as  
+the embedding size.  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 

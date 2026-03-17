@@ -43,6 +43,8 @@ recent week:
 26.高斯混合模型(GMM)与EM算法详解(https://zhuanlan.zhihu.com/p/655018030)  
 27.35个机器学习算法(https://bigquant.com/wiki/doc/x0NCfKzmja)  
 28.2028全球智能危机(https://www.citriniresearch.com/p/2028gic)
+29.缩放因子根号dk(https://zhuanlan.zhihu.com/p/4555299718)  
+
 已完成:  
 1.位置编码1(https://www.bilibili.com/video/BV1nFarzjE6B/)  
 2.位置编码2(https://www.bilibili.com/video/BV1xR1RY9ECm)  
