@@ -147,6 +147,8 @@ M5算法
 条件决策树  
 # 2.random forests(随机森林)  
 # 3.logistic regression(逻辑回归)    
+
+
 # 4.SVM(支持向量机)  
 # 1.Optimization objective  
 $h_\theta(x)=\frac{1}{1+e^{-\theta^Tx}}$  
@@ -162,7 +164,7 @@ Logistic regression:
 $\mathop{min}\limits_{\theta}\frac{1}{m}[\sum\limits_{i=1}^my^{(i)}(-logh_{\theta}(x^{(i)}))+(1-y^{(i)})((-log(1-h_{\theta}(x^{(i)})))]+\frac{\lambda}{2m}\sum\limits_{j=1}^n\theta_j^2$  
 Support vector machine:  
 ![SVN](./pictures/SVN1.png)  
-$\mathop{min}\limits_{\theta}C\sum\limits_{i=1}^m[y^{(i)}cost1(\theta^Tx^{(i)})+(1-y^{(i)})cost_0(\theta^Tx^{(i)})]+\frac{1}{2}\sum\limits_{j=1}^n\theta_j^2$  
+$\mathop{min}\limits_{\theta}C\sum\limits_{i=1}^m[y^{(i)}cost_1(\theta^Tx^{(i)})+(1-y^{(i)})cost_0(\theta^Tx^{(i)})]+\frac{1}{2}\sum\limits_{j=1}^n\theta_j^2$  
 Hypothesis:  
 $$
 h_{\theta}(x)=
@@ -179,8 +181,62 @@ If y=0,we want $\theta^Tx\leq -1(not~just<0)$
 SVM Decision Boundary:Linearly separable case  
 ![SVM](./pictures/SVM21.png)
 trying to separate the positive and negative examples with as big a margin as possible.  
+# 3.The mathematics behind large margin classification  
+$\mathop{min}\limits_\theta\frac{1}{2}\sum\limits_{j=1}^n\theta_j^2$  
+s.t. $p^{(i)}\cdot||\theta||\geq 1~if~y^{(i)}=1$  
+$p^{(i)}\cdot||\theta||\leq-1~if~y^{(i)}=0$  
+where $p^{(i)}$ is the projection of $x^{(i)}$ onto the vector $\theta$  
+Simplification:$\theta_0=0$  
+# 4.Kernels I  
+Kernels and Similarity  
+$f_1=similarity(x,l^{(1)})=exp(-\frac{||x-l^{(1)}||^2}{2\sigma^2})=exp(-\frac{\sum\limits_{j=1}^n(x_j-l_j^{(1)})^2}{2\sigma^2})$  
+$If~x\approx l^{(1)}:f_1\approx 1$  
+$If~x~far~from~l^{(1)}:f_1\approx 0$  
+我们通过标记点和相似性函数来定义新的特征变量,从而训练复杂的非线性边界  
+# 5.Kernels II  
+SVM with Kernels  
+Hypothesis:  
+Give x,compute features $f\in R^{m+1}$  
+Predict "y=1" if $\theta^T f\geq 0$  
+Training:  
+$\mathop{min}\limits_{\theta}C\sum\limits_{i=1}^m y^{(i)}cost_1(\theta^T f^{(i)})+(1-y^{(i)})cost_0(\theta^T f^{(i)})+\frac{1}{2}\sum\limits_{j=1}^n\theta_j^2$ 
 
+C(=$\frac{1}{\lambda}$)  
+Larger C:Lower bias,high variance  
+Small C:Higher bias,low variance  
 
+$\sigma^2$  
+Large $\sigma^2$:Features $f_i$ vary more smoothly.  
+Higher bias,lower variance.  
+Small $\sigma^2$:Features $f_i$ vary less smoothly.  
+Lower bias,higher variance.  
+# 6.Using SVM  
+非线性函数  
+
+Need to specify:  
+Choice of parameter C  
+Choice of kernel(similarity function)  
+
+No kernel("linear kernel"):    
+Predict "y=1" if $\theta^T x\geq 0$  
+
+Gaussian kernel:  
+$f_i=exp(-\frac{||x-l^{(i)}||^2}{2\sigma^2}),where~l^{(i)}=x^{(i)}$  
+Need to choose $\sigma^2$  
+
+Do perform feature scaling before using the Gaussian kernel.  
+
+Mercer Theorem  
+
+Logistic regression vs SVMs  
+n=number of features,m=number of training examples  
+if n is large(relative to m),use logistic regression,or SVM without a kernel.  
+if n is small,m is intermediate,use SVM with Gaussian kernel.  
+If n is small,m is large:Create/add more features,then use logistic regression  
+or SVM without a kernel.  
+Neural network likely to work well for most of these settings,but may be slower to train.  
+
+SVM是一种凸优化问题  
 
 # 5.KNN(最临近规则分类)  
 # 6.贝叶斯算法  
