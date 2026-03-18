@@ -11,6 +11,7 @@
 7.吴恩达生成对抗网络(GAN)视频课(https://www.bilibili.com/video/BV1JC4y1T7vZ/)  
 8.强化学习(https://www.bilibili.com/video/BV1Q6pjzzEkK/)  
 
+算法:  
 1.A*算法(https://www.programmercarl.com/kamacoder/0126.%E9%AA%91%E5%A3%AB%E7%9A%84%E6%94%BB%E5%87%BBastar.html#%E6%80%9D%E8%B7%AF)  
 2.cnn卷积(https://blog.csdn.net/weixin_45266856/article/details/132753993)  
 3.PyTorch cv(https://blog.csdn.net/sikh_0529/article/details/127522562)  
@@ -25,34 +26,34 @@
 12.混合专家模型(https://blog.csdn.net/leah126/article/details/140095900)   
 13.扩散模型(https://www.zhihu.com/tardis/zm/art/599887666?source_id=1003)    
 
-
-
-recent week:
-14.大模型与知识图谱论文综合(https://zhuanlan.zhihu.com/p/3330517403)  
-15.transformer详解(https://zhuanlan.zhihu.com/p/338817680)  
-16.transformer李宏毅视频讲解(https://www.youtube.com/watch?v=ugWDIIOHtPA&list=PLJV_el3uVTsOK_ZK5L0Iv_EQoL1JefRL4&index=60)  
-17.transformer视频讲解(https://www.bilibili.com/video/BV1G4iMBeEWH/)  
-18.大模型进化史(https://zhuanlan.zhihu.com/p/23720060587)  
-19.LLM三种架构(https://zhuanlan.zhihu.com/p/642923989)  
-20.1月AI论文(https://my.feishu.cn/wiki/TPKwwEiLJibN4ek9fcQcYaZAnDd?fromScene=spaceOverview&table=tbllcGzlH3Epph6X&view=vewRB5E2Zs)  
-21.尚硅谷nlp视频课(https://www.bilibili.com/video/BV1k44LzPEhU)   
-22.注意力讲解(https://www.bilibili.com/video/BV1QD421n7wV)  
-23.卷积神经网络CNN中的参数量和计算量(https://zhuanlan.zhihu.com/p/366184485)  
-24.transformer残差连接和归一化(https://www.bilibili.com/video/BV1agCeBdEdW/)  
-25.CS336(https://www.bilibili.com/video/BV1xd41zdEek)  
-26.高斯混合模型(GMM)与EM算法详解(https://zhuanlan.zhihu.com/p/655018030)  
-27.35个机器学习算法(https://bigquant.com/wiki/doc/x0NCfKzmja)  
-28.2028全球智能危机(https://www.citriniresearch.com/p/2028gic)  
-29.缩放因子根号dk(https://zhuanlan.zhihu.com/p/4555299718)  
-30.Attention缩放(https://www.zhihu.com/question/339723385/answer/3513306407)  
-
-已完成:  
+LLM:  
 1.位置编码1(https://www.bilibili.com/video/BV1nFarzjE6B/)  
-2.位置编码2(https://www.bilibili.com/video/BV1xR1RY9ECm)  
+2.位置编码2(https://www.bilibili.com/video/BV1xR1RY9ECm) 
 
-补充数学内容:  
+数学:  
 1.特征值分解(https://www.bilibili.com/video/BV1SzqDBEEwW/)  
 2.SVD(奇异值分解)(https://www.bilibili.com/video/BV1XcfiBeEwQ)  
+
+recent week:  
+1.大模型与知识图谱论文综合(https://zhuanlan.zhihu.com/p/3330517403)  
+2.transformer详解(https://zhuanlan.zhihu.com/p/338817680)  
+3.transformer李宏毅视频讲解(https://www.youtube.com/watch?v=ugWDIIOHtPA&list=PLJV_el3uVTsOK_ZK5L0Iv_EQoL1JefRL4&index=60)  
+4.transformer视频讲解(https://www.bilibili.com/video/BV1G4iMBeEWH/)  
+5.注意力视频讲解(https://www.bilibili.com/video/BV1QD421n7wV)  
+6.transformer残差连接和归一化(https://www.bilibili.com/video/BV1agCeBdEdW/)  
+7.缩放因子根号dk(https://zhuanlan.zhihu.com/p/4555299718)  
+8.Attention缩放(https://www.zhihu.com/question/339723385/answer/3513306407)  
+9.transformer pytorch实现(https://nlp.seas.harvard.edu/annotated-transformer/)  
+10.transformer tensorflow实现(https://github.com/hyunwoongko/transformer)  
+11.大模型进化史(https://zhuanlan.zhihu.com/p/23720060587)  
+12.LLM三种架构(https://zhuanlan.zhihu.com/p/642923989)  
+13.1月AI论文(https://my.feishu.cn/wiki/TPKwwEiLJibN4ek9fcQcYaZAnDd?fromScene=spaceOverview&table=tbllcGzlH3Epph6X&view=vewRB5E2Zs)  
+14.尚硅谷nlp视频课(https://www.bilibili.com/video/BV1k44LzPEhU)  
+15.卷积神经网络CNN中的参数量和计算量(https://zhuanlan.zhihu.com/p/366184485)  
+16.CS336(https://www.bilibili.com/video/BV1xd41zdEek)  
+17.高斯混合模型(GMM)与EM算法详解(https://zhuanlan.zhihu.com/p/655018030)  
+18.35个机器学习算法(https://bigquant.com/wiki/doc/x0NCfKzmja)  
+19.2028全球智能危机(https://www.citriniresearch.com/p/2028gic)  
 
 待学习/复习内容:  
 EM算法  
