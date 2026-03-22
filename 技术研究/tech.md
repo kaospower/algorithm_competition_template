@@ -54,6 +54,7 @@ recent week:
 17.高斯混合模型(GMM)与EM算法详解(https://zhuanlan.zhihu.com/p/655018030)  
 18.35个机器学习算法(https://bigquant.com/wiki/doc/x0NCfKzmja)  
 19.2028全球智能危机(https://www.citriniresearch.com/p/2028gic)  
+20.模型对齐(SFT/RLHF)(https://www.bilibili.com/video/BV1GJc4zEEfR/)  
 
 待学习/复习内容:  
 EM算法  
