@@ -1,4 +1,4 @@
-Transformer模型详解(2024,https://zhuanlan.zhihu.com/p/338817680)  
+transformer模型详解(2024,https://zhuanlan.zhihu.com/p/338817680)  
 Transformer由论文Attention is All You Need提出,现为谷歌云TPU推荐的参考模型  
 Tensorflow和PyTorch上均有其参考代码  
 
