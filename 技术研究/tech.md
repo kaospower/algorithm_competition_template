@@ -29,6 +29,7 @@
 LLM:  
 1.位置编码1(https://www.bilibili.com/video/BV1nFarzjE6B/)  
 2.位置编码2(https://www.bilibili.com/video/BV1xR1RY9ECm) 
+3.transformer详解(https://zhuanlan.zhihu.com/p/338817680)  
 
 数学:  
 1.特征值分解(https://www.bilibili.com/video/BV1SzqDBEEwW/)  
@@ -36,7 +37,7 @@ LLM:
 
 recent week:  
 1.大模型与知识图谱论文综合(https://zhuanlan.zhihu.com/p/3330517403)  
-2.transformer详解(https://zhuanlan.zhihu.com/p/338817680)  
+
 3.transformer李宏毅视频讲解(https://www.youtube.com/watch?v=ugWDIIOHtPA&list=PLJV_el3uVTsOK_ZK5L0Iv_EQoL1JefRL4&index=60)  
 4.transformer视频讲解(https://www.bilibili.com/video/BV1G4iMBeEWH/)  
 5.注意力视频讲解(https://www.bilibili.com/video/BV1QD421n7wV)  
