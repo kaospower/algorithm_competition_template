@@ -37,6 +37,7 @@ LLM:
 5.transformer视频讲解(https://www.bilibili.com/video/BV1G4iMBeEWH/)  
 6.注意力视频讲解(https://www.bilibili.com/video/BV1QD421n7wV)  
 7.LLM三种架构(https://zhuanlan.zhihu.com/p/642923989)  
+8.大模型进化史(https://zhuanlan.zhihu.com/p/23720060587)  
 
 数学:  
 1.特征值分解(https://www.bilibili.com/video/BV1SzqDBEEwW/)  
@@ -52,9 +53,7 @@ recent week:
 7.缩放因子根号dk(https://zhuanlan.zhihu.com/p/4555299718)  
 8.Attention缩放(https://www.zhihu.com/question/339723385/answer/3513306407)  
 9.transformer pytorch实现(https://nlp.seas.harvard.edu/annotated-transformer/)  
-10.transformer tensorflow实现(https://github.com/hyunwoongko/transformer)  
-11.大模型进化史(https://zhuanlan.zhihu.com/p/23720060587)   0
-
+10.transformer tensorflow实现(https://github.com/hyunwoongko/transformer)
 13.1月AI论文(https://my.feishu.cn/wiki/TPKwwEiLJibN4ek9fcQcYaZAnDd?fromScene=spaceOverview&table=tbllcGzlH3Epph6X&view=vewRB5E2Zs)  
 14.尚硅谷nlp视频课(https://www.bilibili.com/video/BV1k44LzPEhU)  
 16.CS336(https://www.bilibili.com/video/BV1xd41zdEek)  
