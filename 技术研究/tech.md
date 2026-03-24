@@ -11,6 +11,8 @@
 7.吴恩达生成对抗网络(GAN)视频课(https://www.bilibili.com/video/BV1JC4y1T7vZ/)  
 8.强化学习(https://www.bilibili.com/video/BV1Q6pjzzEkK/)  
 9.Agent skills(https://www.bilibili.com/video/BV1obwCzuEGG)  
+10.PyTorch教学(https://www.bilibili.com/video/BV1ir1WBrEuz)  
+11.Transformer基于PyTorch实现(https://www.bilibili.com/video/BV1pCeGz3EJJ)  
 
 算法:  
 1.A*算法(https://www.programmercarl.com/kamacoder/0126.%E9%AA%91%E5%A3%AB%E7%9A%84%E6%94%BB%E5%87%BBastar.html#%E6%80%9D%E8%B7%AF)  
@@ -29,9 +31,10 @@
 
 LLM:  
 1.位置编码1(https://www.bilibili.com/video/BV1nFarzjE6B/)  
-2.位置编码2(https://www.bilibili.com/video/BV1xR1RY9ECm) 
+2.位置编码2(https://www.bilibili.com/video/BV1xR1RY9ECm)  
 3.transformer详解(https://zhuanlan.zhihu.com/p/338817680)  
 4.Agent Skills(https://www.bilibili.com/video/BV162cPzhEGU/)  
+5.transformer视频讲解(https://www.bilibili.com/video/BV1G4iMBeEWH/)  
 
 数学:  
 1.特征值分解(https://www.bilibili.com/video/BV1SzqDBEEwW/)  
@@ -43,14 +46,14 @@ LLM:
 recent week:  
 1.大模型与知识图谱论文综合(https://zhuanlan.zhihu.com/p/3330517403)
 3.transformer李宏毅视频讲解(https://www.youtube.com/watch?v=ugWDIIOHtPA&list=PLJV_el3uVTsOK_ZK5L0Iv_EQoL1JefRL4&index=60)  
-4.transformer视频讲解(https://www.bilibili.com/video/BV1G4iMBeEWH/)  
+  
 5.注意力视频讲解(https://www.bilibili.com/video/BV1QD421n7wV)  
 6.transformer残差连接和归一化(https://www.bilibili.com/video/BV1agCeBdEdW/)  
 7.缩放因子根号dk(https://zhuanlan.zhihu.com/p/4555299718)  
 8.Attention缩放(https://www.zhihu.com/question/339723385/answer/3513306407)  
 9.transformer pytorch实现(https://nlp.seas.harvard.edu/annotated-transformer/)  
 10.transformer tensorflow实现(https://github.com/hyunwoongko/transformer)  
-11.大模型进化史(https://zhuanlan.zhihu.com/p/23720060587)  
+11.大模型进化史(https://zhuanlan.zhihu.com/p/23720060587)   0
 12.LLM三种架构(https://zhuanlan.zhihu.com/p/642923989)  
 13.1月AI论文(https://my.feishu.cn/wiki/TPKwwEiLJibN4ek9fcQcYaZAnDd?fromScene=spaceOverview&table=tbllcGzlH3Epph6X&view=vewRB5E2Zs)  
 14.尚硅谷nlp视频课(https://www.bilibili.com/video/BV1k44LzPEhU)  
@@ -59,6 +62,7 @@ recent week:
 18.35个机器学习算法(https://bigquant.com/wiki/doc/x0NCfKzmja)  
 19.2028全球智能危机(https://www.citriniresearch.com/p/2028gic)  
 20.模型对齐(SFT/RLHF)(https://www.bilibili.com/video/BV1GJc4zEEfR/)  
+21.PyTorch源码剖析(https://www.bilibili.com/video/BV1ov411M7xL)  
 
 待学习/复习内容:  
 Attention is all you need  
