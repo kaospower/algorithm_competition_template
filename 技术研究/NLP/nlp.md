@@ -1502,6 +1502,25 @@ Encoder/decoder
 220 million parameters  
 
 # 33.Multi-task training strategy  
+gradual unfreezing(渐进解冻层)   
+adapter layers(适配器层)  
+# 34.GLUE(General Language Understanding Evaluation) benchmark  
+A collection used to train,evaluate,analyze natural language understanding systems  
+Datasets with different genres,and of different sizes and difficulties  
+Leaderboard(排行榜)    
+
+Drive research  
+Model agnostic(模型无关的)  
+Makes use of transfer learning  
+
+
+
+
+
+
+
+
+
 
 
 
