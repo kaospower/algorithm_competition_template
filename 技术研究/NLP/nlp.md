@@ -1430,6 +1430,107 @@ you weight the loss for the words within the article with zeros,and the ones wit
 ones so the model only focuses on the summary.  
 ![Transformer summarizer](./pictures/summarization.png)  
 
+# 26.overview  
+Transfer learning(迁移学习) allows you to get better results and speeds up training.  
+You'll be also 
+
+# 27.transfer learning in NLP  
+Transfer learning will come in two basic forms.  
+1.Feature-based(基于特征的学习)    
+2.Fine-tuning(使用微调)  
+
+Fine-tune a model for each downstream task  
+# 28.ELMo,GPT,BERT,T5  
+CBOW:Context window,FFNN(FeedForward Neural Network)  
+ELMo:RNNs/Bi-drectional Context(双向LSTM)  
+GPT:Decoder-only(Uni-directional Context,单向)    
+BERT:Encoder-only,Transformer+Bi-directional Context,Multi-Mask(双向)  
+T5:Encoder-Decoder,Multi-task,Bi-directional Context(双向)  
+# 29.BERT(Bidirectional Encoder Representations from Transformers)  
+pre-training and fine-tuning  
+during pre-training,the model is trained on unlabeled data over different pre-training tasks.   
+For fine-tuning,the BERT model is first initialized with a pre-trained parameters and all of  
+the parameters are fine-tuned using labeled data from the downstream tasks.  
+
+A multi layer bidirectional transformer  
+positional embeddings  
+BERT_base:  
+12 layers(12 transformer blocks)  
+12 attention heads  
+110 million parameters  
+
+Masked language modeling(MLM)  
+
+Choose 15% of the tokens at random:mask them 80% of the time,replace them with a  
+random token 10% of the time,or keep as is 10% of the time  
+There could be multiple masked spans in a sentence  
+Next sentence prediction is also used when pre-training  
+
+# 30.BERT objective  
+Formalizing the input  
+Input=Position Embeddings+Segment Embeddings+Token Embeddings  
+[CLS]:a special classification symbol added in front of every input  
+[SEP]:a special separator token  
+
+Objective 1:  
+Multi-Mask LM  
+Loss:Cross Entropy Loss  
+
+Objective 2:  
+Next Sentence Prediction  
+Loss:Binary Loss  
+# 31.Fine-tuning BERT  
+MNLI  
+NER  
+SQuAD  
+![BERT](./pictures/BERT.png)  
+# 32.Transformer T5(text to text transformer)  
+Classification  
+Question Answering  
+Machine Translation  
+Summerization  
+Sentiment  
+
+causal masking  
+fully visible masking  
+
+![T5](./pictures/T5.png)  
+
+Model Architecture  
+Encoder/decoder  
+12 transformers blocks each  
+220 million parameters  
+
+# 33.Multi-task training strategy  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 

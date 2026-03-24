@@ -12,7 +12,7 @@
 8.强化学习(https://www.bilibili.com/video/BV1Q6pjzzEkK/)  
 9.Agent skills(https://www.bilibili.com/video/BV1obwCzuEGG)  
 10.PyTorch教学(https://www.bilibili.com/video/BV1ir1WBrEuz)  
-11.Transformer基于PyTorch实现(https://www.bilibili.com/video/BV1pCeGz3EJJ)  
+11.吴恩达系列之Transformer基于PyTorch实现(https://www.bilibili.com/video/BV1pCeGz3EJJ)  
 
 算法:  
 1.A*算法(https://www.programmercarl.com/kamacoder/0126.%E9%AA%91%E5%A3%AB%E7%9A%84%E6%94%BB%E5%87%BBastar.html#%E6%80%9D%E8%B7%AF)  
@@ -47,30 +47,36 @@ LLM:
 15.卷积神经网络CNN中的参数量和计算量(https://zhuanlan.zhihu.com/p/366184485)  
 
 recent week:  
-1.大模型与知识图谱论文综合(https://zhuanlan.zhihu.com/p/3330517403)
-3.transformer李宏毅视频讲解(https://www.youtube.com/watch?v=ugWDIIOHtPA&list=PLJV_el3uVTsOK_ZK5L0Iv_EQoL1JefRL4&index=60)
-6.transformer残差连接和归一化(https://www.bilibili.com/video/BV1agCeBdEdW/)  
-7.缩放因子根号dk(https://zhuanlan.zhihu.com/p/4555299718)  
-8.Attention缩放(https://www.zhihu.com/question/339723385/answer/3513306407)  
-9.transformer pytorch实现(https://nlp.seas.harvard.edu/annotated-transformer/)  
-10.transformer tensorflow实现(https://github.com/hyunwoongko/transformer)
-13.1月AI论文(https://my.feishu.cn/wiki/TPKwwEiLJibN4ek9fcQcYaZAnDd?fromScene=spaceOverview&table=tbllcGzlH3Epph6X&view=vewRB5E2Zs)  
-14.尚硅谷nlp视频课(https://www.bilibili.com/video/BV1k44LzPEhU)  
-16.CS336(https://www.bilibili.com/video/BV1xd41zdEek)  
-17.高斯混合模型(GMM)与EM算法详解(https://zhuanlan.zhihu.com/p/655018030)  
-18.35个机器学习算法(https://bigquant.com/wiki/doc/x0NCfKzmja)  
-19.2028全球智能危机(https://www.citriniresearch.com/p/2028gic)  
-20.模型对齐(SFT/RLHF)(https://www.bilibili.com/video/BV1GJc4zEEfR/)  
-21.PyTorch源码剖析(https://www.bilibili.com/video/BV1ov411M7xL)  
-22.Llama架构(https://www.bilibili.com/video/BV1EN411V7bx/)  
+2028全球智能危机(https://www.citriniresearch.com/p/2028gic)    
+PyTorch源码剖析(https://www.bilibili.com/video/BV1ov411M7xL)   
+35个机器学习算法(https://bigquant.com/wiki/doc/x0NCfKzmja)    
+大模型与知识图谱论文综合(https://zhuanlan.zhihu.com/p/3330517403)  
+transformer李宏毅视频讲解(https://www.youtube.com/watch?v=ugWDIIOHtPA&list=PLJV_el3uVTsOK_ZK5L0Iv_EQoL1JefRL4&index=60)  
+transformer残差连接和归一化(https://www.bilibili.com/video/BV1agCeBdEdW/)    
+Attention缩放(https://www.zhihu.com/question/339723385/answer/3513306407)    
+缩放因子根号dk(https://zhuanlan.zhihu.com/p/4555299718)   
+transformer pytorch实现(https://nlp.seas.harvard.edu/annotated-transformer/)    
+transformer tensorflow实现(https://github.com/hyunwoongko/transformer)    
+Llama架构(https://www.bilibili.com/video/BV1EN411V7bx/)    
+模型对齐(SFT/RLHF)(https://www.bilibili.com/video/BV1GJc4zEEfR/)   
+1月AI论文(https://my.feishu.cn/wiki/TPKwwEiLJibN4ek9fcQcYaZAnDd?fromScene=spaceOverview&table=tbllcGzlH3Epph6X&view=vewRB5E2Zs)  
+尚硅谷nlp视频课(https://www.bilibili.com/video/BV1k44LzPEhU)    
+CS336(https://www.bilibili.com/video/BV1xd41zdEek)    
+高斯混合模型(GMM)与EM算法详解(https://zhuanlan.zhihu.com/p/655018030)   
 
 待学习/复习内容:  
-Attention is all you need  
+star法则  
+
 EM算法  
 K-means聚类  
 随机森林  
 决策树  
 XGBoost  
+Attention is all you need  
+
 交叉注意力  
 多头交叉注意力  
-star法则  
+modelscope平台  
+Llamafactory  
+Longchain,Longsmith  
+
