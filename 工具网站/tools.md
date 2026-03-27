@@ -13,7 +13,7 @@
 8.latex希腊字母表(https://blog.csdn.net/zhouchen1998/article/details/119324338)  
 9.每日ai要闻(https://www.aibase.com/zh)  
 # 2.电子图书馆网站
-1.Anna's Archive(https://annas-archive.li/)  
+1.Anna's Archive(https://annas-archive.gl/)  
 2.电子书库zlibrary(https://zh.z-library.sk/)  
 3.Perlego(https://www.perlego.com/)  
 4.Packt(https://github.com/packtPublishing)  
