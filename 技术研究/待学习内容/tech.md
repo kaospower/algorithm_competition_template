@@ -1,7 +1,5 @@
 # 本周:  
-star法则  
-2028全球智能危机(https://www.citriniresearch.com/p/2028gic)  
-梯度,散度,旋度(https://zhuanlan.zhihu.com/p/136836187)  
+2028全球智能危机(https://www.citriniresearch.com/p/2028gic)
 K-means聚类  
 模型对齐(SFT/RLHF)(https://www.bilibili.com/video/BV1GJc4zEEfR/)  
 PyTorch教学(https://www.bilibili.com/video/BV1ir1WBrEuz)  
