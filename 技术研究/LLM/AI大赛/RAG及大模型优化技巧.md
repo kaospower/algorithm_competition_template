@@ -52,7 +52,6 @@ FAISS,IVF索引,HNSW分层可导航小世界
 # 知识图谱  
 1.Domain Graph-域图  
 2.Lexical Graph-词汇图  
-3.
 
 
 
