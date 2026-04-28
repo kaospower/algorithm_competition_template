@@ -21,6 +21,9 @@ Agent Skills(https://www.bilibili.com/video/BV162cPzhEGU/)
 特征值分解(https://www.bilibili.com/video/BV1SzqDBEEwW/)  
 SVD(奇异值分解)(https://www.bilibili.com/video/BV1XcfiBeEwQ)  
 梯度,散度,旋度(https://zhuanlan.zhihu.com/p/136836187)  
+
+机器学习:  
+Huber loss(https://en.wikipedia.org/wiki/Huber_loss)  
 深度学习:  
 卷积神经网络CNN中的参数量和计算量(https://zhuanlan.zhihu.com/p/366184485)  
 

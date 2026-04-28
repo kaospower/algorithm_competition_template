@@ -136,7 +136,7 @@ useful algorithm.
 harmonic mean of P and R(调和平均数):强调较小值  
 $F1~score=\frac{1}{\frac{1}{2}(\frac{1}{Precision}+\frac{1}{Recall})}=2\frac{Precision\cdot Recall}{Precision+Recall}$
 
-经典机器学习算法  
+# 经典机器学习算法  
 # 1.decision tree(决策树)  
 分类和回归树(CART)  
 ID3算法  
@@ -146,11 +146,12 @@ CHAID算法
 M5算法  
 条件决策树  
 # 2.random forests(随机森林)  
+
 # 3.logistic regression(逻辑回归)    
 
 
 # 4.SVM(支持向量机)  
-# 1.Optimization objective  
+## 1.Optimization objective  
 $h_\theta(x)=\frac{1}{1+e^{-\theta^Tx}}$  
 If y=1,we want $h_\theta(x)\approx 1,\theta^Tx\gg0$  
 If y=0,we want $h_\theta(x)\approx 0,\theta^Tx\ll0$  
@@ -173,7 +174,7 @@ h_{\theta}(x)=
 0 & otherwise
 \end{cases}
 $$
-# 2.Large Margin Intuition  
+## 2.Large Margin Intuition  
 ![SVM](./pictures/SVM2.png) 
 If y=1,we want $\theta^Tx\geq 1(not~just\geq 0)$  
 If y=0,we want $\theta^Tx\leq -1(not~just<0)$  
@@ -181,19 +182,19 @@ If y=0,we want $\theta^Tx\leq -1(not~just<0)$
 SVM Decision Boundary:Linearly separable case  
 ![SVM](./pictures/SVM21.png)
 trying to separate the positive and negative examples with as big a margin as possible.  
-# 3.The mathematics behind large margin classification  
+## 3.The mathematics behind large margin classification  
 $\mathop{min}\limits_\theta\frac{1}{2}\sum\limits_{j=1}^n\theta_j^2$  
 s.t. $p^{(i)}\cdot||\theta||\geq 1~if~y^{(i)}=1$  
 $p^{(i)}\cdot||\theta||\leq-1~if~y^{(i)}=0$  
 where $p^{(i)}$ is the projection of $x^{(i)}$ onto the vector $\theta$  
 Simplification:$\theta_0=0$  
-# 4.Kernels I  
+## 4.Kernels I  
 Kernels and Similarity  
 $f_1=similarity(x,l^{(1)})=exp(-\frac{||x-l^{(1)}||^2}{2\sigma^2})=exp(-\frac{\sum\limits_{j=1}^n(x_j-l_j^{(1)})^2}{2\sigma^2})$  
 $If~x\approx l^{(1)}:f_1\approx 1$  
 $If~x~far~from~l^{(1)}:f_1\approx 0$  
 我们通过标记点和相似性函数来定义新的特征变量,从而训练复杂的非线性边界  
-# 5.Kernels II  
+## 5.Kernels II  
 SVM with Kernels  
 Hypothesis:  
 Give x,compute features $f\in R^{m+1}$  
@@ -210,7 +211,7 @@ Large $\sigma^2$:Features $f_i$ vary more smoothly.
 Higher bias,lower variance.  
 Small $\sigma^2$:Features $f_i$ vary less smoothly.  
 Lower bias,higher variance.  
-# 6.Using SVM  
+## 6.Using SVM  
 非线性函数  
 
 Need to specify:  
@@ -239,6 +240,7 @@ Neural network likely to work well for most of these settings,but may be slower 
 SVM是一种凸优化问题  
 
 # 5.KNN(最临近规则分类)  
+
 # 6.贝叶斯算法  
 Naive Bayes(朴素贝叶斯)  
 高斯朴素贝叶斯  
@@ -266,14 +268,23 @@ FDA(灵活判别分析法)
 Boosting  
 Bagging  
 AdaBoost  
-GBDT(梯度提升树)  
-XGBoost  
+## GBDT(Gradient Boosting Decision Tree,梯度提升决策树)  
+GBDT是一种基于boosting集成思想的加法模型,在训练时采用前向分布算法进行贪婪的学习,  
+每次迭代都学习一棵CART树来拟合之前t-1棵树的预测结果与训练样本真实值的残差  
+## XGBoost(eXtreme Gradient Boosting,极致梯度提升)  
+XGBoost的基本思想和GBDT相同,但是进行许多优化:利用二阶泰勒公式展开,利用正则项,采用Blocks存储结构    
+XGBoost在数据挖掘,推荐系统等领域得到广泛的应用  
+
+
+
+
 堆叠泛化(混合)  
 GBM算法  
 GBRT算法
 
 其他机器学习算法  
 # 1.协同过滤  
+
 # 2.关联规则学习  
 Apriori  
 Eclat  
@@ -288,4 +299,9 @@ DBN(深度信念网络)
 CNN(卷积神经网络)  
 Stacked Auto-Encoder(栈式自编码算法)  
 
-
+# Huber loss  
+$L_{\delta}(a)=
+\begin{cases}
+\frac{1}{2}a^2\\
+\delta\cdot(|a|-\frac{1}{2}\delta)
+\end{cases}$  
