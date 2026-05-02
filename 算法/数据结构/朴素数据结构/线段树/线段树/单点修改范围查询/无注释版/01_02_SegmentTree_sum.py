@@ -53,7 +53,7 @@ class SegmentTree:
         return self._merge(l_res, r_res)
 
     def update(self, idx, val):
-        return self._update(1, self.n, 1, idx+1, val)
+        self._update(1, self.n, 1, idx+1, val)
 
     def query(self, L, R):
         return self._query(1, self.n, 1, L+1, R+1)

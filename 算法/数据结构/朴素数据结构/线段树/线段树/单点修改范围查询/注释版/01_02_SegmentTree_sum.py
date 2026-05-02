@@ -81,7 +81,7 @@ class SegmentTree:
 
     # 真正的范围修改函数,减少参数
     def update(self, idx, val):
-        return self._update(1, self.n, 1, idx+1, val)
+        self._update(1, self.n, 1, idx+1, val)
 
     # 真正的范围查询函数,减少参数
     def query(self, L, R):
