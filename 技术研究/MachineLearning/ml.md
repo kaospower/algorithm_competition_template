@@ -272,7 +272,13 @@ AdaBoost
 GBDT是一种基于boosting集成思想的加法模型,在训练时采用前向分布算法进行贪婪的学习,  
 每次迭代都学习一棵CART树来拟合之前t-1棵树的预测结果与训练样本真实值的残差  
 ## XGBoost(eXtreme Gradient Boosting,极致梯度提升)  
-XGBoost的基本思想和GBDT相同,但是进行许多优化:利用二阶泰勒公式展开,利用正则项,采用Blocks存储结构    
+XGBoost的主要贡献(引自陈天奇XGBoost原论文):  
+1.We design and build a highly scalable(高度可扩展) end-to-end tree boosting system.  
+2.We propose a theoretically justified weighted quantile sketch(加权分位数草图) for efficient proposal calculation.  
+3.We introduce a novel sparsity-aware algorithm(稀疏感知算法) for parallel tree learning.  
+4.We propose an effective cache-aware block structure(缓存感知块结构) for out-of-core tree learning.  
+
+XGBoost的基本思想和GBDT相同,但是进行许多优化:利用二阶泰勒公式展开,利用正则项,采用Blocks存储结构  
 XGBoost在数据挖掘,推荐系统等领域得到广泛的应用  
 
 
