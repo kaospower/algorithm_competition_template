@@ -1,12 +1,3 @@
-# 本周:  
-2028全球智能危机(https://www.citriniresearch.com/p/2028gic)
-K-means聚类  
-模型对齐(SFT/RLHF)(https://www.bilibili.com/video/BV1GJc4zEEfR/)  
-PyTorch教学(https://www.bilibili.com/video/BV1ir1WBrEuz)  
-Agent and skills(中油e学)  
-根号分治与leetcode 3655(https://leetcode.cn/problems/xor-after-range-multiplication-queries-ii/)  
-青稞AI  
-
 深度学习相关
 吴恩达生成对抗网络(GAN)视频课(https://www.bilibili.com/video/BV1JC4y1T7vZ/)  
 强化学习(https://www.bilibili.com/video/BV1Q6pjzzEkK/)  
@@ -15,8 +6,15 @@ LLM and Agent
 Agent skills(https://www.bilibili.com/video/BV1obwCzuEGG)  
 吴恩达系列之Transformer基于PyTorch实现(https://www.bilibili.com/video/BV1pCeGz3EJJ)  
 
-
 # recent:  
+力扣最近搁置的题  
+2028全球智能危机(https://www.citriniresearch.com/p/2028gic)
+K-means聚类  
+模型对齐(SFT/RLHF)(https://www.bilibili.com/video/BV1GJc4zEEfR/)  
+PyTorch教学(https://www.bilibili.com/video/BV1ir1WBrEuz)  
+Agent and skills(中油e学)  
+根号分治与leetcode 3655(https://leetcode.cn/problems/xor-after-range-multiplication-queries-ii/)  
+青稞AI  
 决策树(https://zhuanlan.zhihu.com/p/339380585)  
 GBDT(https://zhuanlan.zhihu.com/p/280222403)  
 XGBoost(https://zhuanlan.zhihu.com/p/162001079)  
