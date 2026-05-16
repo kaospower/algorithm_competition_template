@@ -1,3 +1,13 @@
+# 搁置标签页  
+pdf(file:///C:/Users/knmfr/OneDrive/Documents/%E8%AE%BA%E6%96%87%E9%9B%86/%E8%81%9A%E7%B1%BB+Transformer/ClusterFomer/ClusterFomer.pdf)  
+xgboost(https://www.ibm.com/think/topics/xgboost)  
+决策树(https://zhuanlan.zhihu.com/p/339380585)  
+gbdt(https://zhuanlan.zhihu.com/p/280222403)  
+xgbdt知乎(https://zhuanlan.zhihu.com/p/162001079)  
+3464(https://leetcode.cn/problems/maximize-the-distance-between-points-on-a-square/description/)  
+3225(https://leetcode.cn/problems/maximum-score-from-grid-operations/description/)  
+xgboost论文(https://arxiv.org/pdf/1603.02754)  
+
 深度学习相关
 吴恩达生成对抗网络(GAN)视频课(https://www.bilibili.com/video/BV1JC4y1T7vZ/)  
 强化学习(https://www.bilibili.com/video/BV1Q6pjzzEkK/)  
