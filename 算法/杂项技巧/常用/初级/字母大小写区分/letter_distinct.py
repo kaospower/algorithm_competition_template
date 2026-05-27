@@ -15,23 +15,20 @@ fmin = lambda x, y: x if x < y else y
 fmax = lambda x, y: x if x > y else y
 
 # leetcode 3121(https://leetcode.cn/problems/count-the-number-of-special-characters-ii/description/)
-#状态机
+# 位集优化
+# 小写字母a ascii码值从97开始,减去96(2^6+2^5)后刚好从1开始
+# 大写字母a ascii码值从65开始,减去64(2^6)后刚好从1开始
 class Solution:
     def numberOfSpecialChars(self, word: str) -> int:
-        ans = 0
-        state = [0] * 27
-        for c in map(ord, word):
-            x = c & 31  # 转成数字 1~26
-            if c & 32:  # 小写字母
-                if state[x] == 0:
-                    state[x] = 1
-                elif state[x] == 2:  # 大写的后面不能有小写
-                    state[x] = -1
-                    ans -= 1
-            else:  # 大写字母
-                if state[x] == 0:  # 还没遇到小写，就先遇到大写了
-                    state[x] = -1
-                elif state[x] == 1:
-                    state[x] = 2
-                    ans += 1
-        return ans
+        lower=upper=invalid=0
+        for x in map(ord,word):
+            bit=1<<(x&31)
+            #小写
+            if x&32:
+                lower|=bit
+                if upper&bit:
+                    invalid|=bit
+            else:
+                upper|=bit
+        return (lower&upper&~invalid).bit_count()
+
