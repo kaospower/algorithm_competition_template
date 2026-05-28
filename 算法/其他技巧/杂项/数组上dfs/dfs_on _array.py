@@ -14,18 +14,18 @@ from collections import defaultdict, deque, Counter
 fmin = lambda x, y: x if x < y else y
 fmax = lambda x, y: x if x > y else y
 
-# leetcode 3121(https://leetcode.cn/problems/count-the-number-of-special-characters-ii/description/)
-# 位集优化
+# leetcode 1306(https://leetcode.cn/problems/jump-game-iii/description/)
 class Solution:
-    def numberOfSpecialChars(self, word: str) -> int:
-        lower=upper=invalid=0
-        for x in map(ord,word):
-            bit=1<<(x&31)
-            #小写
-            if x&32:
-                lower|=bit
-                if upper&bit:
-                    invalid|=bit
-            else:
-                upper|=bit
-        return (lower&upper&~invalid).bit_count()
+    def canReach(self, arr: List[int], start: int) -> bool:
+        n = len(arr)
+        vis = [False] * n
+
+        def f(i):
+            if i < 0 or i >= n or vis[i]:
+                return False
+            if arr[i] == 0:
+                return True
+            vis[i] = True
+            return f(i + arr[i]) or f(i - arr[i])
+
+        return f(start)

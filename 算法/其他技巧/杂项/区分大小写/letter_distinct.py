@@ -15,7 +15,7 @@ fmin = lambda x, y: x if x < y else y
 fmax = lambda x, y: x if x > y else y
 
 # leetcode 3121(https://leetcode.cn/problems/count-the-number-of-special-characters-ii/description/)
-# 位集优化
+# 位集
 # 小写字母a ascii码值从97开始,减去96(2^6+2^5)后刚好从1开始
 # 大写字母a ascii码值从65开始,减去64(2^6)后刚好从1开始
 class Solution:
