@@ -27,3 +27,22 @@ class Solution:
             else:
                 j+=1
         return -1
+
+# leetcode 1871(https://leetcode.cn/problems/jump-game-vii/description/)
+# 同向双指针
+class Solution:
+    def canReach(self, s: str, minJump: int, maxJump: int) -> bool:
+        n=len(s)
+        canReach=[False]*n #canReach记录可以访问到的下标
+        canReach[0]=True
+        j=1 #j记录还没访问的下标
+        for i,x in enumerate(s):
+            if x=='0' and canReach[i]:
+                mx=min(i+maxJump,n-1)
+                j=max(j,i+minJump)
+                while j<=mx:
+                    canReach[j]=True
+                    j+=1
+                if j==n:
+                    break #终点可以抵达,只需验证其是否为0即可
+        return s[-1]=='0' and canReach[-1]

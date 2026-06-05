@@ -79,3 +79,24 @@ class Solution:
                         q.append(i)
                         vis[i]=True
                 del d[v]
+
+# bfs在数组上的应用
+# 例:leetcode 1871(https://leetcode.cn/problems/jump-game-vii/description/)
+class Solution:
+    def canReach(self, s: str, minJump: int, maxJump: int) -> bool:
+        if s[-1]=='1':
+            return False
+        n=len(s)
+        farthest=0 #历史到达的最远位置
+        q=deque([0])
+        while q:
+            size=len(q)
+            for _ in range(size):
+                cur=q.popleft()
+                if cur==n-1:
+                    return True
+                for i in range(max(farthest+1,cur+minJump),min(cur+maxJump+1,len(s))):
+                    if s[i]=='0':
+                        q.append(i)
+                farthest=i
+        return False
