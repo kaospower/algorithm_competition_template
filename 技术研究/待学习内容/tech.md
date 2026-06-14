@@ -1,3 +1,28 @@
+# 最近!!!
+l 3753(https://leetcode.cn/problems/total-waviness-of-numbers-in-range-ii/description/)  
+l 2770(https://leetcode.cn/problems/maximum-number-of-jumps-to-reach-the-last-index/description/)  
+l 3660(https://leetcode.cn/problems/jump-game-ix/description/)  
+l 3691(https://leetcode.cn/problems/maximum-total-subarray-value-ii/description/)  
+l 3629(https://leetcode.cn/problems/minimum-jumps-to-reach-end-via-prime-teleportation/description/)  
+l 3093(https://leetcode.cn/problems/longest-common-suffix-queries/description/)  
+l 3161(https://leetcode.cn/problems/block-placement-queries/description/)  
+l 154(https://leetcode.cn/problems/find-minimum-in-rotated-sorted-array-ii/description/)  
+l 153(https://leetcode.cn/problems/find-minimum-in-rotated-sorted-array/description/)  
+l 33(https://leetcode.cn/problems/search-in-rotated-sorted-array/description/)  
+l 1674(https://leetcode.cn/problems/minimum-moves-to-make-array-complementary/description/)  
+l 3464(https://leetcode.cn/problems/maximize-the-distance-between-points-on-a-square/description/)  
+l 3225(https://leetcode.cn/problems/maximum-score-from-grid-operations/description/)  
+
+IBMxgboost(https://www.ibm.com/think/topics/xgboost)  
+决策树(https://zhuanlan.zhihu.com/p/339380585)  
+XGboost(https://arxiv.org/pdf/1603.02754)  
+gbdt(https://zhuanlan.zhihu.com/p/162001079)  
+集成学习(https://zhuanlan.zhihu.com/p/280222403)  
+transformer code(https://nlp.seas.harvard.edu/annotated-transformer/)  
+openai paper(https://openai.com/research/index/publication/)  
+
+
+
 深度学习相关
 吴恩达生成对抗网络(GAN)视频课(https://www.bilibili.com/video/BV1JC4y1T7vZ/)  
 强化学习(https://www.bilibili.com/video/BV1Q6pjzzEkK/)  
