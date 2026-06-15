@@ -96,3 +96,71 @@ for _ in range(m):
     b,vb=lca.get_dis(x,z)
     c,vc=lca.get_dis(y,z)
     print(a^b^c,(va+vb+vc)//2)
+
+
+
+# 例:leetcode 3559(https://leetcode.cn/problems/number-of-ways-to-assign-edge-weights-ii/)
+#lca模版题
+mod=1_000_000_007
+N=100_000
+#预处理2的幂
+p=[0]*N
+p[0]=1
+for i in range(1,N):
+    p[i]=p[i-1]*2%mod
+
+#重要结论:从n条边中取奇数条边,有2^(n-1)种取法
+#本题先用lca求出两点间距离d,然后用快速幂计算2^(d-1)即可,注意判断两个点相等的情况,此时答案为0
+class Solution:
+    def assignEdgeWeights(self, edges: List[List[int]], queries: List[List[int]]) -> List[int]:
+        # 节点数等于边数+1,由于节点编号从1开始,因此节点数初始化成边数+2
+        lca=LCA(edges,len(edges)+2,1)
+        return [p[lca.get_dis(x,y)-1] if x!=y else 0 for x,y in queries]
+
+class LCA:
+    # 如果下标从0开始,n初始化成边数+1,如果下标从1开始,n初始化成边数+2,root代表根节点编号
+    def __init__(self, edges, n, root):
+        m = n.bit_length()
+        g = [[] for _ in range(n)]
+        for x, y in edges:
+            g[x].append(y)
+            g[y].append(x)
+        depth = [0] * n
+        pa = [[-1] * m for _ in range(n)]
+
+        def f(u, fa):
+            pa[u][0] = fa
+            for v in g[u]:
+                if v == fa: continue
+                depth[v] = depth[u] + 1
+                f(v, u)
+
+        f(root, -1)
+        for i in range(m - 1):
+            for x in range(n):
+                if (t := pa[x][i]) != -1:
+                    pa[x][i + 1] = pa[t][i]
+        self.depth = depth
+        self.pa = pa
+        self.m = m
+
+    def get_kth_ancestor(self, node, k):
+        for i in range(k.bit_length()):
+            if k >> i & 1:
+                node = self.pa[node][i]
+        return node
+
+    def get_lca(self, x, y):
+        if self.depth[x] > self.depth[y]:
+            x, y = y, x
+        y = self.get_kth_ancestor(y, self.depth[y] - self.depth[x])
+        if y == x:
+            return x
+        for i in range(self.m - 1, -1, -1):
+            px, py = self.pa[x][i], self.pa[y][i]
+            if px != py:
+                x, y = px, py
+        return self.pa[x][0]
+
+    def get_dis(self, x, y):
+        return self.depth[x] + self.depth[y] - 2 * self.depth[self.get_lca(x, y)]
