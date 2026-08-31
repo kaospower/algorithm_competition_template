@@ -20,6 +20,7 @@ fmax = lambda x, y: x if x > y else y
 # 1.某阶段的状态一旦确定,不再受此前各状态及决策的影响,即"未来与过去无关"
 # 2.某阶段的状态一旦确定,不再受后续各状态及决策的影响,即"当前与未来无关"
 
+
 # leetcode 1345(https://leetcode.cn/problems/jump-game-iv/description/)
 # 本题状态转移不具有无后效性,不能用dp,本质是图上bfs求最短路
 class Solution:
