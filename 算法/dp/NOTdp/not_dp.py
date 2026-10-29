@@ -22,7 +22,7 @@ fmax = lambda x, y: x if x > y else y
 
 
 # leetcode 1345(https://leetcode.cn/problems/jump-game-iv/description/)
-# 本题状态转移不具有无后效性,不能用dp,本质是图上bfs求最短路
+# 本题状态转移不具有无后效性,存在循环依赖,不能用dp,本质是图上bfs求最短路
 class Solution:
     def minJumps(self, arr: List[int]) -> int:
         n = len(arr)
