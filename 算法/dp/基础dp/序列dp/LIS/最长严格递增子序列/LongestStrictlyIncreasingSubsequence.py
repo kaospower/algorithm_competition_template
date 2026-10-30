@@ -1,4 +1,4 @@
-from typing import List
+from typing import List, Optional
 from bisect import bisect_left, bisect_right
 from heapq import heappush, heappop, heapreplace
 from itertools import permutations, accumulate

@@ -46,3 +46,22 @@ class Solution:
                 if j==n:
                     break #终点可以抵达,只需验证其是否为0即可
         return s[-1]=='0' and canReach[-1]
+
+
+#相向双指针
+#leetcode 977(https://leetcode.cn/problems/squares-of-a-sorted-array/description/)
+class Solution:
+    def sortedSquares(self, nums: List[int]) -> List[int]:
+        n=len(nums)
+        ans=[0]*n
+        i,j=0,n-1
+        for k in range(n-1,-1,-1):
+            a,b=nums[i]*nums[i],nums[j]*nums[j]
+            if a>b:
+                ans[k]=a
+                i+=1
+            else:
+                ans[k]=b
+                j-=1
+        return ans
+
