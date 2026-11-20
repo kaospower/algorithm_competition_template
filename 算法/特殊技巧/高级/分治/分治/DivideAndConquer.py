@@ -19,13 +19,14 @@ fmin = lambda x, y: x if x < y else y
 #1545(https://leetcode.cn/problems/find-kth-bit-in-nth-binary-string)  
 class Solution:
     def findKthBit(self, n: int, k: int) -> str:
+        # n为当前字符串长度,k为待查找数位
         def f(n,k):
-            if n == 1:
+            if n==1:
                 return '0'
-            if k == 1 << (n - 1):
+            if k==1<<(n-1):
                 return '1'
-            if k < 1 << (n - 1):
-                return f(n - 1, k)
-            res = f(n - 1, (1 << n) - k)
-            return '0' if res == '1' else '1'
+            if k<1<<(n-1):
+                return f(n-1,k)
+            res=f(n-1,(1<<n)-k)
+            return '0' if res=='1' else '1'
         return f(n,k)
