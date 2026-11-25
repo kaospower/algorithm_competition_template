@@ -14,6 +14,7 @@ from random import randint
 fmax = lambda x, y: x if x > y else y
 fmin = lambda x, y: x if x < y else y
 
+#leetcode 3934(https://leetcode.cn/problems/smallest-unique-subarray/)
 #二分答案+滚动哈希
 class Solution:
     def smallestUniqueSubarray(self, nums: list[int]) -> int:
