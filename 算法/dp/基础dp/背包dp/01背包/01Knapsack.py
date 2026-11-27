@@ -29,3 +29,21 @@ def f(nums):
         if f[s]:
             return True
     return False
+
+
+# 01背包+贪心
+# 先只考虑每个物品只购买一件的情况,应用01背包求出可以购买的最多物品数,然后将剩下的钱全买最便宜的物品
+# 模版题:3946(https://leetcode.cn/problems/maximum-number-of-items-from-sale-i/)
+class Solution:
+    def maximumSaleItems(self, items: list[list[int]], budget: int) -> int:
+        f=[0]*(budget+1)
+        mn=inf
+        for fi,p in items:
+            mn=min(mn,p)
+            cnt=0
+            for fj,_ in items:
+                if fj%fi==0:
+                    cnt+=1
+            for j in range(budget,p-1,-1):
+                f[j]=max(f[j],f[j-p]+cnt)
+        return max(fi+(budget-i)//mn for i,fi in enumerate(f))
